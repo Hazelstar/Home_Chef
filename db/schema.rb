@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 2020_11_16_154555) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,7 +47,10 @@ ActiveRecord::Schema.define(version: 2020_11_16_154555) do
     t.string "last_name"
     t.string "address"
     t.string "phone_number"
-    t.boolean "is_a_cook"
+    t.boolean "is_a_cook", default: false
+    t.text "bio"
+    t.integer "price"
+
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
