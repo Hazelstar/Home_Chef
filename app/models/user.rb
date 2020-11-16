@@ -9,4 +9,7 @@ class User < ApplicationRecord
   validates :is_a_cook, inclusion: { in: [true, false] }
   validates :bio, length: { in: 50..300 }
   validates :price, numericality: true, presence: true # if: is_a_cook:true
+
+  has_many :bookings
+
 end
