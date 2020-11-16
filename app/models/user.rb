@@ -5,11 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :first_name, :last_name, :address, :phone_number, :email, :password, :bio, :is_a_cook, presence: true
-  validates :email, uniqueness: true
+  validates :email, :phone_number, uniqueness: true
   validates :is_a_cook, inclusion: { in: [true, false] }
   validates :bio, length: { in: 50..300 }
-  validates :price, numericality: true, presence: true # if: is_a_cook:true
+  validates :price, presence: true, numericality: true, if: -> { current_user.is_a_cook? }
+  validates :booked, presence: true, if: -> { current_user.is_a_cook? }
 
   has_many :bookings
-
+  has_many :availabilities
 end
