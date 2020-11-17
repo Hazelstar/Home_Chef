@@ -28,7 +28,7 @@ class AvailabilitiesController < ApplicationController
     @availability = Availability.find(params[:id])
 
     if @availability.update_attributes(availabilities_params)
-      flash[:notice] = "Your ailability is updated!"
+      flash[:notice] = "Your availability is updated!"
       redirect_to user_availability
     else
       flash[:error] = "Error updating availability"
