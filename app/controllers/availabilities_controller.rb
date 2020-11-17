@@ -1,31 +1,38 @@
 class AvailabilitiesController < ApplicationController
+  def show
+    @availabilities.all
+  end
+
   def new
     @availability = Availability.new
   end
 
   def create
     @availability = Availability.new(availabilities_params)
-    @availability.user = current_user
 
     if @availability.save
-      redirect_to user_availability(@cooker), notice: "New availability on #{@availability.start_date}
-       for #{@cooker.first_name} registred successfully."
+      flash[:notice] = "New availability added!"
+      redirect_to user_availability(@cooker)
     else
+      flash[:error] = "Error adding availability"
       render :new
     end
   end
 
   def edit
-
+    @availability = Availability.find(params[:id])
   end
 
   def update
-   @availability = Availability.find(params[:id])
+    @availability = Availability.find(params[:id])
 
-   if @availability.update_attributes(availabilities_params)
+    if @availability.update_attributes(availabilities_params)
+      flash[:notice] = "Your ailability is updated!"
       redirect_to user_availability
-   else
-      render :new
+    else
+      flash[:error] = "Error updating availability"
+      render :show
+    end
   end
 
   private
