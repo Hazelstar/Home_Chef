@@ -12,19 +12,31 @@
 
 
 
-<p>here display the fantastic navbar</p>
+<h3>here display the fantastic navbar</h3>
+
+<p>My address: <%= current_user.address %></p>
+
+<p>My phone number: <%= current_user.phone_number %></p>
+
+<p>My bio: <%= current_user.bio %></p>
+
+<% if current_user.is_a_cook? %>
+  <p>My price: <%= current_user.price %>€ / hour</p>
+<% end  %>
 
 
-<%#= link_to user_availabilities do %>
-<!--   <div class="text-center btn-effect">
-    My Schedule
-  </div> -->
+<%# if current_user.is_a_cook? %>
+  <%#= link_to new_user_availability_path do %>
+    <div class="text-center btn-effect">
+      My Schedule
+    </div>
+  <%# end %>
 <%# end %>
 
-<%#= link_to user_bookings do %>
-<!--   <div class="text-center btn-effect">
+<%#= link_to user_bookings_path do %>
+  <div class="text-center btn-effect">
     My Bookings
-  </div> -->
+  </div>
 <%# end %>
 
 
