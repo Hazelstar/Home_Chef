@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HomeChef</title>
+    <title>Home Chef</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,7 +12,47 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item dropdown">
+              <span class="navbar-toggler-icon" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <% if user_signed_in? %>
+                  <%= link_to profile_path do %>
+                    <div class="dropdown-item btn-effect">
+                        My account
+                    </div>
+                  <% end %>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <div class="dropdown-item btn-effect">
+                        Sign out
+                    </div>
+                  <% end %>
+                <% else %>
+                  <%= link_to new_user_session_path do %>
+                    <div class="dropdown-item btn-effect">
+                        Log In
+                    </div>
+                  <% end %>
+                  <%= link_to new_user_registration_path do %>
+                    <div class="dropdown-item btn-effect">
+                        Sign Up
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <%#= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>
