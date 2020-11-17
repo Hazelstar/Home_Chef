@@ -11,6 +11,6 @@ class User < ApplicationRecord
   validates :price, presence: true, numericality: true, if: -> { current_user.is_a_cook? }
   validates :booked, presence: true, if: -> { current_user.is_a_cook? }
 
-  has_many :bookings
-  has_many :availabilities
+  has_many :bookings, dependent: :destroy
+  has_many :availabilities, dependent: :destroy
 end
