@@ -1,4 +1,6 @@
 class AvailabilitiesController < ApplicationController
+   before_filter :check_access
+
   def show
     @availabilities.all
   end
@@ -9,7 +11,6 @@ class AvailabilitiesController < ApplicationController
 
   def create
     @availability = Availability.new(availabilities_params)
-    @availability.user = curent_user
 
     if @availability.save
       flash[:notice] = "New availability added!"
@@ -43,6 +44,10 @@ class AvailabilitiesController < ApplicationController
   # end
 
   def availabilities_params
-    params.require(:availability).permit(:start_date, :end_date, @availability.user)
+    params.require(:availability).permit(:start_date, :end_date)
+  end
+
+  def check_access
+    redirect_to root_path and return unless current_user.is_a_cook
   end
 end
