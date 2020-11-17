@@ -30,11 +30,17 @@
                         My account
                     </div>
                   <% end %>
+                  <%= link_to edit_user_registration_path do %>
+                    <div class="text-center btn-effect">
+                      Edit profile
+                    </div>
+                  <% end %>
                   <%= link_to destroy_user_session_path, method: :delete do %>
                     <div class="dropdown-item btn-effect">
                         Sign out
                     </div>
                   <% end %>
+
                 <% else %>
                   <%= link_to new_user_session_path do %>
                     <div class="dropdown-item btn-effect">

@@ -7,7 +7,8 @@ class PagesController < ApplicationController
   def profile
     @user = current_user
     @user_bookings = Booking.where(user: current_user)
-    @user_availabilities = Availability.where(user: current_user)
+
+    @user_availabilities = Availability.where(user: current_user) if current_user.is_a_cook == true
   end
 
   private
