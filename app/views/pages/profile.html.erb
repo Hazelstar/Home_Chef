@@ -3,41 +3,51 @@
 </div>
 
 <div class="profile">
-  <h3>Welcome, <%= current_user.first_name.capitalize %>!</h3>
+  <% if current_user.first_name == nil %>
+    <h3>Welcome, <%= current_user.email %>!</h3>
+  <% else %>
+    <h3>Welcome, <%= current_user.first_name.capitalize %>!</h3>
+  <% end %>
   <div class="avatar p-3">
     <%#= cl_image_tag(current_user.photo.key, class: "w-100") %>
   </div>
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+<h3>here display the fantastic navbar below</h3>
+<div class="dashboard d-flex flex-grow">
 
+  <p>My address: <%= current_user.address %></p>
 
-<h3>here display the fantastic navbar</h3>
+  <p>My phone number: <%= current_user.phone_number %></p>
 
-<p>My address: <%= current_user.address %></p>
+  <p>My bio: <%= current_user.bio %></p>
 
-<p>My phone number: <%= current_user.phone_number %></p>
+  <% if current_user.is_a_cook? %>
+    <p>My price: <%= current_user.price %>€ / hour</p>
+  <% end  %>
 
-<p>My bio: <%= current_user.bio %></p>
+  <% if current_user.is_a_cook? %>
+    <%#= link_to new_user_availability_path do %>
+      <div class="text-center btn-effect">
+        My Schedule
+      </div>
+    <%# end %>
+  <% end %>
 
-<% if current_user.is_a_cook? %>
-  <p>My price: <%= current_user.price %>€ / hour</p>
-<% end  %>
-
-
-<%# if current_user.is_a_cook? %>
-  <%#= link_to new_user_availability_path do %>
+  <%#= link_to user_bookings_path do %>
     <div class="text-center btn-effect">
-      My Schedule
+      My Bookings
     </div>
   <%# end %>
-<%# end %>
 
-<%#= link_to user_bookings_path do %>
-  <div class="text-center btn-effect">
-    My Bookings
-  </div>
-<%# end %>
+</div>
 
 
 
