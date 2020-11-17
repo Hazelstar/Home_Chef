@@ -1,25 +1,24 @@
 class BookingsController < ApplicationController
   # user_bookings POST   /users/:user_id/bookings(.:format)                                                       bookings#create
   # new_user_booking GET    /users/:user_id/bookings/new(.:format)
-  before_action :set_availability
+  before_action :set_availability, :set_cooker
   def new
     @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(bookings_params)
-    current_user.is_a_cook ? @booking.cooker = current_user : @booking.booker = current_user
+    @booking.booker = current_user
+    @booking.cooker = @cooker
     
-    if @booking.cooker.empty?
-      if time_to_cook(@booking.number_of_meals) > @availability.end_date - @availability.start_date
-        if @booking.save
-          redirect_to users_path(current_user), notice: "New booking from ... to ..."
-        else
-          render :new 
-        end
+    if bookable?
+      if @booking.save
+        redirect_to users_path(current_user), notice: "New booking from #{@booking.start_date} to #{@booking.start_date + time_to_cook(@booking.number_of_meals)}"
       else
-        render :action => :new, :alert => "The time to cook is more than the cooker availabilities for these dates."
+        render :new 
       end
+    else
+      render :action => :new, :alert => "The time to cook is more than the cooker availabilities for these dates."
     end
   end
 
@@ -36,5 +35,13 @@ class BookingsController < ApplicationController
 
   def set_availability
     @availability = Availability.find(params[:user_id])
+  end
+
+  def bookable?
+    time_to_cook(@booking.number_of_meals) > @availability.end_date - @availability.start_date && @booking.start_date == @availability.start_date
+  end
+
+  def set_cooker
+    @cooker = User.find(params[:cooker_id])
   end
 end

@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+
+      <h1>When are you available <%= @cooker.first_name %> </h1>
+
+      <%= simple_form_for [ @cooker, @availabilities ] do |f| %>
+            <%= f.input :start_date, as: :datetime, type: :text %>
+            <%= f.input :end_date, as: :datetime, type: :text %>
+
+        <%= f.button :submit, class: 'btn' %>
+      <% end %>
+    </div>
+  </div>
+</div>
