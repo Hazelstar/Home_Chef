@@ -9,10 +9,11 @@ class AvailabilitiesController < ApplicationController
 
   def create
     @availability = Availability.new(availabilities_params)
+    @availability.user = curent_user
 
     if @availability.save
       flash[:notice] = "New availability added!"
-      redirect_to user_availability(@cooker)
+      redirect_to user_availability(@user)
     else
       flash[:error] = "Error adding availability"
       render :new
@@ -37,7 +38,11 @@ class AvailabilitiesController < ApplicationController
 
   private
 
+  # def cooker
+  #   @cooker = current_user
+  # end
+
   def availabilities_params
-    params.require(:availability).permit(:start_date, :end_date, @cooker.id)
+    params.require(:availability).permit(:start_date, :end_date, @availability.user)
   end
 end

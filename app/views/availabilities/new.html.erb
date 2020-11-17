@@ -3,9 +3,9 @@
     <div class="col-md-8">
 
 
-      <h1>When are you available <%= @cooker.first_name %> </h1>
+      <h1>When are you available <%= @availability.user.first_name %> </h1>
 
-      <%= simple_form_for [ @cooker, @availabilities ] do |f| %>
+      <%= simple_form_for [ @user, @availabilities ] do |f| %>
             <%= f.input :start_date, as: :datetime, type: :text %>
             <%= f.input :end_date, as: :datetime, type: :text %>
 
