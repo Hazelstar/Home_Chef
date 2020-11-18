@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'pages#profile'
   patch '/edit_user_registration', to: 'pages#change_role'
 
-  resources :users do
+  resources :users, only: [] do
     resources :bookings, only: [ :new, :create ]
     resources :availabilities, only: [:show, :new, :create, :update]
   end
