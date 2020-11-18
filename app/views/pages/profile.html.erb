@@ -17,6 +17,7 @@
   <% if current_user.is_a_cook? %>
     <p>You are cooking!</p>
   <% end %>
+
 </div>
 
 <% if current_user.is_a_cook == 'false' %>
@@ -27,18 +28,12 @@
   <% end %>
 <% end %>
 
-
-
-
-
-
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-
 
 <h3>here display the fantastic navbar below</h3>
 <div class="dashboard d-flex flex-grow">
@@ -53,37 +48,23 @@
     <p>My price: <%= current_user.price %>€ / hour</p>
   <% end  %>
 
-  <% if current_user.is_a_cook? %>
-    <%= link_to user_availabilities_path(current_user.id) do %>
-      <div class="text-center btn-effect">
-        My Schedule
-      </div>
-    <% end %>
-  <% end %>
+</div>
 
-  <%#= link_to user_bookings_path do %>
+<% if current_user.is_a_cook? %>
+  <%= link_to user_availabilities_path(current_user.id) do %>
     <div class="text-center btn-effect">
-      My Bookings
+      My Schedule
     </div>
-  <%# end %>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
+  <% end %>
+<% else %>
+  <div class="text-center btn-effect">
+    My Bookings
+  </div>
+  <ul>
+    <% @user_bookings.each do |user_booking| %>
+      <li>
+        booked for <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -6,6 +6,7 @@ class CookersController < ApplicationController
 
   def show
     @cooker = User.find(params[:id])
+    @availabilities = Availability.where(user: @cooker)
     @booking = Booking.new
   end
 

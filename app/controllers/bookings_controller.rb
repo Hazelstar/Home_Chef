@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     @booking.cooker = @cooker
     
     if @booking.save
-      redirect_to profile_path, notice: "New booking from #{@booking.start_date} to #{@booking.start_date + time_to_cook(@booking.number_of_meals)}"
+      redirect_to profile_path, notice: "New booking added on #{@booking.start_date} with #{@booking.cooker.first_name.capitalize} #{@booking.cooker.last_name.capitalize}"
     else
       render :new 
     end
@@ -30,15 +30,8 @@ class BookingsController < ApplicationController
     10 + 30 * meals
   end
 
-  def bookable?
-    period_matching = time_to_cook(@booking.number_of_meals) > (@availability.end_date - @availability.start_date)
-    same_starting_date = @booking.start_date == @availability.start_date
-    period_matching && same_starting_date
-  end
-
   def set_cooker_and_availabilities
     @cooker = User.find(params[:user_id])
     @availabilities = Availability.where(user: @cooker)
-
   end
 end

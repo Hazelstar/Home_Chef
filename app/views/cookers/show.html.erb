@@ -20,7 +20,18 @@
 
 </div>
 
-  <%= simple_form_for [@cooker, @booking] do |f| %>
-    <%= f.input :number_of_meals %>
-    <%= f.button :submit, class: 'btn' %>
-  <% end %>
+<div>
+  <h3>I'm available on:</h3>
+    <ul>
+      <% @availabilities.each do |availability| %>
+        <li>
+          <%= availability.start_date.nil? ? "No date specified" : availability.start_date.strftime("%d of %B, %Y at %k:%M") %>
+        </li>
+      <% end %>
+    </ul>
+</div>
+
+<%= simple_form_for [@cooker, @booking] do |f| %>
+  <%= f.input :number_of_meals %>
+  <%= f.button :submit, class: 'btn' %>
+<% end %>
