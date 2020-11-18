@@ -3,6 +3,7 @@
 </div>
 
 <div class="profile">
+  <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill if current_user.photo.attached? %>
   <% if current_user.first_name == nil %>
     <h3>Welcome, <%= current_user.email %>!</h3>
   <% else %>
@@ -15,6 +16,18 @@
     <p>You are cooking!</p>
   <% end %>
 </div>
+
+<% if current_user.is_a_cook == 'false' %>
+  <%= link_to users_path do %>
+    <div class="text-center btn-effect">
+      Browse Cooks
+    </div>
+  <% end %>
+<% end %>
+
+
+
+
 
 <br>
 <br>
