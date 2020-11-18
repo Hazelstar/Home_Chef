@@ -7,7 +7,6 @@ class AvailabilitiesController < ApplicationController
     #     # and because the user "has_many :availabilities"
     # @availability = @user[:availability_id]
     @availabilities = @user.availabilities
-
   end
 
   def new
@@ -16,14 +15,13 @@ class AvailabilitiesController < ApplicationController
   end
 
   def create
-    @user = current_user
+    # @user = current_user
     @availability = Availability.new(availabilities_params)
     @availability.user = current_user
 
-
     if @availability.save
       flash[:notice] = "New availability added!"
-      redirect_to user_availability_path(@user.id, @availability.id)
+      redirect_to user_availabilities_path(current_user.id)
     else
       flash[:error] = "Error adding availability"
       render :new
@@ -39,10 +37,10 @@ class AvailabilitiesController < ApplicationController
 
     if @availability.update_attributes(availabilities_params)
       flash[:notice] = "Your availability is updated!"
-      redirect_to user_availability_path
+      redirect_to user_availabilities_path(current_user.id)
     else
       flash[:error] = "Error updating availability"
-      render :show
+      render :index
     end
   end
 
@@ -53,7 +51,7 @@ class AvailabilitiesController < ApplicationController
   # end
 
   def availabilities_params
-    params.require(:availability).permit(:start_date, :end_date, :user_id)
+    params.require(:availability).permit(:start_date, :end_date)
   end
 
   # def end_date_after_start_date

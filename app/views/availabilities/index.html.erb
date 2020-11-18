@@ -4,9 +4,10 @@
 
 
       <h1><%= @user.first_name %>, you are available:</h1>
-        <ul><% @availabilities.each do |availability| %>
-        <li> <%= availability.start_date %> </li>
-          <% end %>
+      <ul>
+        <% @availabilities.each do |availability| %>
+          <li> <%= availability.end_date %> </li>
+        <% end %>
       </ul>
 
     </div>
