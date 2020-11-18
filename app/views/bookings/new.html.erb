@@ -1,0 +1,9 @@
+<h1>Booking </h1>
+
+<% if current_user.is_a_cook? %>
+  <p>You can't book for a cooker because you are registered as a cooker.</p>
+<% else %>
+  <%= simple_form_for @booking do |f| %>
+    <%= f.input :number_of_meals %>
+  <% end %>
+<% end %>

@@ -1,2 +1,27 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <h1>HOME CHEF</h1>
+  <h3>Book a cook!</h3>
+
+  <br>
+
+
+<%= link_to users_path do %>
+  <div class="text-center btn-effect">
+    I'm hungy!
+  </div>
+<% end %>
+
+  <% if user_signed_in? && current_user.is_a_cook? %>
+    <%= link_to profile_path do %>
+      <div class="text-center btn-effect">
+        I'm cooking!
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path do %>
+      <div class="text-center btn-effect">
+        I'm cooking!
+      </div>
+    <% end %>
+  <% end %>
+</div>

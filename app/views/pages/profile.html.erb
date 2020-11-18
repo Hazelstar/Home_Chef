@@ -3,27 +3,71 @@
 </div>
 
 <div class="profile">
-  <h3>Welcome, <%= @user.first_name %>!</h3>
+
+  <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill if current_user.photo.attached? %>
+  <% if current_user.first_name == nil %>
+    <h3>Welcome, <%= current_user.email %>!</h3>
+  <% else %>
+    <h3>Welcome, <%= current_user.first_name.capitalize %>!</h3>
+  <% end %>
+
   <div class="avatar p-3">
     <%#= cl_image_tag(current_user.photo.key, class: "w-100") %>
   </div>
+  <% if current_user.is_a_cook? %>
+    <p>You are cooking!</p>
+  <% end %>
 </div>
 
-
-<p>here display the fantastic navbar</p>
-
-
-<%= link_to new_user_availability_path(current_user) do %>
- <div class="text-center btn-effect">
-    My Schedule
-  </div>
+<% if current_user.is_a_cook == 'false' %>
+  <%= link_to users_path do %>
+    <div class="text-center btn-effect">
+      Browse Cooks
+    </div>
+  <% end %>
 <% end %>
 
-<%#= link_to user_bookings do %>
-<!--   <div class="text-center btn-effect">
-    My Bookings
-  </div> -->
-<%# end %>
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<h3>here display the fantastic navbar below</h3>
+<div class="dashboard d-flex flex-grow">
+
+  <p>My address: <%= current_user.address %></p>
+
+  <p>My phone number: <%= current_user.phone_number %></p>
+
+  <p>My bio: <%= current_user.bio %></p>
+
+  <% if current_user.is_a_cook? %>
+    <p>My price: <%= current_user.price %>€ / hour</p>
+  <% end  %>
+
+  <% if current_user.is_a_cook? %>
+    <%#= link_to new_user_availability_path(current_user) do %>
+      <div class="text-center btn-effect">
+        My Schedule
+      </div>
+    <%# end %>
+  <% end %>
+
+  <%#= link_to user_bookings_path do %>
+    <div class="text-center btn-effect">
+      My Bookings
+    </div>
+  <%# end %>
+
+</div>
 
 
 
