@@ -1,6 +1,7 @@
 <div class="banner">
   <h1>HOME CHEF</h1>
   <h3>Book a cook!</h3>
+
   <br>
 
 
@@ -9,8 +10,6 @@
     I'm hungy!
   </div>
 <% end %>
-
-
 
   <% if user_signed_in? && current_user.is_a_cook? %>
     <%= link_to profile_path do %>

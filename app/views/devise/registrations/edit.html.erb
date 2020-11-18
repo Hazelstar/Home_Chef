@@ -13,8 +13,8 @@
       <% end %>
       <%= f.input :is_a_cook, as: :boolean, checked_value: 'true', unchecked_value: 'false',
                   required: true,
-                  input_html: { autocomplete: "I am a cook!"  }
-                   %>
+                  input_html: { autocomplete: "I am a cook!"  } %>
+      <%= f.input :photo, as: :file %>
       <%= f.input :first_name,
                   hint: "",
                   required: true,
