@@ -9,12 +9,12 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(bookings_params)
-    @booking.booker = current_user
+    @booking.user = current_user
     @booking.cooker = @cooker
     
     if bookable?
       if @booking.save
-        redirect_to users_path(current_user), notice: "New booking from #{@booking.start_date} to #{@booking.start_date + time_to_cook(@booking.number_of_meals)}"
+        redirect_to profile_path, notice: "New booking from #{@booking.start_date} to #{@booking.start_date + time_to_cook(@booking.number_of_meals)}"
       else
         render :new 
       end
@@ -35,7 +35,7 @@ class BookingsController < ApplicationController
   end
 
   def set_availability
-    @availability = Availability.find(params[:user_id])
+    @availability = Availability.find(@cooker)
   end
 
   def bookable?
@@ -45,6 +45,6 @@ class BookingsController < ApplicationController
   end
 
   def set_cooker
-    @cooker = User.find(params[:cooker_id])
+    @cooker = User.find(params[:user_id])
   end
 end

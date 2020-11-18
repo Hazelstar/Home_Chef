@@ -1,9 +1,5 @@
-<h1>Booking </h1>
+<h1>Booking confirmation</h1>
 
-<% if current_user.is_a_cook? %>
-  <p>You can't book for a cooker because you are registered as a cooker.</p>
-<% else %>
-  <%= simple_form_for @booking do |f| %>
-    <%= f.input :number_of_meals %>
+  <%= simple_form_for [current_user, @booking] do |f| %>
+    <%= f.button :submit, class: 'btn' %>
   <% end %>
-<% end %>
