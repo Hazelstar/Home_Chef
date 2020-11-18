@@ -28,20 +28,26 @@ class AvailabilitiesController < ApplicationController
     end
   end
 
-  def edit
-    @availability = Availability.find(params[:id])
-  end
+  # def edit
+  #   @availability = Availability.find(params[:id])
+  # end
 
-  def update
-    @availability = Availability.find(params[:id])
+  # def update
+  #   @availability = Availability.find(params[:id])
 
-    if @availability.update_attributes(availabilities_params)
-      flash[:notice] = "Your availability is updated!"
-      redirect_to user_availabilities_path(current_user.id)
-    else
-      flash[:error] = "Error updating availability"
-      render :index
-    end
+  #   if @availability.update_attributes(availabilities_params)
+  #     flash[:notice] = "Your availability is updated!"
+  #     redirect_to user_availabilities_path(current_user.id)
+  #   else
+  #     flash[:error] = "Error updating availability"
+  #     render :index
+  #   end
+  # end
+
+  def destroy
+    @availability = Availability.find(params[:id])
+    @availability.destroy
+    redirect_to user_availabilities_path(current_user.id)
   end
 
   private
