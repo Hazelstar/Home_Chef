@@ -15,20 +15,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
-
   def edit
-    current_user.is_a_cook =! current_user.is_a_cook
-    current_user.save
-    redirect_to profile_path(current_user)
+    super
   end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -60,9 +54,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     "/profile"
   end
 
-  def after_inactive_sign_up_path_for(resource)
-    "/newuser"
-  end
+  # def after_inactive_sign_up_path_for(resource)
+  #   "/profile"
+  # end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
