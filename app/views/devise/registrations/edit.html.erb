@@ -11,7 +11,10 @@
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
-
+      <%= f.input :is_a_cook, as: :boolean, checked_value: 'true', unchecked_value: 'false',
+                  required: true,
+                  input_html: { autocomplete: "I am a cook!"  }
+                   %>
       <%= f.input :first_name,
                   hint: "",
                   required: true,
@@ -32,10 +35,6 @@
                   hint: "Tell us a bit about you (50 to 300 characters)",
                   required: true,
                   input_html: { autocomplete: "Bio" } %>
-      <%= f.input :is_a_cook, as: :boolean, checked_value: true, unchecked_value: false,
-                  hint: "Change profile:",
-                  required: true,
-                  input_html: { autocomplete: "I am a cook!" } %>
       <%= f.input :password,
                   hint: "Leave it blank if you don't want to change it",
                   required: false,
