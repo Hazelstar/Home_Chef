@@ -45,9 +45,12 @@ class AvailabilitiesController < ApplicationController
   # end
 
   def destroy
+    # @user = User.find(params[:user_id])
+    # @availability = @user.availabilities
+    # @availability.destroy
     @availability = Availability.find(params[:id])
     @availability.destroy
-    redirect_to user_availabilities_path(current_user.id)
+    redirect_to user_availabilities_path(current_user)
   end
 
   private
