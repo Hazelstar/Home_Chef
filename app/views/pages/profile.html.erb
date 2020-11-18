@@ -3,29 +3,54 @@
 </div>
 
 <div class="profile">
-  <h3>Welcome, <%= current_user.first_name.capitalize %>!</h3>
+  <% if current_user.first_name == nil %>
+    <h3>Welcome, <%= current_user.email %>!</h3>
+  <% else %>
+    <h3>Welcome, <%= current_user.first_name.capitalize %>!</h3>
+  <% end %>
   <div class="avatar p-3">
     <%#= cl_image_tag(current_user.photo.key, class: "w-100") %>
   </div>
+  <% if current_user.is_a_cook? %>
+    <p>You are cooking!</p>
+  <% end %>
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+<h3>here display the fantastic navbar below</h3>
+<div class="dashboard d-flex flex-grow">
 
+  <p>My address: <%= current_user.address %></p>
 
-<p>here display the fantastic navbar</p>
+  <p>My phone number: <%= current_user.phone_number %></p>
 
+  <p>My bio: <%= current_user.bio %></p>
 
-<%#= link_to user_availabilities do %>
-<!--   <div class="text-center btn-effect">
-    My Schedule
-  </div> -->
-<%# end %>
+  <% if current_user.is_a_cook? %>
+    <p>My price: <%= current_user.price %>€ / hour</p>
+  <% end  %>
 
-<%#= link_to user_bookings do %>
-<!--   <div class="text-center btn-effect">
-    My Bookings
-  </div> -->
-<%# end %>
+  <% if current_user.is_a_cook? %>
+    <%#= link_to new_user_availability_path do %>
+      <div class="text-center btn-effect">
+        My Schedule
+      </div>
+    <%# end %>
+  <% end %>
+
+  <%#= link_to user_bookings_path do %>
+    <div class="text-center btn-effect">
+      My Bookings
+    </div>
+  <%# end %>
+
+</div>
 
 
 
