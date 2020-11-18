@@ -2,11 +2,12 @@ class AvailabilitiesController < ApplicationController
   # before_filter :check_access
   # before_create :set_foo_to_now, only: :create
 
-  def show
+  def index
     @user = User.find(params[:user_id])
-        # and because the user "has_many :availabilities"
-    @availability = @user.availabilities.all
-    @availability.user = current_user
+    #     # and because the user "has_many :availabilities"
+    # @availability = @user[:availability_id]
+    @availabilities = @user.availabilities
+
   end
 
   def new

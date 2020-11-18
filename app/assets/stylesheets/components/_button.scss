@@ -1,0 +1,21 @@
+.btn-effect {
+  background-color: $light-blue;
+  border-radius: 15px;
+  margin: 16px;
+  width: 137px;
+  text-decoration: none;
+    h4 {
+      font-size: 18px;
+      padding: 8px;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    &:hover {
+      box-shadow: 4px 4px 1px black;
+    }
+}
+
+a {
+  text-decoration: none !important;
+}
