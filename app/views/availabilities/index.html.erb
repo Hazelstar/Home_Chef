@@ -4,9 +4,21 @@
 
 
       <h1><%= @user.first_name %>, you are available:</h1>
-        <ul><% @availabilities.each do |availability| %>
-        <li> <%= availability.start_date %> </li>
-          <% end %>
+
+       <%= link_to new_user_availability_path(current_user.id), class: 'btn' do %>
+          <i class=“fa fa-plus”></i> Add availability!
+        <% end %>
+
+      <ul>
+        <% @availabilities.each do |availability| %>
+          <li>
+            <%= availability.end_date %>
+            <%= link_to availability_path(availability), method: :delete,
+              data: { confirm: "Really?!", toggle: "tooltip", placement: "top" } do %>
+              <small><i class="fa fa-trash"></i></small>
+              <% end %>
+          </li>
+        <% end %>
       </ul>
 
     </div>
