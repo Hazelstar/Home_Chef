@@ -3,12 +3,14 @@
 </div>
 
 <div class="profile">
+
   <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill if current_user.photo.attached? %>
   <% if current_user.first_name == nil %>
     <h3>Welcome, <%= current_user.email %>!</h3>
   <% else %>
     <h3>Welcome, <%= current_user.first_name.capitalize %>!</h3>
   <% end %>
+
   <div class="avatar p-3">
     <%#= cl_image_tag(current_user.photo.key, class: "w-100") %>
   </div>
@@ -29,12 +31,14 @@
 
 
 
+
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
+
 
 <h3>here display the fantastic navbar below</h3>
 <div class="dashboard d-flex flex-grow">
@@ -50,7 +54,7 @@
   <% end  %>
 
   <% if current_user.is_a_cook? %>
-    <%#= link_to new_user_availability_path do %>
+    <%#= link_to new_user_availability_path(current_user) do %>
       <div class="text-center btn-effect">
         My Schedule
       </div>
