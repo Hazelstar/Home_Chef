@@ -15,7 +15,10 @@
 
   <p>My price: <%= @cooker.price %>€ / hour</p>
 
-  <%= link_to new_user_booking_path do %>
+
+  <h1>RENDER MODAL ZITH FORM HERE</h1>
+
+  <%= link_to new_user_booking_path(@cooker,@booking) do %>
     <div class="text-center btn-effect">
       Book me!
     </div>

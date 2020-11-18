@@ -2,10 +2,11 @@
   <% if @cookers.any? %>
     <div class="container">
       <div class="row pb-5 mb-5">
-        <% @cooker.each do |pet| %>
+        <% @cookers.each do |cooker| %>
           <div class="col-4">
             <div class="card">
-              <%= link_to cooker_path(cooker.id) do %>
+              <%= link_to cooker_path(cooker) do %>
+                <h1>See more</h1>
                 <%#= cl_image_tag(cooker.photo.key, class: "w-100") %>
               <% end %>
               <h3><%= cooker.first_name.capitalize %> <%= cooker.last_name.capitalize %></h3>
