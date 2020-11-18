@@ -2,7 +2,7 @@
 
 class RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
   after_action :update_cook, only: [:update]
   # GET /resource/sign_up
   # def new
@@ -59,9 +59,13 @@ class RegistrationsController < Devise::RegistrationsController
     "/profile"
   end
 
-   def after_update_path_for(resource)
-      profile_path
-    end
+  def after_sign_in_path_for(resource)
+    profile_path
+  end
+
+  def after_update_path_for(resource)
+    profile_path
+  end
 
   # def after_inactive_sign_up_path_for(resource)
   #   "/profile"
