@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   # user_bookings POST   /users/:user_id/bookings(.:format)                                                       bookings#create
   # new_user_booking GET    /users/:user_id/bookings/new(.:format)
   before_action :set_availability, :set_cooker
+
   def new
     @booking = Booking.new
   end
@@ -38,7 +39,9 @@ class BookingsController < ApplicationController
   end
 
   def bookable?
-    time_to_cook(@booking.number_of_meals) > @availability.end_date - @availability.start_date && @booking.start_date == @availability.start_date
+    period_matching = time_to_cook(@booking.number_of_meals) > (@availability.end_date - @availability.start_date)
+    same_starting_date = @booking.start_date == @availability.start_date
+    period_matching && same_starting_date
   end
 
   def set_cooker
