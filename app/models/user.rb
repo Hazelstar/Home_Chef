@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :address, :phone_number, :email, :bio, :is_a_cook, presence: true, on: :update # :photo
   validates :email, :phone_number, uniqueness: true, on: :update
-  validates :bio, length: { in: 50..300 }, on: :update
+  validates :bio, length: { in: 20..300 }, on: :update
   # validates :price, presence: true, numericality: true, if: -> { User.where(is_a_cook: true) }
 
   has_many :bookings, dependent: :destroy

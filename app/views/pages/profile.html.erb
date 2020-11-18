@@ -3,23 +3,21 @@
 </div>
 
 <div class="profile">
-  <h3>Welcome, <%= current_user.first_name.capitalize %>!</h3>
+  <h3>Welcome, <%= @user.first_name %>!</h3>
   <div class="avatar p-3">
     <%#= cl_image_tag(current_user.photo.key, class: "w-100") %>
   </div>
 </div>
 
 
-
-
 <p>here display the fantastic navbar</p>
 
 
-<%#= link_to user_availabilities do %>
-<!--   <div class="text-center btn-effect">
+<%= link_to new_user_availability_path(current_user) do %>
+ <div class="text-center btn-effect">
     My Schedule
-  </div> -->
-<%# end %>
+  </div>
+<% end %>
 
 <%#= link_to user_bookings do %>
 <!--   <div class="text-center btn-effect">
