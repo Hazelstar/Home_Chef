@@ -11,6 +11,9 @@
   <div class="avatar p-3">
     <%#= cl_image_tag(current_user.photo.key, class: "w-100") %>
   </div>
+  <% if current_user.is_a_cook? %>
+    <p>You are cooking!</p>
+  <% end %>
 </div>
 
 <br>

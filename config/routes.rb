@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users #, controllers: { :registrations => :registrations }
+  devise_for :users, controllers: { :registrations => :registrations }
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/profile', to: 'pages#profile'
-  patch '/edit_user_registration', to: 'pages#edit_profile'
+  patch '/edit_user_registration', to: 'registrations#edit'
 
   resources :users do
     resources :bookings, only: [ :new, :create ]
