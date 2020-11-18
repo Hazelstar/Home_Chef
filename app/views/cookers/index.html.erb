@@ -1,0 +1,24 @@
+<div class="mt-5">
+  <% if @cookers.any? %>
+    <div class="container">
+      <div class="row pb-5 mb-5">
+        <% @cooker.each do |pet| %>
+          <div class="col-4">
+            <div class="card">
+              <%= link_to cooker_path(cooker.id) do %>
+                <%#= cl_image_tag(cooker.photo.key, class: "w-100") %>
+              <% end %>
+              <h3><%= cooker.first_name.capitalize %> <%= cooker.last_name.capitalize %></h3>
+              <p><%= cooker.address.capitalize%></p>
+              <p><%= cooker.price %>€</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+      <div class="container text-center">
+        <h4 class="header">Oh no! There are no cooks available yet...</h4>
+      </div>
+  <% end %>
+</div>
