@@ -1,3 +1,8 @@
+<div class="banner">
+  <h1>HOME CHEF</h1>
+  <h3>Book a cook!</h3>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -38,11 +43,11 @@
                                 required: true %>
               </div>
               <div class="col-xs-6">
-                <div id="price" style="display:none;">
+               <!--   --><div id="price" style="display:none;">
                   <%= f.input :price, :label => "Define your hourly price in €", as: :integer,
                               required: true,
                               input_html: { autocomplete: "My hourly price"} %>
-                </div>
+                <!-- </div> -->
               </div>
             </div>
 
@@ -86,7 +91,7 @@
 
           <div class="form-actions">
             <div class="btn-effect">
-            <%= f.button :submit, "Update" %>
+            <%= f.button :submit, "Update", class: "btn-effect" %>
             </div>
           </div>
         <% end %>
