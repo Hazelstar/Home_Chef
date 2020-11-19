@@ -1,21 +1,14 @@
 body {
   background-color: $dark-blue !important;
 }
-
-.container {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .form-post {
-  background: white;
+  background: $light-blue;
   margin: 50px 0;
-  padding: 20px;
+  padding: 30px;
   border-radius: 5px;
   box-shadow: 4px 4px 1px black;
   text-align: center;
+  color: $dark-gray;
   h1 {
     text-align: center;
     font-weight: bold;
@@ -30,12 +23,6 @@ body {
     font-size: 25px;
     color: $dark-gray;
     margin: 16px 0;
-  }
-  .btn-effect {
-    width: 100%;
-    padding: 10px;
-    font-weight: bold;
-
   }
   .form-input {
     display: flex;
