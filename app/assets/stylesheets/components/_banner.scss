@@ -8,23 +8,25 @@
   padding: 20px;
   background-color: #F2F4F8;
   z-index: 1;
-    h1 {
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+                  url(../../../images/homepage.jpg);
+  padding: 150px 0;
+}
+
+.banner h1 {
     font-size: 100px;
     font-weight: bolder;
     color: $dark-gray;
-    text-shadow: 3px 3px $sunshine;
+    text-shadow: 3px 3px $light-gray;
     margin: 20px;
-  }
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%
-}
-
-.sticky + .content {
-  padding-top: 102px;
+.banner p {
+  font-size: 24px;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 
