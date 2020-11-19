@@ -1,12 +1,10 @@
-<div class="banner">
+<div class="header sticky">
   <h1>HOME CHEF</h1>
-  <h3>Book a cook!</h3>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-
+<div class="container content">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="row">
       <div class="form-post">
         <h1>Edit my profile</h1>
 
@@ -65,11 +63,14 @@
                             input_html: { autocomplete: "Phone number" } %>
               </div>
             </div>
-            <%= f.input :bio,
-                        hint: "Tell us a bit about you (50 to 300 characters)",
-                        required: true,
-                        input_html: { autocomplete: "Bio" } %>
-            <%= f.input :photo, as: :file %>
+
+              <%= f.input :bio,
+                          hint: "Tell us a bit about you (50 to 300 characters)",
+                          required: true,
+                          input_html: { autocomplete: "Bio" } %>
+              <%= f.input :photo, as: :file %>
+
+
             <div class="row">
               <div class="col-xs-6">
                 <%= f.input :password,
@@ -83,6 +84,7 @@
                             input_html: { autocomplete: "new-password" } %>
               </div>
             </div>
+
             <%= f.input :current_password,
                         hint: "We need your current password to confirm your changes",
                         required: true,
@@ -90,9 +92,7 @@
           </div>
 
           <div class="form-actions">
-            <div class="btn-effect">
             <%= f.button :submit, "Update", class: "btn-effect" %>
-            </div>
           </div>
         <% end %>
 
