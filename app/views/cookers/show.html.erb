@@ -2,36 +2,63 @@
   <h1>Home Chef</h1>
 </div>
 
-
-
 <div class="profile">
 
-<h3>here display the fantastic navbar below</h3>
-<div class="dashboard d-flex flex-grow">
+  <h3>here display the fantastic navbar below</h3>
+  <div class="dashboard d-flex flex-grow">
+    <h3>Hello, I'm <%= @cooker.first_name.capitalize %></h3>
 
-  <h3>Hello, I'm <%= @cooker.first_name.capitalize %></h3>
+    <p>My bio: <%= @cooker.bio %></p>
+    <p>My price: <%= @cooker.price %>€ / hour</p>
 
-  <p>My bio: <%= @cooker.bio %></p>
+    <h1>RENDER MODAL ZITH FORM HERE</h1>
 
-  <p>My price: <%= @cooker.price %>€ / hour</p>
+  </div>
 
-
-  <h1>RENDER MODAL ZITH FORM HERE</h1>
-
-</div>
-
-<div>
-  <h3>I'm available on:</h3>
+  <div>
+    <h3>I'm available on:</h3>
     <ul>
       <% @availabilities.each do |availability| %>
         <li>
-          <%= availability.start_date.nil? ? "No date specified" : availability.start_date.strftime("%d of %B, %Y at %k:%M") %>
+          <%= availability.good_availability_format %>
         </li>
       <% end %>
     </ul>
-</div>
+  </div>
 
-<%= simple_form_for [@cooker, @booking] do |f| %>
-  <%= f.input :number_of_meals %>
-  <%= f.button :submit, class: 'btn' %>
-<% end %>
+  <script type="text/javascript"> var cooker_price = <%= @cooker.price.nil? ? 0 : @cooker.price %>; </script>
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Book me!
+  </button>
+
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Booking</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <%= simple_form_for @booking, url: user_bookings_path(current_user), method: :post do |f| %>
+          <div class="modal-body">
+            <div class="form-group mb-0">
+              <%= f.input :number_of_meals, :label => "How many meals you want?", :collection => 3..50 %>
+              <div class="mb-2" id="time">Cooking Time: 100 min</div>
+              <div class="mb-2" id="price">Total Price: <%= @cooker.price.nil? ? 0 : @cooker.price * 3 %> €</div>              
+              <label>When you want <%= "#{@cooker.first_name.capitalize} #{@cooker.first_name.capitalize}"%> to come?</label>
+              <%= f.collection_radio_buttons :start_date, @availabilities, :event_date, :event_date, item_wrapper_class: :block_radio_button_collection %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%= f.submit :book, class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+</div>

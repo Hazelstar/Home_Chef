@@ -1,7 +1,11 @@
 class BookingsController < ApplicationController
   # user_bookings POST   /users/:user_id/bookings(.:format)                                                       bookings#create
   # new_user_booking GET    /users/:user_id/bookings/new(.:format)
-  before_action :set_cooker_and_availabilities
+  before_action :set_cooker_and_availabilities, only: [:create]
+
+  def show
+    @booking = Booking.find(params[:id])
+  end
 
   def new
     @booking = Booking.new
@@ -13,7 +17,7 @@ class BookingsController < ApplicationController
     @booking.cooker = @cooker
     
     if @booking.save
-      redirect_to profile_path, notice: "New booking added on #{@booking.start_date} with #{@booking.cooker.first_name.capitalize} #{@booking.cooker.last_name.capitalize}"
+      redirect_to booking_path(@booking)
     else
       render :new 
     end
@@ -23,11 +27,6 @@ class BookingsController < ApplicationController
 
   def bookings_params
     params.require(:booking).permit(:start_date, :number_of_meals, :booker_id, :cooker_id)
-  end
-
-  def time_to_cook(meals)
-    # 10 min preparation time + 30 min per meal
-    10 + 30 * meals
   end
 
   def set_cooker_and_availabilities

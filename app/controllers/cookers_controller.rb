@@ -1,7 +1,13 @@
 class CookersController < ApplicationController
-
+  before_action :set_counter, only: [:show]
+  
   def index
     @cookers = User.where(is_a_cook: 'true')
+
+    respond_to do |format|
+      format.html
+      format.json { render json: { cookers: @cookers } }
+    end
   end
 
   def show
@@ -16,4 +22,7 @@ class CookersController < ApplicationController
     params.require
   end
 
+  def set_counter
+    @cooker_count = User.where(is_a_cook: 'true').count
+  end
 end

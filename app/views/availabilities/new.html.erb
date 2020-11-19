@@ -6,7 +6,7 @@
       <h1>When are you available <%=  %> </h1>
 
       <%= simple_form_for [@user, @availability] do |f| %>
-        <%= f.input :date, as: :date, start_month: Date.today.month,
+        <%= f.input :event_date, as: :date, start_month: Date.today.month,
         start_day: Date.today.day, type: :text %>
         <%= f.input :start_hour, as: :time, default: Time.parse('8:00') %>
         <%= f.input :end_hour, as: :time, default: Time.parse('14:00') %>
