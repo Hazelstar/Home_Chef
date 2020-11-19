@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_142907) do
+ActiveRecord::Schema.define(version: 2020_11_19_122238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,20 +37,21 @@ ActiveRecord::Schema.define(version: 2020_11_18_142907) do
   end
 
   create_table "availabilities", force: :cascade do |t|
-    t.datetime "end_date"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "start_date"
+    t.date "event_date"
+    t.time "start_hour"
+    t.time "end_hour"
     t.index ["user_id"], name: "index_availabilities_on_user_id"
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "start_date", default: "2020-11-16 12:00:00"
+    t.datetime "start_date", default: "2020-11-19 12:00:00"
     t.integer "number_of_meals", default: 3
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
     t.bigint "cooker_id"
     t.index ["cooker_id"], name: "index_bookings_on_cooker_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
@@ -78,5 +79,6 @@ ActiveRecord::Schema.define(version: 2020_11_18_142907) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "availabilities", "users"
+  add_foreign_key "bookings", "users"
   add_foreign_key "bookings", "users", column: "cooker_id"
 end
