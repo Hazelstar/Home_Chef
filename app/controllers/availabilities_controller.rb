@@ -1,5 +1,4 @@
 class AvailabilitiesController < ApplicationController
-  # before_filter :check_access
   # before_create :set_foo_to_now, only: :create
 
   def index
@@ -55,12 +54,8 @@ class AvailabilitiesController < ApplicationController
 
   private
 
-  # def cooker
-  #   @cooker = current_user
-  # end
-
   def availabilities_params
-    params.require(:availability).permit(:start_date, :end_date)
+    params.require(:availability).permit(:event_date, :start_hour, :end_hour)
   end
 
   # def end_date_after_start_date
@@ -70,10 +65,6 @@ class AvailabilitiesController < ApplicationController
   #     errors.add(:end_date, "must be after the start date")
   #   end
   # end
-
-  def set_foo_to_now
-    self.foo = Datetime.now
-  end
 
   def check_access
     redirect_to root_path and return unless current_user.is_a_cook
