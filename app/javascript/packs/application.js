@@ -64,13 +64,9 @@ const price = () => {
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-<<<<<<< HEAD
   nb_meals();
   price();
-=======
   toggleRequired();
-
->>>>>>> master
 });
 
 
