@@ -1,4 +1,13 @@
 .banner {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #F2F4F8;
+  z-index: 1;
   background-size: cover;
   background-position: center;
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
@@ -7,10 +16,11 @@
 }
 
 .banner h1 {
-  margin: 2;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 42px;
-  font-weight: bold;
+    font-size: 100px;
+    font-weight: bolder;
+    color: $dark-gray;
+    text-shadow: 3px 3px $light-gray;
+    margin: 20px;
 }
 
 .banner p {

@@ -1,61 +1,107 @@
+<div class="header sticky">
+  <h1>HOME CHEF</h1>
+</div>
 
-<div class="container">
-  <h2>Edit my profile</h2>
+<div class="container content">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="row">
+      <div class="form-post">
+        <h1>Edit my profile</h1>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= f.error_notification %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :email, required: true, autofocus: true %>
+          <div class="form-inputs">
+              <%= f.input :email, required: true, autofocus: true %>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-      <% end %>
-      <%= f.input :is_a_cook, as: :boolean, checked_value: 'true', unchecked_value: 'false',
-                  required: true,
-                  input_html: { autocomplete: "I am a cook!"  } %>
-      <%= f.input :photo, as: :file %>
-      <%= f.input :first_name,
-                  hint: "",
-                  required: true,
-                  input_html: { autocomplete: "First name" } %>
-      <%= f.input :last_name,
-                  hint: "",
-                  required: true,
-                  input_html: { autocomplete: "Last name" } %>
-      <%= f.input :address,
-                  hint: "We need your address to find cooks in your area",
-                  required: true,
-                  input_html: { autocomplete: "Address" } %>
-      <%= f.input :phone_number,
-                  hint: "",
-                  required: true,
-                  input_html: { autocomplete: "Phone number" } %>
-      <%= f.input :bio,
-                  hint: "Tell us a bit about you (50 to 300 characters)",
-                  required: true,
-                  input_html: { autocomplete: "Bio" } %>
-      <%= f.input :password,
-                  hint: "Leave it blank if you don't want to change it",
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :current_password,
-                  hint: "We need your current password to confirm your changes",
-                  required: true,
-                  input_html: { autocomplete: "current-password" } %>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
+
+            <div class="row">
+              <div class="col-xs-6">
+                <%= f.input :first_name,
+                            hint: "",
+                            required: true,
+                            input_html: { autocomplete: "First name" } %>
+              </div>
+              <div class="col-xs-6">
+                <%= f.input :last_name,
+                            hint: "",
+                            required: true,
+                            input_html: { autocomplete: "Last name" } %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6">
+                <label class="control-label check_boxes optional">Please select if you are cook</label>
+                  <input type="hidden" name="is_a_cook" value="">
+                    <%= f.input :is_a_cook, :label => "switch my profile to cook", :class => :hidden, as: :boolean, checked_value: 'true', unchecked_value: 'false',
+                                required: true %>
+              </div>
+              <div class="col-xs-6">
+               <!--   --><div id="price" style="display:none;">
+                  <%= f.input :price, :label => "Define your hourly price in €", as: :integer,
+                              required: true,
+                              input_html: { autocomplete: "My hourly price"} %>
+                <!-- </div> -->
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6">
+                <%= f.input :address,
+                            hint: "We need your address to find cooks in your area",
+                            required: true,
+                            input_html: { autocomplete: "Address" } %>
+              </div>
+              <div class="col-xs-6">
+                <%= f.input :phone_number,
+                            hint: "",
+                            required: true,
+                            input_html: { autocomplete: "Phone number" } %>
+              </div>
+            </div>
+
+              <%= f.input :bio,
+                          hint: "Tell us a bit about you (50 to 300 characters)",
+                          required: true,
+                          input_html: { autocomplete: "Bio" } %>
+              <%= f.input :photo, as: :file %>
+
+
+            <div class="row">
+              <div class="col-xs-6">
+                <%= f.input :password,
+                            hint: "Leave it blank if you don't want to change it",
+                            required: false,
+                            input_html: { autocomplete: "new-password" } %>
+              </div>
+              <div class="col-xs-6">
+                <%= f.input :password_confirmation,
+                            required: false,
+                            input_html: { autocomplete: "new-password" } %>
+              </div>
+            </div>
+
+            <%= f.input :current_password,
+                        hint: "We need your current password to confirm your changes",
+                        required: true,
+                        input_html: { autocomplete: "current-password" } %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Update", class: "btn-effect" %>
+          </div>
+        <% end %>
+
+        <h3>Cancel my account</h3>
+
+        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+        <%= link_to "Back", :back %>
+      </div>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Update" %>
-    </div>
-  <% end %>
-
-  <h3>Cancel my account</h3>
-
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
+  </div>
 </div>
