@@ -1,0 +1,52 @@
+body {
+  background-color: $dark-blue !important;
+}
+
+.container {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-post {
+  background: white;
+  margin: 50px 0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 1px black;
+  text-align: center;
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    color: $dark-gray;
+    margin-bottom: 50px;
+    margin-top: 20px;
+  }
+  h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    color: $dark-gray;
+    margin: 16px 0;
+  }
+  .btn-effect {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+
+  }
+  .form-input {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex: 0 0 30%;
+    text-align: center;
+    margin: 20px 20px;
+  }
+}
+
+// .price-display {
+//   display: none;
+// }
