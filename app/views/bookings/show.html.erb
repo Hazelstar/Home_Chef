@@ -1,0 +1,30 @@
+<h1>1. Your order:</h1>
+<h1>2. Your appointement:</h1>
+<h1>3. Your payment method:</h1>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Pay
+</button>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Payment succeed!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>Congratulations!</h1>
+        <h1>You just booked a cooker!</h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= link_to profile_path do %>
+          <button type="button" class="btn btn-primary">Go to my Profile</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

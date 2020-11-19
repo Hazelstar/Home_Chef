@@ -1,0 +1,17 @@
+<h1>Viens on est bien!</h1>
+<% i = 1 %>
+<div class="form-group">
+  <label>How many meals you want?</label>
+  <select class="form-control">
+    <% until i > 30 %>
+      <option><%=i%></option>
+      <% i += 1 %>
+    <% end %>
+  </select>
+</div>
+
+<%= link_to booking_path(current_user) do %>
+  <div class="text-center btn-effect">
+    Book me!
+  </div>
+<% end %>

@@ -31,7 +31,55 @@
     </ul>
 </div>
 
-<%= simple_form_for [@cooker, @booking] do |f| %>
-  <%= f.input :number_of_meals %>
-  <%= f.button :submit, class: 'btn' %>
+<%= link_to new_user_booking_path(current_user) do %>
+  <div class="text-center btn-effect">
+    Book me!
+  </div>
 <% end %>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Book me!
+</button>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Booking</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% i, max = 1, 30 %>
+        <div class="form-group mb-0">
+          <label>How many meals you want?</label>
+          <select class="form-control">
+            <% until i > max %>
+              <option><%=i%></option>
+              <% i += 1 %>
+            <% end %>
+          </select>
+          <div class="d-flex pt-3">
+            <p>Cooking time: </p>
+            <p>Price: </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Select when you want the Chef to come</label>
+            <ul>
+              <% @availabilities.each do |availability| %>
+                <li>
+                  <%= availability.start_date.nil? ? "No date specified" : availability.start_date.strftime("%d of %B, %Y at %k:%M") %>
+                </li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Book me!</button>
+      </div>
+    </div>
+  </div>
+</div>
