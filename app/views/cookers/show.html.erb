@@ -25,7 +25,7 @@
     <ul>
       <% @availabilities.each do |availability| %>
         <li>
-          <%= availability.start_date.nil? ? "No date specified" : availability.start_date.strftime("%d of %B, %Y at %k:%M") %>
+          <%= availability.event_date.nil? ? "No date specified" : "#{availability.event_date.strftime("%d of %B, %Y")} from #{availability.start_hour.strftime("%k:%M")} to #{availability.end_hour.strftime("%k:%M")}" %>
         </li>
       <% end %>
     </ul>
@@ -51,7 +51,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <% i, max = 1, 30 %>
+        <% i, max = 1, 50 %>
         <div class="form-group mb-0">
           <label>How many meals you want?</label>
           <select class="form-control">
@@ -70,7 +70,7 @@
             <ul>
               <% @availabilities.each do |availability| %>
                 <li>
-                  <%= availability.start_date.nil? ? "No date specified" : availability.start_date.strftime("%d of %B, %Y at %k:%M") %>
+                  <%= availability.event_date.nil? ? "No date specified" : "#{availability.event_date.strftime("%d of %B, %Y")} from #{availability.start_hour.strftime("%k:%M")} to #{availability.end_hour.strftime("%k:%M")}" %>
                 </li>
               <% end %>
             </ul>
@@ -78,7 +78,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Book me!</button>
+        <%= link_to booking_path(current_user) do %>
+          <button type="button" class="btn btn-primary">Book me!</button>
+        <% end %>
       </div>
     </div>
   </div>
