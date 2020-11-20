@@ -1,5 +1,6 @@
 <div class="profile">
-  <div style="margin-top: 80px;">
+  <div class="profile-layout">
+     <div>
     <%= cl_image_tag current_user.photo.key, :class => "rounded-circle mx-auto d-block", height: 300, width: 400, crop: :fill if current_user.photo.attached? %>
   </div>
   <br>
@@ -37,16 +38,16 @@
         <div class="d-flex justify-content-center">
           <h3>My informations:</h3>
         </div>
-          <div class="dashboard d-flex flex-grow justify-content-center">
+          <div class="dashboard d-flex flex-grow justify-content-center text">
             <ul>
-              <p><strong>My address:</strong> <%= current_user.address %></p>
+             <h6> My address: </h6><p><%= current_user.address %></p>
 
-              <p><strong>My phone number:</strong> <%= current_user.phone_number %></p>
+              <h6>My phone number:</h6><p><%= current_user.phone_number %></p>
 
-              <p><strong>My bio:</strong> <%= current_user.bio %></p>
+              <h6>My bio:</h6><p><%= current_user.bio %></p>
 
               <% if current_user.is_a_cook? %>
-                <p><strong>My price:</strong> <%= current_user.price %>€ / hour</p>
+                <h6>My price:</h6><p><%= current_user.price %>€ / hour</p>
               <% end  %>
             </ul>
 
@@ -74,5 +75,7 @@
          <% end %>
         </div>
   </div>
+  </div>
+
 </div>
 
