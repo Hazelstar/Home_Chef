@@ -34,12 +34,43 @@ import "bootstrap";
 
 import { nb_meals, price } from 'refresh';
 
+// const nb_meals = () => {
+//   let nr = document.querySelector('#time');
+//   if(nr) {
+//     let selecteBox = document.querySelector('#booking_number_of_meals');
+//     document.addEventListener('change', (e) => {
+//       nr.innerText = `Cooking Time: ${e.target.value === "" ? 0 : 10 + e.target.value * 30} min`;
+//     })
+//   }
+// }
+const nb_meals = () => {
+  let nr = document.querySelector('#time');
+  if(nr) {
+    document.addEventListener("change", (e) => {
+      nr.innerText = `Cooking Time: ${e.target.value === "" ? 0 : 10 + e.target.value * 30} min`;
+    });
+  }
+}
+
+const price = () => {
+  let nr = document.querySelector('#price');
+  if(nr) {
+    document.addEventListener('change', (e) => {
+      nr.innerText = `Total Price: ${cooker_price * e.target.value} €`
+    })
+  }
+}
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   nb_meals();
   price();
+<<<<<<< HEAD
   // toggleRequired();
+=======
+  toggleRequired();
+>>>>>>> cfec88ad42435a7555f9e71b0e8ceaaf3ef60f17
 });
 
 
