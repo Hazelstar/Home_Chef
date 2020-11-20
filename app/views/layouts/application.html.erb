@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body class="<%= controller_name %>-<%= action_name %>">
 
     <% if controller_name == 'pages' && action_name == 'home' %>
       <%= render "components/banner" %>

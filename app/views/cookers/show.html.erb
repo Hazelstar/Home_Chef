@@ -20,7 +20,11 @@
     <ul>
       <% @availabilities.each do |availability| %>
         <li>
+<<<<<<< HEAD
+          <%= availability.event_date.nil? ? "No date specified" : availability.event_date.strftime("%d of %B, %Y at %k:%M") %>
+=======
           <%= availability.good_availability_format %>
+>>>>>>> cfec88ad42435a7555f9e71b0e8ceaaf3ef60f17
         </li>
       <% end %>
     </ul>
