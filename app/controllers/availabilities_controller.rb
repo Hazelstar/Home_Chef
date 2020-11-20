@@ -6,6 +6,8 @@ class AvailabilitiesController < ApplicationController
     #     # and because the user "has_many :availabilities"
     # @availability = @user[:availability_id]
     @availabilities = @user.availabilities
+
+    
   end
 
   def new
