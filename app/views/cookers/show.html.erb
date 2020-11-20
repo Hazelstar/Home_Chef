@@ -1,26 +1,22 @@
-<div class="banner">
-  <h1>Home Chef</h1>
-</div>
-
-<div class="profile">
-
-  <h3>here display the fantastic navbar below</h3>
-  <div class="dashboard d-flex flex-grow">
+<div class="profile" style="margin-top: 10vh; margin-bottom: 10vh;">
+  <div class="profile-layout">
+    <h3>here display the fantastic navbar below</h3>
+  <div class="dashboard flex-grow">
     <h3>Hello, I'm <%= @cooker.first_name.capitalize %></h3>
 
-    <p>My bio: <%= @cooker.bio %></p>
-    <p>My price: <%= @cooker.price %>€ / hour</p>
-
-    <h1>RENDER MODAL ZITH FORM HERE</h1>
+    <h6>My bio: </h6><p><%= @cooker.bio %></p>
+    <h6>My price:</h6><p> <%= @cooker.price %>€ / hour</p>
 
   </div>
+
+  <br>
 
   <div>
     <h3>I'm available on:</h3>
     <ul>
       <% @availabilities.each do |availability| %>
         <li>
-          <%= availability.good_availability_format %>
+          <h6> <%= availability.good_availability_format %> </h6>
         </li>
       <% end %>
     </ul>
@@ -62,5 +58,4 @@
       </div>
     </div>
   </div>
-
 </div>
