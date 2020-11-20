@@ -12,20 +12,22 @@
   </head>
 
   <body class="<%= controller_name %>-<%= action_name %>">
-
+     <div class='page-container'>
     <% if controller_name == 'pages' && action_name == 'home' %>
       <%= render "components/banner" %>
+      <%= render "components/navbar" %>
     <% else %>
       <%= render "components/header" %>
-    <% end %>
       <%= render "components/navbar" %>
 
-    <div id="yield-content">
-      <%= yield %>
-    </div>
-
+        <div id="yield-content">
+          <%= yield %>
+        </div>
+    <% end %>
 
     <%= render 'components/footer' %>
     <%= render 'shared/flashes' %>
+
+  </div>
   </body>
 </html>
