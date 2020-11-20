@@ -1,6 +1,6 @@
 const nb_meals = () => {
   let nr = document.querySelector('#time');
-  
+
   if( nr ) {
     let selectbox = document.querySelector('#booking_number_of_meals');
     selectbox.addEventListener("change", (e) => {
@@ -10,7 +10,7 @@ const nb_meals = () => {
 }
 
 const price = () => {
-  let nr = document.querySelector('#price');
+  let nr = document.querySelector('#price-meals');
   if ( nr ) {
     let selectbox = document.querySelector('#booking_number_of_meals');
     selectbox.addEventListener('change', (e) => {
