@@ -2,14 +2,24 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
 
+      <br>
+      <br>
+      <br>
 
-      <h1><%= @user.first_name %>, you are available:</h1>
+      <div>
+        <h1><%= @user.first_name %>, you are available:</h1>
+      </div>
 
-       <%= link_to new_user_availability_path(current_user.id), class: 'btn' do %>
-          <i class=“fa fa-plus”></i> Add availability!
+      <div>
+        <%= link_to new_user_availability_path(current_user.id), class: 'btn' do %>
+          <div class="text-center btn-effect">
+            <h6><i class="fa fa-plus"></i> Add availability!</h6>
+          </div>
         <% end %>
+      </div>
 
-      <ul>
+        <div>
+          <ul>
         <% @availabilities.each do |availability| %>
           <li>
             <%= availability.event_date %>
@@ -20,6 +30,8 @@
           </li>
         <% end %>
       </ul>
+        </div>
+
 
     </div>
   </div>
