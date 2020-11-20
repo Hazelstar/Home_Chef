@@ -27,13 +27,13 @@
           </div>
         <% end %>
       <% elsif user_signed_in? && !current_user.is_a_cook? %>
-      <div class="text-center btn-effect">
+      <div class="text-center btn-effect" id="cooker">
         <%= link_to edit_user_registration_path do %>
             <h3>I'm cooking!</h3>
           </div>
         <% end %>
       <% else %>
-      <div class="text-center btn-effect">
+      <div class="text-center btn-effect" id="cooker">
         <%= link_to new_user_session_path do %>
             <h3>I'm cooking!</h3>
           </div>
