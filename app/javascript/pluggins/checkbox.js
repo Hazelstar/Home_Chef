@@ -16,5 +16,4 @@ function toggleRequired = () => {
   checkbox.addEventListener('change',toggleRequired,false);
 }
 
-
 export toggleRequired;
