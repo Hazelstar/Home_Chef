@@ -10,7 +10,7 @@
                 <%#= cl_image_tag(cooker.photo.key, class: "w-100") %>
               <% end %>
               <h3><%= cooker.first_name.capitalize %> <%= cooker.last_name.capitalize %></h3>
-              <p><%= cooker.address.capitalize%></p>
+              <p><%= cooker.address.nil? ? "No address" : cooker.address.capitalize %></p>
               <p><%= cooker.price %>€</p>
             </div>
           </div>

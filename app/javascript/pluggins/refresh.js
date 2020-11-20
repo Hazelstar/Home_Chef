@@ -16,4 +16,8 @@ const price = () => {
   }
 }
 
+<<<<<<< HEAD
 export { nb_meals, price };
+=======
+export { nb_meals, price };
+>>>>>>> master

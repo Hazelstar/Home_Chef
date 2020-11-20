@@ -11,79 +11,21 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <body class="<%= controller_name %>-<%= action_name %>">
+
+    <% if controller_name == 'pages' && action_name == 'home' %>
+      <%= render "components/banner" %>
+    <% else %>
+      <%= render "components/header" %>
+    <% end %>
+      <%= render "components/navbar" %>
+
+    <div id="yield-content">
+      <%= yield %>
+    </div>
 
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-
-            <li class="nav-item dropdown">
-              <span class="navbar-toggler-icon" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <% if user_signed_in? %>
-                  <%= link_to profile_path do %>
-                    <div class="dropdown-item btn-effect">
-                        My account
-                    </div>
-                  <% end %>
-                  <%= link_to edit_user_registration_path do %>
-                    <div class="dropdown-item btn-effect">
-                        Edit profile
-                    </div>
-                  <% end %>
-                  <%= link_to destroy_user_session_path, method: :delete do %>
-                    <div class="dropdown-item btn-effect">
-                        Sign out
-                    </div>
-                  <% end %>
-
-                <% else %>
-                  <%= link_to new_user_session_path do %>
-                    <div class="dropdown-item btn-effect">
-                        Log In
-                    </div>
-                  <% end %>
-                  <%= link_to new_user_registration_path do %>
-                    <div class="dropdown-item btn-effect">
-                        Sign Up
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    <%#= render 'shared/navbar' %>
+    <%= render 'components/footer' %>
     <%= render 'shared/flashes' %>
-
-    <%= yield %>
-<!-- Footer -->
-
-
-<!--     <div class="footer-effect">
-      <div>
-        <div class="container">
-          <div class="row py-2 d-flex text-center align-items-center">
-            <div class=" text-md-left mb-4 mb-md-0">
-              <h6 class="mb-0">Get connected with us on social networks!</h6>
-            </div>
-
-            <div class="col-md-4 col-lg-1 mx-auto mb-md-0 mb-4">
-              <div class="footer-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <h6>Cooked by <a href="https://github.com/Hazelstar">👩🏻‍🍳</a>, <a href="https://github.com/Lulu92270"> 👨🏻‍🍳</a> & <a href="https://github.com/mariongayon">👩🏻‍🍳</a> from batch #459 Le Wagon Lisbon - All Rights Reserved</h6>
-      </div>
-     </div> -->
-
   </body>
 </html>

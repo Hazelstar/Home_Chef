@@ -1,13 +1,15 @@
 .btn-effect {
   background-color: #EFC11A;
   border-radius: 15px;
-  margin: 16px;
   width: 137px;
+  font-family: 'Staatliches', 'sans-serif';
+  font-size: 20px;
   text-decoration: none;
   margin: 20px 10px;
-    h4 {
-      font-size: 18px;
-      padding: 8px;
+    h3 {
+      font-size: 20px;
+      color: #0f1108;
+      padding: 5px;
       &:hover {
         text-decoration: none;
       }
@@ -19,4 +21,8 @@
 
 a {
   text-decoration: none !important;
+}
+
+#cooker {
+  background-color: #A4BAD4;
 }
