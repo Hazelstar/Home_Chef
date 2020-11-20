@@ -8,7 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-
 //
  // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -31,41 +30,15 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import { toggleRequired } from 'pluggins/checkbox';
+// import { toggleRequired } from 'pluggins/checkbox';
 
-
-// const nb_meals = () => {
-//   let nr = document.querySelector('#time');
-//   if(nr) {
-//     let selecteBox = document.querySelector('#booking_number_of_meals');
-//     document.addEventListener('change', (e) => {
-//       nr.innerText = `Cooking Time: ${e.target.value === "" ? 0 : 10 + e.target.value * 30} min`;
-//     })
-//   }
-// }
-const nb_meals = () => {
-  let nr = document.querySelector('#time');
-  if(nr) {
-    document.addEventListener("change", (e) => {
-      nr.innerText = `Cooking Time: ${e.target.value === "" ? 0 : 10 + e.target.value * 30} min`;
-    });
-  }
-}
-
-const price = () => {
-  let nr = document.querySelector('#price');
-  if(nr) {
-    document.addEventListener('change', (e) => {
-      nr.innerText = `Total Price: ${cooker_price * e.target.value} €`
-    })
-  }
-}
+import { nb_meals, price } from 'refresh';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  nb_meals();
-  price();
+  // nb_meals();
+  // price();
   toggleRequired();
 });
 
