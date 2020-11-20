@@ -13,31 +13,34 @@
   }
 }
 
-// .card {
-//   background-color: $light-blue;
-//   border-radius: 5px;
-//   box-shadow: 0 0 10px $dark-gray;
-//   text-align: center;
-//   margin: 16px;
+.card-cooker {
+  background-color: $light-blue;
+  border-radius: 5px;
+  box-shadow: 0 0 10px $dark-gray;
+  text-align: center;
+  color: $dark-gray;
+  margin: 16px;
 
-//     &:hover {
-//       background-color: $light-blue;
-//       box-shadow: 4px 4px 1px $dark-gray;
-//       box-shadow: 5px 5px 0px rgba(0,0,0,0.6);
-//       transform: translatey(0px);
-//       animation: float 2s ease-in-out infinite;
-//     }
-//     h3 {
-//       font-weight: bolder;
-//       font-size: 24px;
-//       padding: 8px;
-//     }
-//     img {
-//       width: 300px;
-//       height: 300px;
-//       object-fit: cover;
-//     }
-// }
+    &:hover {
+      background-color: $light-blue;
+      box-shadow: 4px 4px 1px $dark-gray;
+      box-shadow: 5px 5px 0px rgba(0,0,0,0.6);
+      transform: translatey(0px);
+    }
+    h1 {
+      color: $sunshine;
+    }
+    h3 {
+      font-weight: bolder;
+      font-size: 24px;
+      padding: 8px;
+    }
+    img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+    }
+}
 
 
 .profile-layout {

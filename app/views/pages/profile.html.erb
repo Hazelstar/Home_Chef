@@ -1,4 +1,4 @@
-<div class="profile">
+<div class="profile" style="margin-top: 10vh; margin-bottom: 10vh;">
   <div class="profile-layout justify-content-center">
      <div>
     <%= cl_image_tag current_user.photo.key, :class => "rounded-circle mx-auto d-block", height: 300, width: 400, crop: :fill if current_user.photo.attached? %>

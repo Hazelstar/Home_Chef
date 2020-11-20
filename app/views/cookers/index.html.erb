@@ -4,15 +4,15 @@
       <div class="row pb-5 mb-5">
         <% @cookers.each do |cooker| %>
           <div class="col-4">
-            <div class="card">
-              <%= link_to cooker_path(cooker) do %>
+             <%= link_to cooker_path(cooker) do %>
+            <div class="card-cooker">
                 <h1>See more</h1>
                 <%#= cl_image_tag(cooker.photo.key, class: "w-100") %>
-              <% end %>
               <h3><%= cooker.first_name.capitalize %> <%= cooker.last_name.capitalize %></h3>
               <p><%= cooker.address.nil? ? "No address" : cooker.address.capitalize %></p>
               <p><%= cooker.price %>€</p>
             </div>
+            <% end %>
           </div>
         <% end %>
       </div>
