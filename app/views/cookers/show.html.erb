@@ -20,11 +20,7 @@
     <ul>
       <% @availabilities.each do |availability| %>
         <li>
-<<<<<<< HEAD
-          <%= availability.event_date.nil? ? "No date specified" : availability.event_date.strftime("%d of %B, %Y at %k:%M") %>
-=======
           <%= availability.good_availability_format %>
->>>>>>> cfec88ad42435a7555f9e71b0e8ceaaf3ef60f17
         </li>
       <% end %>
     </ul>
@@ -38,7 +34,6 @@
 
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-     
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterTitle">Booking</h5>
@@ -46,7 +41,6 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        
         <%= simple_form_for @booking, url: user_bookings_path(current_user), method: :post do |f| %>
           <div class="modal-body">
             <div class="form-group mb-0">
@@ -54,7 +48,7 @@
               <div class="mb-2" id="time">Cooking Time: 100 min</div>
               <div class="mb-2" id="price">Total Price: <%= @cooker.price.nil? ? 0 : @cooker.price * 3 %> €</div>              
               <label>When you want <%= "#{@cooker.first_name.capitalize} #{@cooker.first_name.capitalize}"%> to come?</label>
-              <%= f.collection_radio_buttons :start_date, @availabilities, :event_date, :event_date, item_wrapper_class: :block_radio_button_collection %>
+              <%= f.collection_radio_buttons :start_date, @availabilities, :good_availability_format, :good_availability_format, item_wrapper_class: :block_radio_button_collection %>
             </div>
           </div>
           <div class="modal-footer">
@@ -62,7 +56,6 @@
             <%= f.submit :book, class: 'btn btn-primary' %>
           </div>
         <% end %>
-
       </div>
     </div>
 </div>

@@ -17,4 +17,5 @@ const UpdatePrice = () => {
 
   checkbox.addEventListener('click',toggleRequired,true);
 }
+
 export { UpdatePrice };
