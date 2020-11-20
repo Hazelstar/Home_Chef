@@ -1,8 +1,8 @@
-function toggleRequired = () => {
+const UpdatePrice = () => {
   var checkbox = document.querySelector('input[type="checkbox"]');
   var priceInput = document.getElementById('user_price');
   var price_div = document.getElementById('price');
-
+ function toggleRequired() {
   checkbox.onchange = function() {
      if(this.checked) {
        price_div.style['display'] = 'block';
@@ -12,9 +12,7 @@ function toggleRequired = () => {
        priceInput.removeAttribute('required');
      }
   };
-
+ }
   checkbox.addEventListener('change',toggleRequired,false);
 }
-
-
-export toggleRequired;
+export { UpdatePrice };
