@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" style="margin-top: 10vh; margin-bottom: 5vh;">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-8 text-center">
 
 
       <h1>When are you available <%=  %> </h1>
@@ -11,7 +11,7 @@
         <%= f.input :start_hour, as: :time, default: Time.parse('8:00') %>
         <%= f.input :end_hour, as: :time, default: Time.parse('14:00') %>
 
-        <%= f.button :submit, class: 'btn' %>
+        <%= f.button :submit, :label=> "Save", class: 'btn-effect' %>
       <% end %>
     </div>
   </div>
