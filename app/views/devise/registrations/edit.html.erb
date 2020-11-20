@@ -18,7 +18,8 @@
               <%= f.input :first_name,
                           hint: "",
                           required: true,
-                          input_html: { autocomplete: "First name" } %>
+                          input_html: { autocomplete: "First name" },
+                          autofocus: true %>
               <%= f.input :last_name,
                           hint: "",
                           required: true,
@@ -55,7 +56,7 @@
                           input_html: { autocomplete: "Phone number" } %>
             </div>
 
-            <%= f.input :email, required: true, autofocus: true %>
+            <%= f.input :email, required: true %>
 
             <div class="d-flex justify-content-between">
               <%= f.input :password,
