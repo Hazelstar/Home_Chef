@@ -1,10 +1,12 @@
-<div class="profile">
-  <div style="margin-top: 80px;">
+<div class="profile" style="margin-top: 10vh; margin-bottom: 10vh;">
+  <div class="profile-layout justify-content-center">
+     <div>
     <%= cl_image_tag current_user.photo.key, :class => "rounded-circle mx-auto d-block", height: 300, width: 400, crop: :fill if current_user.photo.attached? %>
   </div>
   <br>
 
-    <% if current_user.first_name == nil %>
+  <div>
+     <% if current_user.first_name == nil %>
       <h3 class="text-center">Welcome, <%= current_user.email %>!</h3>
     <% else %>
       <h3 class="text-center">Welcome, <%= current_user.first_name.capitalize %>!</h3>
@@ -19,7 +21,9 @@
         <p>You are cooking!</p>
       <% end %>
     </div>
+  </div>
 
+<br>
 
     <div>
       <div class="d-flex justify-content-center">
@@ -37,16 +41,16 @@
         <div class="d-flex justify-content-center">
           <h3>My informations:</h3>
         </div>
-          <div class="dashboard d-flex flex-grow justify-content-center">
+          <div class="dashboard d-flex flex-grow justify-content-center text">
             <ul>
-              <p><strong>My address:</strong> <%= current_user.address %></p>
+             <h6> My address: </h6><p><%= current_user.address %></p>
 
-              <p><strong>My phone number:</strong> <%= current_user.phone_number %></p>
+              <h6>My phone number:</h6><p><%= current_user.phone_number %></p>
 
-              <p><strong>My bio:</strong> <%= current_user.bio %></p>
+              <h6>My bio:</h6><p><%= current_user.bio %></p>
 
               <% if current_user.is_a_cook? %>
-                <p><strong>My price:</strong> <%= current_user.price %>€ / hour</p>
+                <h6>My price:</h6><p><%= current_user.price %>€ / hour</p>
               <% end  %>
             </ul>
 
@@ -74,5 +78,7 @@
          <% end %>
         </div>
   </div>
+  </div>
+
 </div>
 

@@ -1,27 +1,49 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
+<div class="m-0">
+    <div class="row justify-content-between min-height">
+      <div class="col" style="margin-top: 10vh; margin-left: 5vh;">
 
+        <% if @availabilities.any? %>
+          <h1><%= @user.first_name %>, you are available:</h1>
 
-      <h1><%= @user.first_name %>, you are available:</h1>
+            <div class="d-flex justify-content-center">
+              <%= link_to new_user_availability_path(current_user.id) do %>
+                <div class="text-center btn-effect">
+                  <h3>Add availability</h3>
+                </div>
+                <% end %>
+            </div>
 
-       <%= link_to new_user_availability_path(current_user.id), class: 'btn' do %>
-          <i class=“fa fa-plus”></i> Add availability!
+          <ul>
+            <% @availabilities.each do |availability| %>
+              <li>
+                <%= availability.event_date %>
+                <%= link_to availability_path(availability), method: :delete,
+                  data: { confirm: "Really?!", toggle: "tooltip", placement: "top" } do %>
+                  <small><i class="fa fa-trash"></i></small>
+                  <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <div class="text-center">
+            <h1><%= @user.first_name %>, please add an availability now:</h1>
+          </div>
+          <div class="d-flex justify-content-center">
+            <%= link_to new_user_availability_path(current_user.id) do %>
+              <div class="text-center btn-effect">
+                <h3>Add availability</h3>
+              </div>
+            <% end %>
+          </div>
+
         <% end %>
+      </div>
 
-      <ul>
-        <% @availabilities.each do |availability| %>
-          <li>
-            <%= availability.event_date %>
-            <%= link_to availability_path(availability), method: :delete,
-              data: { confirm: "Really?!", toggle: "tooltip", placement: "top" } do %>
-              <small><i class="fa fa-trash"></i></small>
-              <% end %>
-          </li>
-        <% end %>
-      </ul>
+       <div class="col">
+        <%= render "components/image" %>
+      </div>
 
     </div>
-  </div>
 </div>
+
 
