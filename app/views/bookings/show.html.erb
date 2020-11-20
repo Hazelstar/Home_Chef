@@ -3,7 +3,7 @@
 
 <h1>Booking date: <%= @booking.start_date.strftime("%d of %B, %Y") %></h1>
 <h1>Number of meals: <%= @booking.number_of_meals %></h1>
-<h1>Cooking Time: <%= @booking.time_to_cook %> min</h1>
+<h1>Cooking Time: <%= @booking.time_to_cook %></h1>
 
 <%= link_to profile_path do %>
   <button type="button" class="btn btn-primary">Go to my Profile</button>
