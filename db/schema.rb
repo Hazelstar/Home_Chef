@@ -47,11 +47,11 @@ ActiveRecord::Schema.define(version: 2020_11_19_122238) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "start_date", default: "2020-11-20 12:00:00"
+    t.datetime "start_date", default: "2020-11-16 12:00:00"
     t.integer "number_of_meals", default: 3
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.bigint "cooker_id"
     t.index ["cooker_id"], name: "index_bookings_on_cooker_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
@@ -79,6 +79,5 @@ ActiveRecord::Schema.define(version: 2020_11_19_122238) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "availabilities", "users"
-  add_foreign_key "bookings", "users"
   add_foreign_key "bookings", "users", column: "cooker_id"
 end

@@ -22,8 +22,6 @@
     </ul>
   </div>
 
-  <script type="text/javascript"> var cooker_price = <%= @cooker.price.nil? ? 0 : @cooker.price %>; </script>
-
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
     Book me!
   </button>
@@ -41,9 +39,14 @@
           <div class="modal-body">
             <div class="form-group mb-0">
               <%= f.input :number_of_meals, :label => "How many meals you want?", :collection => 3..50 %>
-              <div class="mb-2" id="time">Cooking Time: 100 min</div>
-              <div class="mb-2" id="price">Total Price: <%= @cooker.price.nil? ? 0 : @cooker.price * 3 %> €</div>
-              <label>When you want <%= "#{@cooker.first_name.capitalize} #{@cooker.first_name.capitalize}"%> to come?</label>
+                <div class="mb-2" id="time">
+                  Cooking Time: 100 min
+                </div>
+                <script type="text/javascript"> var cooker_price = <%= @cooker.price.nil? ? 0 : @cooker.price %>; </script>
+                <div class="mb-2" id="price">
+                  Total Price: <%= @cooker.price.nil? ? 0 : @cooker.price * 3 %> €
+                </div>              
+                <label>When would you like <%= "#{@cooker.first_name.capitalize} #{@cooker.first_name.capitalize}"%> to come?</label>
               <%= f.collection_radio_buttons :start_date, @availabilities, :good_availability_format, :good_availability_format, item_wrapper_class: :block_radio_button_collection %>
             </div>
           </div>
@@ -54,6 +57,5 @@
         <% end %>
       </div>
     </div>
-  </div>
   </div>
 </div>
