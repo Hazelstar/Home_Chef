@@ -25,7 +25,7 @@
     <ul>
       <% @availabilities.each do |availability| %>
         <li>
-          <%= availability.start_date.nil? ? "No date specified" : availability.start_date.strftime("%d of %B, %Y at %k:%M") %>
+          <%= availability.event_date.nil? ? "No date specified" : availability.event_date.strftime("%d of %B, %Y at %k:%M") %>
         </li>
       <% end %>
     </ul>
