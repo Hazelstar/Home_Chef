@@ -1,84 +1,104 @@
-<div class="profile" style="margin-top: 10vh; margin-bottom: 10vh;">
-  <div class="profile-layout justify-content-center">
-     <div>
-    <%= cl_image_tag current_user.photo.key, :class => "rounded-circle mx-auto d-block", height: 300, width: 400, crop: :fill if current_user.photo.attached? %>
-  </div>
-  <br>
+ <div class="profile" style="margin-top: 5vh; margin-bottom: 5vh;">
+  <div class="profile-layout row">
 
-  <div>
-     <% if current_user.first_name == nil %>
-      <h3 class="text-center">Welcome, <%= current_user.email %>!</h3>
-    <% else %>
-      <h3 class="text-center">Welcome, <%= current_user.first_name.capitalize %>!</h3>
-    <% end %>
+    <div class="info col-6 p-4">
 
-    <div class="avatar p-3">
-      <%#= cl_image_tag(current_user.photo.key, class: "w-100") %>
+      <div class="d-flex align-items-center p-4">
+       <!--  profile img -->
+       <div>
+        <%= cl_image_tag current_user.photo.key, :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
+      </div>
+
+      <!-- welcome msg -->
+      <div class="ml-5">
+        <h3>Welcome, <%= current_user.first_name.capitalize %>!</h3>
+        <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
+        <p><i class="fas fa-home"></i> <%= current_user.address %></p>
+
+      </div>
     </div>
 
-    <div class="text-center">
-      <% if current_user.is_a_cook? %>
+
+
+
+
+
+    <!-- infos -->
+    <div class="p-4">
+      <div class="d-flex align-items-center">
+        <% if current_user.is_a_cook? %>
         <p>You are cooking!</p>
-      <% end %>
-    </div>
-  </div>
-
-<br>
-
-    <div>
-      <div class="d-flex justify-content-center">
-        <% if current_user.is_a_cook == 'false' %>
-          <%= link_to cookers_path do %>
-            <div class="text-center btn-effect">
-              <h3>Browse Cooks</h3>
-            </div>
-            <% end %>
+        <p class="ml-5"><i class="fas fa-euro-sign"></i> <%= current_user.price %>/ hour</p>
         <% end %>
       </div>
 
+      <div class="bio my-5">
 
-      <div>
-        <div class="d-flex justify-content-center">
-          <h3>My informations:</h3>
-        </div>
-          <div class="dashboard d-flex flex-grow justify-content-center text">
-            <ul>
-             <h6> My address: </h6><p><%= current_user.address %></p>
-
-              <h6>My phone number:</h6><p><%= current_user.phone_number %></p>
-
-              <h6>My bio:</h6><p><%= current_user.bio %></p>
-
-              <% if current_user.is_a_cook? %>
-                <h6>My price:</h6><p><%= current_user.price %>€ / hour</p>
-              <% end  %>
-            </ul>
-
-          </div>
+        <i class="fas fa-quote-left"></i>
+        <p class="p-3"><%= current_user.bio %></p>
+        <i class="fas fa-quote-right"></i>
       </div>
 
-      <div class="d-flex justify-content-center">
-          <% if current_user.is_a_cook? %>
-          <%= link_to user_availabilities_path(current_user.id) do %>
-            <div class="text-center btn-effect">
-              <h3>My Schedule</h3>
-            </div>
-          <% end %>
-        <% else %>
-          <div class="text-center btn-effect">
-            My Bookings
-          </div>
-          <ul>
-            <% @user_bookings.each do |user_booking| %>
-              <li>
-                booked for <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %>
-              </li>
-            <% end %>
-          </ul>
-         <% end %>
+      <div class="d-flex">
+        <button class="btn-effect btn-profile" id="bookings-display">
+          <h3>My Bookings</h3>
+        </button>
+
+
+        <button class="btn-effect btn-profile" id="messages-display">
+          <h3>My Messages</h3>
+        </button>
+
+        <% if current_user.is_a_cook? %>
+        <%= link_to user_availabilities_path(current_user.id) do %>
+        <div class="btn-effect btn-profile">
+          <h3>My Schedule</h3>
         </div>
-  </div>
+        <% end %>
+        <% end %>
+      </div>
+
+    </div>
+
   </div>
 
+
+  <div class="col-6 p-4" id="content-column">
+    <div class="d-flex justify-content-center">
+
+      <% if current_user.is_a_cook == 'false' %>
+      <%= link_to cookers_path do %>
+      <div class="text-center btn-effect">
+        <h3>Browse Cooks</h3>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center">
+
+
+      <div class="content-display messages-display" style="display:none;">
+        <p>Hellooooooo I'm the message!</p>
+      </div>
+
+
+      <div class="content-display bookings-display">
+        <p>this is bookings</p>
+        <ul>
+          <% @user_bookings.each do |user_booking| %>
+          <li>
+            booked for <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</div>
 </div>
 

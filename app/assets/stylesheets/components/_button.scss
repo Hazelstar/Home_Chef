@@ -3,8 +3,8 @@
   border-radius: 15px;
   width: 137px;
   font-family: 'Staatliches', 'sans-serif';
-  font-size: 20px;
   text-decoration: none;
+  text-align: center;
   margin: 20px 10px;
     h3 {
       font-size: 20px;
@@ -26,3 +26,9 @@ a {
 #cooker {
   background-color: #A4BAD4;
 }
+
+.toto {
+  color: red;
+  box-shadow: 4px 4px 1px blue;
+}
+

@@ -1,0 +1,28 @@
+.profile-layout {
+  background-color: $medium-blue;
+  border-radius: 5px;
+  box-shadow: 4px 4px 1px rgba(0,0,0,0.6);
+  width: 85vw;
+  height: 70vh;
+  margin: auto;
+    h6 {
+      // margin-top: 20px;
+      // margin-bottom: 16px;
+      color: $dark-gray;
+    }
+}
+
+.bio {
+  position: relative;
+  i.fas.fa-quote-left {
+    position: absolute;
+    font-size: 32px;
+    top: -24px;
+  }
+  i.fas.fa-quote-right {
+    position: absolute;
+    font-size: 32px;
+    right: 41px;
+    bottom: -14px;
+  }
+}
