@@ -43,11 +43,6 @@ a {
 }
 
 
-
-@keyframes mymove1 {
-  50% {color: $light-blue; box-shadow: 4px 4px 1px $light-blue;}
-}
-
 .btn-banner {
   border-radius: 15px;
   min-width: 170px;
@@ -61,15 +56,13 @@ a {
       margin: 0;
     }
     &:hover {
-      animation: mymove1 5s infinite;
-
+      color: $light-blue;
+      box-shadow: 4px -4px 1px $light-blue;
     }
   }
 
 #cooker {
   background-color: $sunshine;
-  color: $dark-gray;
-  box-shadow: 4px 4px 1px $dark-gray;
 }
 
 

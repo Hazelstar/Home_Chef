@@ -4,7 +4,7 @@
     <!-- Left column that statically displays users info -->
     <div class="info col-6 p-4">
 
-      <div class="d-flex align-items-center p-4">
+      <div class="d-flex align-items-center p-4 mb-3">
        <!--  profile img -->
        <div>
         <%= cl_image_tag current_user.photo.key, :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
@@ -20,7 +20,7 @@
     </div>
 
     <!-- infos -->
-    <div class="p-4">
+    <div class="p-3">
 
         <% if current_user.is_a_cook? %>
         <div class="d-flex justify-content-space-evenly">
@@ -34,14 +34,19 @@
         <% end %>
 
       <!-- User's bio -->
+      <% if current_user.bio == nil %>
+        <h3 class="ml-3">Please edit your profile and fill in your info!</h3>
+      <% else %>
       <div class="bio my-5">
         <i class="fas fa-quote-left"></i>
         <p class="p-3"><%= current_user.bio %></p>
         <i class="fas fa-quote-right"></i>
       </div>
+      <% end %>
+    </div>
 
       <!-- dashboard buttons -->
-      <div class="d-flex">
+      <div class="d-flex" style="position: absolute; bottom: 25px;">
         <!-- button to display bookings -->
         <button class="btn-effect btn-profile" id="bookings-display">
           <h3>My Bookings</h3>
@@ -75,7 +80,6 @@
           <% end %>
         <% end %>
       </div>
-    </div>
 
   </div> <!-- closes left column -->
 
