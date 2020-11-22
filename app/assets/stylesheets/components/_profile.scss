@@ -27,3 +27,12 @@
     bottom: -14px;
   }
 }
+
+#cook-display {
+  background-color: $medium-blue;
+  color: $light-blue;
+  font-family: 'Staatliches', 'sans-serif';
+  border-radius: 15px;
+  padding: 5px;
+  box-shadow: 4px 4px 1px $dark-gray;
+}

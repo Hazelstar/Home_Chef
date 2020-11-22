@@ -21,12 +21,17 @@
 
     <!-- infos -->
     <div class="p-4">
-      <div class="d-flex align-items-center">
+
         <% if current_user.is_a_cook? %>
-        <p>You are cooking!</p>
-        <p class="ml-5"><i class="fas fa-euro-sign"></i> <%= current_user.price %>/ hour</p>
+        <div class="d-flex justify-content-space-evenly">
+          <div class="mx-5 text-center" id="cook-display">
+            <h6 class="m-1">You are cooking!</h6>
+          </div>
+          <div class="mx-5 text-center" id="cook-display">
+            <h6 class="m-1"><i class="fas fa-euro-sign"></i> <%= current_user.price %>/ hour</h6>
+          </div>
+        </div>
         <% end %>
-      </div>
 
       <!-- User's bio -->
       <div class="bio my-5">
@@ -49,17 +54,24 @@
 
         <!-- button to display availabilities (cooker) -->
         <% if current_user.is_a_cook? %>
-          <div class="btn-effect btn-profile" id="availabilities-display">
+          <button class="button btn-effect btn-profile" id="availabilities-display">
             <h3>My Schedule</h3>
-          </div>
+          </button>
+        <% end %>
+
+        <!-- button to display pictures (cooker) -->
+        <% if current_user.is_a_cook? %>
+          <button class="button btn-effect btn-profile" id="availabilities-display">
+            <h3>My Pictures</h3>
+          </button>
         <% end %>
 
         <!-- button to go to cookers list (booker) -->
         <% if current_user.is_a_cook == 'false' %>
           <%= link_to cookers_path do %>
-          <div class="text-center btn-effect">
+          <button class="button btn-effect btn-profile text-center btn-effect">
             <h3>Browse Cooks</h3>
-          </div>
+          </button>
           <% end %>
         <% end %>
       </div>
@@ -93,14 +105,15 @@
 
       <!-- This is the display of the availabilities index -->
       <div class="content-display availabilities-display" style="display:none;">
+
         <% if @user.availabilities.any? %>
           <h3 class="mb-5 mt-2 text-center">My schedule:</h3>
 
             <div class="d-flex justify-content-center">
               <%= link_to new_user_availability_path(current_user.id) do %>
-                <div class="text-center btn-effect">
+                <button class="text-center btn-effect">
                   <h3>Add availability</h3>
-                </div>
+                </button>
                 <% end %>
             </div>
 
@@ -118,16 +131,13 @@
           </ul>
 
         <% else %>
-
-          <div class="text-center">
-            <h3 class="my-5 text-center"><%= @user.first_name %>, please add an availability now:</h3>
-          </div>
+          <h3 class="mb-5 mt-2 text-center"><%= @user.first_name %>, you are not available yet!</h3>
 
           <div class="d-flex justify-content-center">
             <%= link_to new_user_availability_path(current_user.id) do %>
-              <div class="text-center btn-effect">
+              <button class="text-center btn-effect">
                 <h3>Add availability</h3>
-              </div>
+              </button>
             <% end %>
           </div>
 

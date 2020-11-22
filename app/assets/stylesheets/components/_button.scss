@@ -1,20 +1,33 @@
+button {
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  h3 {
+    margin: 0;
+  }
+}
+
+
 .btn-effect {
   background-color: #EFC11A;
+  color: $dark-gray;
   border-radius: 15px;
   width: 137px;
   font-family: 'Staatliches', 'sans-serif';
   text-decoration: none;
   text-align: center;
+  padding: 5px;
   margin: 20px 10px;
     h3 {
       font-size: 20px;
-      color: #0f1108;
-      padding: 5px;
+      color: $dark-gray;
       &:hover {
-        text-decoration: none;
+      text-decoration: none;
+      margin: 0;
       }
     }
     &:hover {
+      cursor: pointer;
       box-shadow: 4px 4px 1px black;
     }
 }
