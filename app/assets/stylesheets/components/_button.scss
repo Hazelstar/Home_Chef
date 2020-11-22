@@ -44,12 +44,7 @@ a {
 
 
 
-
 @keyframes mymove1 {
-  50% {color: $dark-gray; box-shadow: 4px 4px 1px $dark-gray;}
-}
-
-@keyframes mymove2 {
   50% {color: $light-blue; box-shadow: 4px 4px 1px $light-blue;}
 }
 
@@ -66,7 +61,7 @@ a {
       margin: 0;
     }
     &:hover {
-      animation: mymove2 5s infinite;
+      animation: mymove1 5s infinite;
 
     }
   }
