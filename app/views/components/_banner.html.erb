@@ -14,31 +14,35 @@
   <br>
 
   <div class="d-flex justify-content-center">
-    <div class="text-center btn-effect">
+
     <%= link_to cookers_path do %>
-       <h3>I'm hungy!</h3>
-      </div>
+      <button class="text-center btn-banner">
+        <h3>I'm hungry!</h3>
+      </button>
     <% end %>
 
-      <% if user_signed_in? && current_user.is_a_cook? %>
-      <div class="text-center btn-effect" id="cooker">
-        <%= link_to profile_path do %>
-            <h3>I'm cooking!</h3>
-          </div>
-        <% end %>
-      <% elsif user_signed_in? && !current_user.is_a_cook? %>
-      <div class="text-center btn-effect" id="cooker">
-        <%= link_to edit_user_registration_path do %>
-            <h3>I'm cooking!</h3>
-          </div>
-        <% end %>
-      <% else %>
-      <div class="text-center btn-effect" id="cooker">
-        <%= link_to new_user_session_path do %>
-            <h3>I'm cooking!</h3>
-          </div>
-        <% end %>
+    <% if user_signed_in? && current_user.is_a_cook? %>
+      <%= link_to profile_path do %>
+        <button class="text-center btn-banner" id="cooker">
+          <h3>I'm cooking!</h3>
+        </button>
       <% end %>
+
+    <% elsif user_signed_in? && !current_user.is_a_cook? %>
+      <%= link_to edit_user_registration_path do %>
+        <button class="text-center btn-banner" id="cooker">
+          <h3>I'm cooking!</h3>
+        </button>
+      <% end %>
+
+    <% else %>
+      <%= link_to new_user_session_path do %>
+        <button class="text-center btn-banner" id="cooker">
+          <h3>I'm cooking!</h3>
+        </button>
+      <% end %>
+
+    <% end %>
   </div>
 
 </div>

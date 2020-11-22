@@ -13,11 +13,17 @@
   padding: 100px 0;
 }
 
+
+@keyframes mymove {
+  50% {text-shadow: 3px 3px sunshine;}
+}
+
 .banner h1 {
     font-size: 100px;
     font-weight: bolder;
     color: $dark-gray;
     text-shadow: 3px 3px $light-blue;
+    animation: mymove 5s infinite;
     margin: 20px;
 }
 

@@ -21,14 +21,15 @@ button {
     h3 {
       font-size: 20px;
       color: $dark-gray;
+      margin: 0;
       &:hover {
       text-decoration: none;
-      margin: 0;
+
       }
     }
     &:hover {
       cursor: pointer;
-      box-shadow: 4px 4px 1px black;
+      box-shadow: 4px 4px 1px $dark-gray;
     }
 }
 
@@ -36,12 +37,55 @@ a {
   text-decoration: none !important;
 }
 
-#cooker {
-  background-color: #A4BAD4;
-}
-
 .toto {
   color: red;
   box-shadow: 4px 4px 1px blue;
 }
+
+
+
+
+@keyframes mymove1 {
+  50% {color: $dark-gray; box-shadow: 4px 4px 1px $dark-gray;}
+}
+
+@keyframes mymove2 {
+  50% {color: $light-blue; box-shadow: 4px 4px 1px $light-blue;}
+}
+
+.btn-banner {
+  border-radius: 15px;
+  min-width: 170px;
+  min-height: 50px;
+  margin: 30px;
+  box-shadow: 4px 4px 1px $dark-gray;
+  background-color: $medium-blue;
+  color: $dark-gray;
+  text-align: center;
+    h3 {
+      margin: 0;
+    }
+    &:hover {
+      animation: mymove2 5s infinite;
+
+    }
+  }
+
+#cooker {
+  background-color: $sunshine;
+  color: $dark-gray;
+  box-shadow: 4px 4px 1px $dark-gray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
