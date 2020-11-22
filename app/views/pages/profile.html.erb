@@ -70,7 +70,6 @@
 
   <!-- Right column that dynamically displays sections -->
   <div class="col-6 p-4" id="content-column">
-
     <div class="d-flex justify-content-center p-4">
 
       <!-- This is the display of the bookings section (DEFAULT)-->
@@ -105,6 +104,7 @@
                 <% end %>
             </div>
 
+          <!-- List of availabilities TO BE CHANGES INTO A CALENDAR DISPLAY -->
           <ul>
             <% @user.availabilities.each do |availability| %>
               <li>
@@ -132,20 +132,12 @@
           </div>
 
         <% end %>
-      </div>
+      </div> <!-- closes the availabilities section -->
 
 
+      </div> <!-- closes the display div that changes -->
+    </div> <!-- closes right column -->
 
-
-
-
-
-    </div>
-
-
-  </div> <!-- closes right column -->
-
-
-</div>
-</div>
+  </div> <!-- closes the profile layout -->
+</div> <!-- closes the "profile" -->
 
