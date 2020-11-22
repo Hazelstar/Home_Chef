@@ -40,7 +40,7 @@ document.addEventListener('turbolinks:load', () => {
   nb_meals();
   price();
   showInfo();
-  // UpdatePrice();
+  UpdatePrice();
 });
 
 
