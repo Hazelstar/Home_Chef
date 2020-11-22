@@ -3,7 +3,7 @@
       <div class="col" style="margin-top: 10vh; margin-left: 5vh;">
 
         <% if @availabilities.any? %>
-          <h1><%= @user.first_name %>, you are available:</h1>
+          <h3><%= @user.first_name %>, you are available:</h3>
 
             <div class="d-flex justify-content-center">
               <%= link_to new_user_availability_path(current_user.id) do %>

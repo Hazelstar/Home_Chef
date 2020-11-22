@@ -1,6 +1,7 @@
- <div class="profile" style="margin-top: 5vh; margin-bottom: 5vh;">
+<div class="profile" style="margin-top: 5vh; margin-bottom: 5vh;">
   <div class="profile-layout row">
 
+    <!-- Left column that statically displays users info -->
     <div class="info col-6 p-4">
 
       <div class="d-flex align-items-center p-4">
@@ -11,17 +12,12 @@
 
       <!-- welcome msg -->
       <div class="ml-5">
-        <h3>Welcome, <%= current_user.first_name.capitalize %>!</h3>
+        <h1>Welcome, <%= current_user.first_name.capitalize %>!</h1>
         <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
         <p><i class="fas fa-home"></i> <%= current_user.address %></p>
 
       </div>
     </div>
-
-
-
-
-
 
     <!-- infos -->
     <div class="p-4">
@@ -32,58 +28,55 @@
         <% end %>
       </div>
 
+      <!-- User's bio -->
       <div class="bio my-5">
-
         <i class="fas fa-quote-left"></i>
         <p class="p-3"><%= current_user.bio %></p>
         <i class="fas fa-quote-right"></i>
       </div>
 
+      <!-- dashboard buttons -->
       <div class="d-flex">
+        <!-- button to display bookings -->
         <button class="btn-effect btn-profile" id="bookings-display">
           <h3>My Bookings</h3>
         </button>
 
-
+        <!-- button to display messages -->
         <button class="btn-effect btn-profile" id="messages-display">
           <h3>My Messages</h3>
         </button>
 
+        <!-- button to display availabilities (cooker) -->
         <% if current_user.is_a_cook? %>
-        <%= link_to user_availabilities_path(current_user.id) do %>
-        <div class="btn-effect btn-profile">
-          <h3>My Schedule</h3>
-        </div>
+          <div class="btn-effect btn-profile" id="availabilities-display">
+            <h3>My Schedule</h3>
+          </div>
         <% end %>
+
+        <!-- button to go to cookers list (booker) -->
+        <% if current_user.is_a_cook == 'false' %>
+          <%= link_to cookers_path do %>
+          <div class="text-center btn-effect">
+            <h3>Browse Cooks</h3>
+          </div>
+          <% end %>
         <% end %>
       </div>
-
     </div>
 
-  </div>
+  </div> <!-- closes left column -->
 
 
+  <!-- Right column that dynamically displays sections -->
   <div class="col-6 p-4" id="content-column">
-    <div class="d-flex justify-content-center">
 
-      <% if current_user.is_a_cook == 'false' %>
-      <%= link_to cookers_path do %>
-      <div class="text-center btn-effect">
-        <h3>Browse Cooks</h3>
-      </div>
-      <% end %>
-      <% end %>
-    </div>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center p-4">
 
-
-      <div class="content-display messages-display" style="display:none;">
-        <p>Hellooooooo I'm the message!</p>
-      </div>
-
-
+      <!-- This is the display of the bookings section (DEFAULT)-->
       <div class="content-display bookings-display">
-        <p>this is bookings</p>
+        <h3 class="mb-5 mt-2 text-center">My next bookings:</h3>
+        <p>This is the display of the bookings</p>
         <ul>
           <% @user_bookings.each do |user_booking| %>
           <li>
@@ -93,10 +86,64 @@
         </ul>
       </div>
 
+      <!-- This is the display of the messages section -->
+      <div class="content-display messages-display" style="display:none;">
+        <h3 class="mb-5 mt-2 text-center">My messages:</h3>
+        <p>Hellooooooo I'm the message!</p>
+      </div>
+
+      <!-- This is the display of the availabilities index -->
+      <div class="content-display availabilities-display" style="display:none;">
+        <% if @user.availabilities.any? %>
+          <h3 class="mb-5 mt-2 text-center">My schedule:</h3>
+
+            <div class="d-flex justify-content-center">
+              <%= link_to new_user_availability_path(current_user.id) do %>
+                <div class="text-center btn-effect">
+                  <h3>Add availability</h3>
+                </div>
+                <% end %>
+            </div>
+
+          <ul>
+            <% @user.availabilities.each do |availability| %>
+              <li>
+                <%= availability.event_date %>
+                <%= link_to availability_path(availability), method: :delete,
+                  data: { confirm: "Really?!", toggle: "tooltip", placement: "top" } do %>
+                  <small><i class="fa fa-trash"></i></small>
+                  <% end %>
+              </li>
+            <% end %>
+          </ul>
+
+        <% else %>
+
+          <div class="text-center">
+            <h3 class="my-5 text-center"><%= @user.first_name %>, please add an availability now:</h3>
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <%= link_to new_user_availability_path(current_user.id) do %>
+              <div class="text-center btn-effect">
+                <h3>Add availability</h3>
+              </div>
+            <% end %>
+          </div>
+
+        <% end %>
+      </div>
+
+
+
+
+
+
+
     </div>
 
 
-  </div>
+  </div> <!-- closes right column -->
 
 
 </div>
