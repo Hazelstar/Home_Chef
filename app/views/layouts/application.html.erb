@@ -6,29 +6,27 @@
     <%= csp_meta_tag %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="HandheldFriendly" content="true">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="print.css" media="print">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body class="<%= controller_name %>-<%= action_name %>">
+
      <div class='page-container'>
-    <% if controller_name == 'pages' && action_name == 'home' %>
+       <% if controller_name == 'pages' && action_name == 'home' %>
       <%= render "components/banner" %>
-      <div id="yield-content">
-        <%= yield %>
-      </div>
-      <%= render "components/navbar" %>
     <% else %>
       <%= render "components/header" %>
+    <% end %>
+
       <%= render "components/navbar" %>
 
-        <div id="yield-content" style="margin-top: 15vh;"> <!-- don't change the vh here!!!!!! -->
-          <%= yield %>
-        </div>
-    <% end %>
+    <div id="yield-content" style="margin-top: 15vh;"> <!-- don't change the vh here!!!!!! -->
+      <%= yield %>
+    </div>
 
     <%= render 'components/footer' %>
     <%= render 'shared/flashes' %>
@@ -36,3 +34,7 @@
   </div>
   </body>
 </html>
+
+
+
+
