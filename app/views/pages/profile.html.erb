@@ -1,46 +1,28 @@
+<div class="container">
 <div style="margin: 5vh;">
   <div class="profile-layout row p-2 m-2">
     <!-- Left column that statically displays users info -->
-<<<<<<< HEAD
-    <div class="col-6 p-3">
-      <div class="pb-5">
-        <div class="row">
-          <div class="col-6">
+    <div class="col-md-6 col-sm-12 p-3">
+    <div class="profile-header pb-5">
+        <div class="profile-header-left">
             <!--  profile img -->
             <%= cl_image_tag current_user.photo.key, :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
-          </div>
-          <div class="col-6 my-auto"> 
+        </div>
+        <div class="profile-header-right">
             <!-- welcome msg -->
             <h3>Welcome <%= current_user.first_name.capitalize %>!</h3>
             <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
             <p><i class="fas fa-home"></i> <%= current_user.address %></p>
-          </div>
         </div>
-=======
-    <div class="info col-6 p-4">
-
-      <div class="d-flex align-items-center p-4 mb-3">
-       <!--  profile img -->
-       <div>
-        <%= cl_image_tag current_user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
-      </div>
-
-      <!-- welcome msg -->
-      <div class="ml-5">
-        <h1>Welcome, <%= current_user.first_name.capitalize %>!</h1>
-        <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
-        <p><i class="fas fa-home"></i> <%= current_user.address %></p>
-
->>>>>>> master
       </div>
       <!-- infos -->
         <% if current_user.is_a_cook? %>
           <div class="d-flex justify-content-space-evenly pb-5">
-            <div class="mx-5 text-center" id="cook-display">
+            <div class="m-5 my-auto" id="cook-display">
               <h6 class="m-1 px-2">You are cooking!</h6>
             </div>
-            <div class="mx-5 text-center" id="cook-display">
-              <h6 class="m-1 px-2"><i class="fas fa-euro-sign"></i> <%= current_user.price %>/ hour</h6>
+            <div class="m-5 my-auto" id="cook-display">
+              <h6 class="m-1 px-2"><%= current_user.price %> € / hour</h6>
             </div>
           </div>
         <% end %>
@@ -54,7 +36,7 @@
         <% end %>
     </div> <!-- closes left column -->
     <!-- Right column that dynamically displays sections -->
-    <div class="col-6 p-3" id="">
+    <div class="col-md-6 col-sm-12 p-3" id="">
       <div class="d-block">
         <!-- This is the display of the bookings section (DEFAULT)-->
         <h3 class="text-center">My next bookings:</h3>
@@ -145,4 +127,6 @@
     </div>
   </div> <!-- closes the profile layout -->
 </div> <!-- closes the "profile" -->
+
+ </div>
 

@@ -16,13 +16,13 @@
   <body class="<%= controller_name %>-<%= action_name %>">
      <div class='page-container'>
     <% if controller_name == 'pages' && action_name == 'home' %>
-      <%= render "components/banner" %>
+      <%#= render "components/banner" %>
       <div id="yield-content">
         <%= yield %>
       </div>
       <%= render "components/navbar" %>
     <% else %>
-      <%= render "components/header" %>
+      <%#= render "components/header" %>
       <%= render "components/navbar" %>
 
         <div id="yield-content" style="margin-top: 15vh;"> <!-- don't change the vh here!!!!!! -->
