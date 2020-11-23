@@ -4,7 +4,7 @@
   right: 0;
   top: 0;
   width: 100px;
-  z-index: 1;
+  z-index: 1000000;
   opacity: 100%;
 }
 
@@ -17,8 +17,10 @@
   color: inherit;
 }
 
- // @media(max-width: 959px) {
- //     .navbar, .navbar .nav>li>a, .navbar-search, .uk-navbar-item, .uk-navbar-nav>li>a, .uk-navbar-toggle {
- //         height: 150px;
- //     }
- // }
+ @media (max-height:800px) {
+     .navbar, .navbar .nav>li>a, .navbar-search, .uk-navbar-item, .uk-navbar-nav>li>a, .uk-navbar-toggle {
+         height: 150px;
+     }
+ }
+
+
