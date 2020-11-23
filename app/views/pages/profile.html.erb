@@ -1,23 +1,24 @@
-<div class="profile" style="margin: 5vh;">
+<div style="margin: 5vh;">
   <div class="profile-layout row p-2 m-2">
     <!-- Left column that statically displays users info -->
     <div class="col-6 p-3">
-      <div class="row">
-        <div class="col-6">
-          <!--  profile img -->
-          <%= cl_image_tag current_user.photo.key, :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
-        </div>
-        <div class="col-6 my-auto"> 
-          <!-- welcome msg -->
-          <h3>Welcome <%= current_user.first_name.capitalize %>!</h3>
-          <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
-          <p><i class="fas fa-home"></i> <%= current_user.address %></p>
+      <div class="pb-5">
+        <div class="row">
+          <div class="col-6">
+            <!--  profile img -->
+            <%= cl_image_tag current_user.photo.key, :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
+          </div>
+          <div class="col-6 my-auto"> 
+            <!-- welcome msg -->
+            <h3>Welcome <%= current_user.first_name.capitalize %>!</h3>
+            <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
+            <p><i class="fas fa-home"></i> <%= current_user.address %></p>
+          </div>
         </div>
       </div>
       <!-- infos -->
-      <div class="p-3">
         <% if current_user.is_a_cook? %>
-          <div class="d-flex justify-content-space-evenly">
+          <div class="d-flex justify-content-space-evenly pb-5">
             <div class="mx-5 text-center" id="cook-display">
               <h6 class="m-1 px-2">You are cooking!</h6>
             </div>
@@ -30,38 +31,27 @@
         <% if current_user.bio == nil %>
           <h3 class="ml-3">Please edit your profile and fill in your info!</h3>
         <% else %>
-        <div class="bio my-5">
-          <i class="fas fa-quote-left"></i>
-          <p class="p-3"><%= current_user.bio %></p>
-          <i class="fas fa-quote-right"></i>
-        </div>
+          <blockquote class="quotebox quotebox--quotes">
+            <p class="text-justify"><%= current_user.bio %></p>
+          </blockquote>
         <% end %>
-      </div>
     </div> <!-- closes left column -->
     <!-- Right column that dynamically displays sections -->
     <div class="col-6 p-3" id="">
-      <div class="d-flex justify-content-center">
+      <div class="d-block">
         <!-- This is the display of the bookings section (DEFAULT)-->
-        <div class="">
-          <h3 class="text-center">My next bookings:</h3>
-          <% if current_user.is_a_cook == 'false' %>
-            <ul class="list-group">
-              <% @user_bookings.each do |user_booking| %>
-              <li class="list-group-item">
-                Booked for <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %>
-              </li>
-              <% end %>
-            </ul>
+        <h3 class="text-center">My next bookings:</h3>
+        <ul class="list-group">
+          <% @user_bookings.each do |user_booking| %>
+          <li class="list-group-item">
+            <% if current_user.is_a_cook == 'false' %>
+              <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %>
             <% else %>
-              <ul>
-                <% @user_bookings.each do |user_booking| %>
-                <li>
-                  Booked for <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date %>.
-                </li>
-                <% end %>
-              </ul>
+              <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
             <% end %>
-        </div>
+          </li>
+          <% end %>
+        </ul>
         <!-- This is the display of the messages section -->
         <div class="content-display messages-display" style="display:none;">
           <h3 class="mb-3 mt-2 text-center">My messages:</h3>
