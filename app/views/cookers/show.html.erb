@@ -22,10 +22,10 @@
 
         <div class="d-flex justify-content-space-evenly">
           <div class="mx-5 text-center" id="cook-display">
-            <h6 class="m-1">My favorite utensil: the pan</h6>
+            <h6 class="m-1 px-2">My favorite utensil: the pan</h6>
           </div>
           <div class="mx-5 text-center" id="cook-display">
-            <h6 class="m-1"><i class="fas fa-euro-sign"></i> <%= @cooker.price %>/ hour</h6>
+            <h6 class="m-1 px-2"><i class="fas fa-euro-sign"></i> <%= @cooker.price %>/ hour</h6>
           </div>
         </div>
 
@@ -70,25 +70,13 @@
         <% if @cooker.availabilities.any? %>
           <h3 class="mb-3 mt-2 text-center">My schedule:</h3>
 
-            <div class="d-flex justify-content-center">
-              <%= link_to new_user_availability_path(current_user.id) do %>
-                <button class="text-center btn-effect">
-                  <h3>Add availability</h3>
-                </button>
-                <% end %>
-            </div>
-
           <!-- List of availabilities TO BE CHANGES INTO A CALENDAR DISPLAY -->
           <ul>
             <% @cooker.availabilities.each do |availability| %>
               <li>
                 <%= availability.event_date %>
-                <%= link_to availability_path(availability), method: :delete,
-                  data: { confirm: "Really?!", toggle: "tooltip", placement: "top" } do %>
-                  <small><i class="fa fa-trash"></i></small>
-                  <% end %>
               </li>
-            <% end %>
+             <% end %>
           </ul>
 
         <% else %>
@@ -96,8 +84,8 @@
         <% end %>
       </div> <!-- closes the availabilities section -->
 
+    </div> <!-- closes the display div that changes -->
 
-      </div> <!-- closes the display div that changes -->
 
       <!-- Modal for booking -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
