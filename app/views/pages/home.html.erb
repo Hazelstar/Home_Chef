@@ -4,35 +4,34 @@
   <!-- First row -->
   <div class="row justify-content-between min-height">
     <div class="col p-5 align-items-center" style="margin-top: 5vh;">
-      <div class="bio my-5">
+      <div class="bio m-5">
         <i class="fas fa-quote-left"></i>
         <h3 class="p-3 text-center">Tired of ordering from the same restaurant every other day?</h3>
-        <br>
         <h3 class="p-3 text-center">Dreaming of eating healthy and homemade at the same time?</h3>
         <i class="fas fa-quote-right"></i>
       </div>
     </div>
 
     <div class="col p-0">
-      <%= render "components/image" %>
+      <%= render "components/imagehome1" %>
     </div>
   </div>
 
   <!-- Second row -->
   <div class="row justify-content-between min-height">
     <div class="col p-0">
-      <%= render "components/image" %>
+      <%= render "components/imagehome2" %>
     </div>
 
     <div class="col p-5 text-center align-items-center" style="margin-top: 5vh;">
-      <div class="bio my-5">
+      <div class="bio m-5">
         <i class="fas fa-quote-left"></i>
         <h3 class="p-3 text-center">HOME CHEF allows you to find the perfect local cook for tailored weekly meals prepared from the comfort of your home.</h3>
-      <%= link_to cookers_path do %>
-        <button class="text-center btn-banner">
-          <h3>Browse cooks</h3>
-        </button>
-      <% end %>
+        <%= link_to cookers_path do %>
+          <button class="text-center btn-banner">
+            <h3>Browse cooks</h3>
+          </button>
+        <% end %>
         <br>
         <h3 class="p-3 text-center">Say goodbye to stress over organising your weekly menu, groceries shopping, and time consuming preparation.</h3>
         <i class="fas fa-quote-right"></i>
@@ -43,9 +42,16 @@
 
   <!-- Third row -->
   <div class="row justify-content-between min-height">
-    <div class="col p-5 align-items-center" style="margin-top: 5vh;">
-      <div class="bio my-5">
+    <div class="col p-5 text-center align-items-center" style="margin-top: 5vh;">
+      <div class="bio m-5">
         <i class="fas fa-quote-left"></i>
+        <h3 class="p-3 text-center">If you love cooking, HOME CHEF is also a great way to share your passion with people while earning some side income.</h3>
+        <%= link_to cookers_path do %>
+          <button class="text-center btn-banner" id="cooker">
+            <h3>Become a cook</h3>
+          </button>
+        <% end %>
+        <br>
         <h3 class="p-3 text-center">If you love cooking, HOME CHEF is also a great way to share your passion with people while earning some side income.</h3>
         <i class="fas fa-quote-right"></i>
       </div>
