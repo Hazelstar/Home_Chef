@@ -31,3 +31,35 @@
 .footer-links a:hover {
   opacity: 1;
 }
+
+
+@media (max-height:600px){
+  .footer-effect .footer-links {
+    display: block;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    position: absolute;
+  }
+}
+
+@media (min-height:601px){
+  .footer-effect .footer-links {
+    display: block;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    position: absolute;
+  }
+}
+
+@media (min-height:992px){
+  .footer-effect .footer-links {
+    display: block;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    position: absolute;
+  }
+}
+
