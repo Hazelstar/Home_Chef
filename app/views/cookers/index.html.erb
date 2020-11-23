@@ -6,8 +6,7 @@
           <div class="col-4">
              <%= link_to cooker_path(cooker) do %>
             <div class="card-cooker">
-                <h1>See more</h1>
-                <%#= cl_image_tag(cooker.photo.key, class: "w-100") %>
+                <%= cl_image_tag(cooker.photo.key, class: "w-100") %>
               <h3><%= cooker.first_name.capitalize %> <%= cooker.last_name.capitalize %></h3>
               <p><%= cooker.address.nil? ? "No address" : cooker.address.capitalize %></p>
               <p><%= cooker.price %>€</p>
