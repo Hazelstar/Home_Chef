@@ -7,7 +7,7 @@
       <div class="d-flex align-items-center p-4 mb-3">
        <!--  profile img -->
        <div>
-        <%= cl_image_tag current_user.photo.key, :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
       </div>
 
       <!-- welcome msg -->
