@@ -8,3 +8,10 @@
     background-position: center;
     background-size: cover;
 }
+
+@media screen and (max-width: 600px) {
+  .image-availabilities {
+    display: hidden;
+    position: absolute;
+  }
+}
