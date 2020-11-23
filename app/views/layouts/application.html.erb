@@ -17,6 +17,9 @@
      <div class='page-container'>
     <% if controller_name == 'pages' && action_name == 'home' %>
       <%= render "components/banner" %>
+      <div id="yield-content">
+        <%= yield %>
+      </div>
       <%= render "components/navbar" %>
     <% else %>
       <%= render "components/header" %>

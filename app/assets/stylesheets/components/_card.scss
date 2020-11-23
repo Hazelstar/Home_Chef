@@ -41,25 +41,3 @@
       object-fit: cover;
     }
 }
-
-
-.profile-layout {
-  background-color: $medium-blue;
-  border-radius: 5px;
-  box-shadow: 4px 4px 1px rgba(0,0,0,0.6);
-  text-align: center;
-  max-width: 40%;
-  margin: auto;
-    ul {
-      font-family: 'Raleway', sans-serif;
-      list-style: none;
-      text-align: center;
-      margin: 16px;
-      padding: 16px;
-    }
-    h6 {
-      margin-top: 20px;
-      margin-bottom: 20px;
-      color: $dark-gray;
-    }
-}

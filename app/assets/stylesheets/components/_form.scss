@@ -6,7 +6,7 @@ body {
   margin: 50px 0;
   padding: 30px;
   border-radius: 5px;
-  box-shadow: 4px 4px 1px black;
+  box-shadow: 4px 4px 1px $dark-gray;
   text-align: center;
   color: $dark-gray;
   h1 {
@@ -37,3 +37,4 @@ body {
 // .price-display {
 //   display: none;
 // }
+

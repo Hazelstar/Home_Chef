@@ -1,7 +1,22 @@
-.modal-body {
-  background-color: $dark-blue;
+.modal-content {
+  box-shadow: 4px 4px 1px $dark-gray;
 }
 
-.modal-title {
+.modal-body {
+  text-align: center;
+  background-color: $light-blue;
+  background-color: $light-blue;
+  a {
+    color: $dark-gray;
+  }
+}
+
+.modal-header {
   color: $dark-gray;
+  text-align: center;
+  padding: 16px;
+  h3 {
+    position: absolute;
+    left: 41%;
+  }
 }

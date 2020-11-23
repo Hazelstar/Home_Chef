@@ -7,7 +7,7 @@ class AvailabilitiesController < ApplicationController
     # @availability = @user[:availability_id]
     @availabilities = @user.availabilities
 
-    
+
   end
 
   def new
@@ -22,7 +22,7 @@ class AvailabilitiesController < ApplicationController
 
     if @availability.save
       flash[:notice] = "New availability added!"
-      redirect_to user_availabilities_path(current_user.id)
+      redirect_to profile_path(current_user)
     else
       flash[:error] = "Error adding availability"
       render :new

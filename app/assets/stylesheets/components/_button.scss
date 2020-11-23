@@ -1,28 +1,96 @@
+// general button class
+button {
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  h3 {
+    margin: 0;
+  }
+}
+
+.btn {
+  color: $sunshine;
+  font-family: 'Staatliches', 'sans-serif';
+  &:hover {
+    color: $dark-gray;
+  }
+}
+
+// main button style
 .btn-effect {
   background-color: #EFC11A;
+  color: $dark-gray;
   border-radius: 15px;
   width: 137px;
   font-family: 'Staatliches', 'sans-serif';
-  font-size: 20px;
   text-decoration: none;
+  text-align: center;
+  padding: 5px;
   margin: 20px 10px;
     h3 {
       font-size: 20px;
-      color: #0f1108;
-      padding: 5px;
+      color: $dark-gray;
+      margin: 0;
       &:hover {
-        text-decoration: none;
+      text-decoration: none;
+
       }
     }
     &:hover {
-      box-shadow: 4px 4px 1px black;
+      cursor: pointer;
+      box-shadow: 4px 4px 1px $dark-gray;
     }
 }
 
+// links
 a {
   text-decoration: none !important;
+  color: $sunshine;
+  font-family: 'Staatliches', 'sans-serif';
+  &:hover {
+    color: $dark-gray;
+  }
 }
 
-#cooker {
-  background-color: #A4BAD4;
+// Class active
+.toto {
+  color: red;
+  box-shadow: 4px 4px 1px blue;
 }
+
+
+// banner buttons
+.btn-banner {
+  border-radius: 15px;
+  min-width: 170px;
+  min-height: 50px;
+  margin: 30px;
+  box-shadow: 4px 4px 1px $dark-gray;
+  background-color: $medium-blue;
+  color: $dark-gray;
+  text-align: center;
+    h3 {
+      margin: 0;
+    }
+    &:hover {
+      color: $light-blue;
+      box-shadow: 4px -4px 1px $light-blue;
+    }
+  }
+
+#cooker {
+  background-color: $sunshine;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
