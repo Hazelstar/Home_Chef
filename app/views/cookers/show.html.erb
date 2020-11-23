@@ -31,7 +31,7 @@
 
       <!-- User's bio -->
       <% if @cooker.bio == nil %>
-        <h3 class="ml-3">Oh no, @cooker.first_name hasn't filled in their info yet!</h3>
+        <h3 class="ml-3">Oh no, <%= @cooker.first_name %> hasn't filled in their info yet!</h3>
       <% else %>
       <div class="bio my-5">
         <i class="fas fa-quote-left"></i>
@@ -80,7 +80,7 @@
           </ul>
 
         <% else %>
-          <h3 class="mb-5 mt-2 text-center"><%= Oh no! @cooker.first_name %> has no availabilities yet.</h3>
+          <h3 class="mb-5 mt-2 text-center">Oh no! <%= @cooker.first_name %> has no availabilities yet.</h3>
         <% end %>
       </div> <!-- closes the availabilities section -->
 
