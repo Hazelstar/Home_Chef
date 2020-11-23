@@ -37,3 +37,11 @@ body {
 // .price-display {
 //   display: none;
 // }
+
+.modal-body {
+  text-align: center;
+  background-color: $light-blue;
+  a {
+    color: $dark-gray;
+  }
+}

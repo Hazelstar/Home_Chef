@@ -1,3 +1,4 @@
+// general button class
 button {
   border: none;
   cursor: pointer;
@@ -7,7 +8,15 @@ button {
   }
 }
 
+.btn {
+  color: $sunshine;
+  font-family: 'Staatliches', 'sans-serif';
+  &:hover {
+    color: $dark-gray;
+  }
+}
 
+// main button style
 .btn-effect {
   background-color: #EFC11A;
   color: $dark-gray;
@@ -33,16 +42,24 @@ button {
     }
 }
 
+// links
 a {
   text-decoration: none !important;
+  color: $sunshine;
+  font-family: 'Staatliches', 'sans-serif';
+  &:hover {
+    color: $dark-gray;
+  }
 }
 
+// Class active
 .toto {
   color: red;
   box-shadow: 4px 4px 1px blue;
 }
 
 
+// banner buttons
 .btn-banner {
   border-radius: 15px;
   min-width: 170px;
