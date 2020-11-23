@@ -1,8 +1,21 @@
+
 // Specific CSS for your home-page
-.page-container {
-display: grid;
-grid-template-rows: auto 1fr auto;
-min-height: 100vh;
+@media only screen and (max-width: 600px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }
 
+@media only screen and (min-width: 601px) {
+
+}
+
+.page-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 100%;
+  min-height: 100vh;
+}
 
