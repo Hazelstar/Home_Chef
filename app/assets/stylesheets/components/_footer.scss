@@ -33,7 +33,7 @@
 }
 
 
-@media (max-height:600px){
+@media screen and (max-height: 600px){
   .footer-effect .footer-links {
     display: block;
     width: 100%;
@@ -43,7 +43,7 @@
   }
 }
 
-@media (min-height:601px){
+@media screen and(min-height: 601px){
   .footer-effect .footer-links {
     display: block;
     width: 100%;
@@ -53,7 +53,7 @@
   }
 }
 
-@media (min-height:992px){
+@media screen and (min-height: 992px){
   .footer-effect .footer-links {
     display: block;
     width: 100%;

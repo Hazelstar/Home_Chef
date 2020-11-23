@@ -18,15 +18,18 @@
      <div class='page-container'>
        <% if controller_name == 'pages' && action_name == 'home' %>
       <%= render "components/banner" %>
+      <div id="yield-content">
+        <%= yield %>
+      </div>
     <% else %>
       <%= render "components/header" %>
+      <div id="yield-content" style="margin-top: 15vh;"> <!-- don't change the vh here!!!!!! -->
+        <%= yield %>
+      </div>
     <% end %>
 
       <%= render "components/navbar" %>
 
-    <div id="yield-content" style="margin-top: 15vh;"> <!-- don't change the vh here!!!!!! -->
-      <%= yield %>
-    </div>
 
     <%= render 'components/footer' %>
     <%= render 'shared/flashes' %>
@@ -38,7 +41,10 @@
 =======
 </html>
 
+<<<<<<< HEAD
 
 
 
 >>>>>>> 5eda951b7ce1fa80bc19a848bfc832c6dfe7c423
+=======
+>>>>>>> b95bd9ac1cbe60b5abfd021a035bf03bd472e0b7
