@@ -1,3 +1,24 @@
+@media only screen and (max-width: 600px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .card-cooker {
+      width: 90%;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+
+}
+
+
+
 .card-cooker {
   background-color: $light-blue;
   border-radius: 5px;
