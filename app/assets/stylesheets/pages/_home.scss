@@ -5,9 +5,9 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    #row-reverse {
-      flex-wrap: wrap-reverse;
-    }
+  }
+  #row-reverse {
+    flex-direction: row-reverse;
   }
 }
 
