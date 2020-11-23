@@ -1,6 +1,7 @@
 class CookersController < ApplicationController
   before_action :set_counter, only: [:show]
-  
+  skip_before_action :authenticate_user!, only: [:index]
+
   def index
     @cookers = User.where(is_a_cook: 'true')
 
@@ -13,7 +14,7 @@ class CookersController < ApplicationController
   def show
     @cooker = User.find(params[:id])
     @availabilities = Availability.where(user: @cooker)
-    
+
     @booking = Booking.new
   end
 

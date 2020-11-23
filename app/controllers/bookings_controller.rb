@@ -5,6 +5,9 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    # @booking = Booking.find(bookings_params)
+    # @cooker = @booking.cooker_id
+    # @user = @booking.booker_id
   end
 
   def new
@@ -15,11 +18,11 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @booking.user = current_user
     @booking.cooker = @cooker
-    
+
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      render :new 
+      render :new
     end
   end
 
