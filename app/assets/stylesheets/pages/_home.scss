@@ -5,6 +5,9 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    #row-reverse {
+      flex-wrap: wrap-reverse;
+    }
   }
 }
 
@@ -13,9 +16,8 @@
 }
 
 .page-container {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
