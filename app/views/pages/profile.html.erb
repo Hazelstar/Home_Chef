@@ -1,14 +1,13 @@
-<div class="container">
-<div style="margin: 5vh;">
+<div class="profile" style="margin-top: 20vh; margin-bottom: 5vh; margin-left: 2vh;  margin-right: 3vh;">
   <div class="profile-layout row p-2 m-2">
     <!-- Left column that statically displays users info -->
     <div class="col-md-6 col-sm-12 p-3">
-    <div class="profile-header pb-5">
-        <div class="profile-header-left">
+      <div class="d-flex  pb-5">
+        <div class="pr-2">
             <!--  profile img -->
             <%= cl_image_tag current_user.photo.key, :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
         </div>
-        <div class="profile-header-right">
+        <div class="pl-2 mt-4">
             <!-- welcome msg -->
             <h3>Welcome <%= current_user.first_name.capitalize %>!</h3>
             <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
@@ -17,12 +16,12 @@
       </div>
       <!-- infos -->
         <% if current_user.is_a_cook? %>
-          <div class="d-flex justify-content-space-evenly pb-5">
+          <div class="d-flex justify-content-between pb-5">
             <div class="m-5 my-auto" id="cook-display">
-              <h6 class="m-1 px-2">You are cooking!</h6>
+              <h6 class="text-center mb-0">You are cooking!</h6>
             </div>
             <div class="m-5 my-auto" id="cook-display">
-              <h6 class="m-1 px-2"><%= current_user.price %> € / hour</h6>
+              <h6 class="text-center mb-0"><%= current_user.price %> € / hour</h6>
             </div>
           </div>
         <% end %>
@@ -93,8 +92,8 @@
       </div> <!-- closes the display div that changes -->
     </div> <!-- closes right column -->
     <!-- dashboard buttons -->
-    <div class="col-12 p-3">
-      <div class="d-flex">
+    <div class="col-12 p-2">
+      <div class="d-flex justify-content-center">
         <!-- button to display bookings -->
         <button class="btn-effect btn-profile" id="bookings-display">
           <h3>My Bookings</h3>
@@ -103,20 +102,17 @@
         <button class="btn-effect btn-profile" id="messages-display">
           <h3>My Messages</h3>
         </button>
-        <!-- button to display availabilities (cooker) -->
+        <!-- button to display availabilities a pictures (cooker) -->
         <% if current_user.is_a_cook? %>
           <button class="button btn-effect btn-profile" id="availabilities-display">
             <h3>My Schedule</h3>
           </button>
-        <% end %>
-        <!-- button to display pictures (cooker) -->
-        <% if current_user.is_a_cook? %>
           <button class="button btn-effect btn-profile" id="availabilities-display">
             <h3>My Pictures</h3>
           </button>
         <% end %>
         <!-- button to go to cookers list (booker) -->
-        <% if current_user.is_a_cook == 'false' %>
+        <% if !current_user.is_a_cook? %>
           <%= link_to cookers_path do %>
           <button class="button btn-effect btn-profile text-center btn-effect">
             <h3>Browse Cooks</h3>
@@ -128,5 +124,4 @@
   </div> <!-- closes the profile layout -->
 </div> <!-- closes the "profile" -->
 
- </div>
 

@@ -1,9 +1,8 @@
 // Specific CSS for your home-page
 .page-container {
-display: grid;
-grid-template-rows: auto 1fr auto;
+// display: grid;
+// grid-template-rows: auto 1fr auto;
+overflow-x: hidden;
 min-height: 100vh;
 width: 100%;
 }
-
-
