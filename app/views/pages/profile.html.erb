@@ -31,16 +31,22 @@
             </div>
           </div>
         <% end %>
-        <!-- User's bio -->
-              <!-- User's bio -->
-        <% if current_user.bio == nil %>
-          <h3 class="ml-3">Please edit your profile and fill in your info!</h3>
-        <% else %>
-          <blockquote class="quotebox quotebox--quotes">
-            <p class="text-justify"><%= current_user.bio %></p>
-          </blockquote>
+
+      <!-- User's bio -->
+      <% if current_user.bio == nil %>
+        <h3 class="ml-3">Please go to edit your profile and fill in your info!</h3>
+        <p class="ml-3">Increase your chances of being booked by telling our users a bit about yourself and adding your profile picture!s</p>
+        <%= link_to edit_user_registration_path do %>
+          <div class="btn-effect btn-profile">
+              Edit profile
+          </div>
         <% end %>
-      </div>
+      <% else %>
+        <blockquote class="quotebox quotebox--quotes">
+          <p class="text-justify"><%= current_user.bio %></p>
+        </blockquote>
+      <% end %>
+
     </div>
     <!-- Right column that dynamically displays sections -->
     <div class="col-md-6 col-sm-12 p-0">
