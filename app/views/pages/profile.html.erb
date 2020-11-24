@@ -54,7 +54,7 @@
 
         <!-- button to display messages -->
         <button class="btn-effect btn-profile" id="messages-display">
-          <h3>My Messages</h3>
+          <h3>Conversations</h3>
         </button>
 
         <!-- button to display availabilities (cooker) -->
@@ -117,7 +117,7 @@
         <h3 class="mb-3 mt-2 text-center">My messages:</h3>
           <ul>
             <%  @user_chatrooms.each do |chatroom| %>
-              <%= link_to chatroom.name, user_chatroom_path(current_user, chatroom) %>
+              <%= link_to @user.first_name, user_chatroom_path(current_user, chatroom) %>
             <% end %>
           </ul>
 
