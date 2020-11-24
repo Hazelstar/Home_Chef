@@ -1,77 +1,74 @@
-<div class="profile" style="margin-top: 20vh; margin-bottom: 5vh;">
-  <div class="profile-layout row">
+<div class="profile" style="margin-top: 20vh; margin-bottom: 5vh; margin-left: 2vh; margin-right: 2vh;">
+  <div class="profile-layout row px-5 pt-5 pb-3 m-2">
 
     <!-- Left column that statically displays users info -->
-    <div class="info col-6 p-4">
+    <div class="col-md-6 col-sm-12 p-0">
 
-      <div class="d-flex align-items-center p-4 mb-3">
-       <!--  profile img -->
-       <div>
-        <%= cl_image_tag current_user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
+      <div id="info-column" class="d-flex pb-2 mx-3">
+        <!--  profile img -->
+        <div class="pr-2">
+          <%= cl_image_tag current_user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
+        </div>
+        <!-- welcome msg -->
+        <div class="pl-2 mt-4">
+          <h3>Welcome <%= current_user.first_name.capitalize %>!</h3>
+          <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
+          <p><i class="fas fa-home"></i> <%= current_user.address %></p>
+        </div>
       </div>
 
-      <!-- welcome msg -->
-      <div class="ml-5">
-        <h1>Welcome, <%= current_user.first_name.capitalize %>!</h1>
-        <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
-        <p><i class="fas fa-home"></i> <%= current_user.address %></p>
-
-      </div>
-      <!-- infos -->
       <div class="p-3">
+        <!-- info displayed if user is a cook -->
         <% if current_user.is_a_cook? %>
-          <div class="d-flex justify-content-space-evenly">
-            <div class="mx-5 text-center" id="cook-display">
-              <h6 class="m-1 px-2">You are cooking!</h6>
+          <div id="info-column" class="d-flex to-row justify content-around">
+            <div class="mx-3 my-1 p-2" id="cook-display">
+              <h6 class="text-center mb-0">You are cooking!</h6>
             </div>
-            <div class="mx-5 text-center" id="cook-display">
-              <h6 class="m-1 px-2"><i class="fas fa-euro-sign"></i> <%= current_user.price %>/ hour</h6>
+            <div class="mx-3 my-1 p-2" id="cook-display">
+              <h6 class="text-center mb-0"><%= current_user.price %> € / hour</h6>
+            </div>
+            <div class="mx-3 my-1 p-2" id="cook-display">
+              <h6 class="text-center mb-0">Favorite utensil: wooden spoon<%#= current_user.utensil %></h6>
             </div>
           </div>
         <% end %>
+
         <!-- User's bio -->
         <% if current_user.bio == nil %>
-          <h3 class="ml-3">Please edit your profile and fill in your info!</h3>
+          <h3 class="ml-3">Please got to edit profile and fill in your info!</h3>
         <% else %>
-        <div class="bio my-5">
-          <i class="fas fa-quote-left"></i>
-          <p class="p-3"><%= current_user.bio %></p>
-          <i class="fas fa-quote-right"></i>
-        </div>
+          <blockquote class="quotebox quotebox--quotes mb-0">
+            <p class="text-justify"><%= current_user.bio %></p>
+          </blockquote>
         <% end %>
       </div>
-    </div> <!-- closes left column -->
+    </div>
+
     <!-- Right column that dynamically displays sections -->
-    <div class="col-6 p-3" id="">
-      <div class="d-flex justify-content-center">
+    <div class="col-md-6 col-sm-12 px-3">
+      <div>
         <!-- This is the display of the bookings section (DEFAULT)-->
-        <div class="">
-          <h3 class="text-center">My next bookings:</h3>
-          <% if current_user.is_a_cook == 'false' %>
-            <ul class="list-group">
-              <% @user_bookings.each do |user_booking| %>
-              <li class="list-group-item">
-                Booked for <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %>
-              </li>
+        <div class="content-display bookings-display text-center" >
+          <h3 class="mb-3 mt-2">My next bookings:</h3>
+          <ul class="list-group text-center pb-3">
+            <% @user_bookings.each do |user_booking| %>
+            <li class="list-group-item">
+              <% if !current_user.is_a_cook? %>
+                <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
+              <% else %>
+                <%= user_booking.number_of_meals %> meals for <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
               <% end %>
-            </ul>
-            <% else %>
-              <ul>
-                <% @user_bookings.each do |user_booking| %>
-                <li>
-                  Booked for <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date %>.
-                </li>
-                <% end %>
-              </ul>
+            </li>
             <% end %>
+          </ul>
         </div>
         <!-- This is the display of the messages section -->
-        <div class="content-display messages-display" style="display:none;">
-          <h3 class="mb-3 mt-2 text-center">My messages:</h3>
+        <div class="content-display messages-display text-center" style="display:none;">
+          <h3 class="mb-3 mt-2">My messages:</h3>
           <p>Hellooooooo I'm the message!</p>
         </div>
         <!-- This is the display of the availabilities index -->
-        <div class="content-display availabilities-display" style="display:none;">
+        <div class="content-display availabilities-display text-center" style="display:none;">
           <% if @user.availabilities.any? %>
             <h3 class="mb-3 mt-2 text-center">My schedule:</h3>
               <div class="d-flex justify-content-center">
@@ -82,10 +79,10 @@
                   <% end %>
               </div>
             <!-- List of availabilities TO BE CHANGES INTO A CALENDAR DISPLAY -->
-            <ul>
+            <ul class="text-center">
               <% @user.availabilities.each do |availability| %>
-                <li>
-                  <%= availability.event_date %>
+                <li class="my-1" style="list-style: none;">
+                  <%= availability.event_date.strftime("%D") %> - <%= availability.start_hour.strftime("from %I:%M %p") %> <%= availability.end_hour.strftime("to %I:%M %p") %>
                   <%= link_to availability_path(availability), method: :delete,
                     data: { confirm: "Really?!", toggle: "tooltip", placement: "top" } do %>
                     <small><i class="fa fa-trash"></i></small>
@@ -104,41 +101,50 @@
             </div>
           <% end %>
         </div> <!-- closes the availabilities section -->
+
+        <!-- This is the display of the photo section -->
+        <div class="content-display pictures-display text-center" style="display:none;">
+          <h3 class="mb-3 mt-2">My dishes:</h3>
+          <p>👷🏻‍♀️*** Section under construction! *** 👷🏻‍♀️</p>
+        </div>
+
       </div> <!-- closes the display div that changes -->
     </div> <!-- closes right column -->
+
     <!-- dashboard buttons -->
-    <div class="col-12 p-3">
-      <div class="d-flex">
+    <div class="col-12">
+      <div id="dashboard-button" class="row d-flex justify-content-center">
         <!-- button to display bookings -->
         <button class="btn-effect btn-profile" id="bookings-display">
           <h3>My Bookings</h3>
         </button>
+
         <!-- button to display messages -->
         <button class="btn-effect btn-profile" id="messages-display">
           <h3>My Messages</h3>
         </button>
-        <!-- button to display availabilities (cooker) -->
+
+        <!-- button to display availabilities and pictures (cooker) -->
         <% if current_user.is_a_cook? %>
           <button class="button btn-effect btn-profile" id="availabilities-display">
             <h3>My Schedule</h3>
           </button>
-        <% end %>
-        <!-- button to display pictures (cooker) -->
-        <% if current_user.is_a_cook? %>
-          <button class="button btn-effect btn-profile" id="availabilities-display">
+          <button class="button btn-effect btn-profile" id="pictures-display">
             <h3>My Pictures</h3>
           </button>
         <% end %>
+
         <!-- button to go to cookers list (booker) -->
-        <% if current_user.is_a_cook == 'false' %>
+        <% if !current_user.is_a_cook? %>
           <%= link_to cookers_path do %>
           <button class="button btn-effect btn-profile text-center btn-effect">
             <h3>Browse Cooks</h3>
           </button>
           <% end %>
         <% end %>
+
       </div>
-    </div>
+    </div> <!-- closes the dashboard buttons -->
+
   </div> <!-- closes the profile layout -->
 </div> <!-- closes the "profile" -->
-

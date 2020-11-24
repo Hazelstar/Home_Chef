@@ -1,3 +1,14 @@
+@media only screen and (max-width: 600px) {
+  #info-column {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  #dashboard-button {
+    flex-basis: auto;
+  }
+}
+
 .profile-layout {
   background-color: $light-blue;
   color: $dark-gray;
@@ -13,27 +24,36 @@
     }
 }
 
-.bio {
-  position: relative;
-  i.fas.fa-quote-left {
-    position: absolute;
-    font-size: 32px;
-    left: 41px;
-    top: -24px;
-  }
-  i.fas.fa-quote-right {
-    position: absolute;
-    font-size: 32px;
-    right: 41px;
-    bottom: -24px;
-  }
-}
-
 #cook-display {
   background-color: $medium-blue;
   color: $light-blue;
   font-family: 'Staatliches', 'sans-serif';
   border-radius: 15px;
   padding: 5px;
-  box-shadow: 4px 4px 1px $dark-gray;
+}
+
+.quotebox {
+  position: relative;
+  padding: 50px 30px;
+}
+
+.quotebox--quotes:before,
+.quotebox--quotes:after {
+  position: absolute;
+  font-family: serif;
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.quotebox--quotes:before {
+  top: 15px;
+  left: 0px;
+  content: '\201c';
+}
+
+.quotebox--quotes:after {
+  bottom: 10px;
+  right: 0px;
+  content: '\201d';
 }
