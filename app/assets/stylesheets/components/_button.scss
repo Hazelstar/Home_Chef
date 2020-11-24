@@ -86,6 +86,9 @@ a {
       color: $light-blue;
       box-shadow: 4px -4px 1px $light-blue;
     }
+    &:focus {
+      outline: none;
+    }
   }
 
 #cooker {
