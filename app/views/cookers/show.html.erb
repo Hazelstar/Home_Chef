@@ -1,18 +1,18 @@
-<div class="profile" style="margin-top: 5vh; margin-bottom: 5vh;">
-  <div class="profile-layout row">
+<div class="profile" style="margin-top: 20vh; margin-bottom: 5vh; margin-left: 2vh; margin-right: 2vh;">
+  <div class="profile-layout row px-5 pt-5 pb-3 m-2">
 
     <!-- Left column that statically displays users info -->
-    <div class="info col-6 p-4">
+     <div class="col-md-6 col-sm-12 p-0">
 
-      <div class="d-flex align-items-center p-4 mb-3">
+      <div id="info-column" class="d-flex pb-2 mx-3">
        <!--  profile img -->
-       <div>
-        <%= cl_image_tag @cooker.photo.key, :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
-      </div>
+        <div class="pr-2">
+          <%= cl_image_tag @cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
+        </div>
 
       <!-- welcome msg -->
-      <div class="ml-5">
-        <h1>Hello, I'm <%= @cooker.first_name.capitalize %>!</h1>
+      <div class="pl-2 mt-4">
+        <h3>Hello, I'm <%= @cooker.first_name.capitalize %>!</h3>
         <p><i class="fas fa-home"></i> <%= @cooker.address %></p>
       </div>
     </div>
@@ -20,12 +20,12 @@
     <!-- infos -->
     <div class="p-3">
 
-        <div class="d-flex justify-content-space-evenly">
-          <div class="mx-5 text-center" id="cook-display">
-            <h6 class="m-1 px-2">My favorite utensil: the pan</h6>
+        <div id="info-column" class="d-flex to-row justify content-around">
+          <div class="mx-3 my-1 p-2" id="cook-display">
+            <h6 class="text-center mb-0">Favorite utensil: wooden spoon<%#= current_user.utensil %></h6>
           </div>
-          <div class="mx-5 text-center" id="cook-display">
-            <h6 class="m-1 px-2"><i class="fas fa-euro-sign"></i> <%= @cooker.price %>/ hour</h6>
+          <div class="mx-3 my-1 p-2" id="cook-display">
+            <h6 class="text-center mb-0"><%= @cooker.price %> € / hour</h6>
           </div>
         </div>
 
@@ -33,23 +33,26 @@
       <% if @cooker.bio == nil %>
         <h3 class="ml-3">Oh no, <%= @cooker.first_name %> hasn't filled in their info yet!</h3>
       <% else %>
-      <div class="bio my-5">
-        <i class="fas fa-quote-left"></i>
-        <p class="p-3"><%= @cooker.bio %></p>
-        <i class="fas fa-quote-right"></i>
-      </div>
+        <blockquote class="quotebox quotebox--quotes mb-0">
+          <p class="text-justify"><%= @cooker.bio %></p>
+        </blockquote>
       <% end %>
     </div>
 
-      <!-- Message chat button -->
-      <button type="button" class="btn-effect btn-profile" id="message-me-display"> <!-- data-toggle="modal" data-target="#exampleModalCenter" -->
-        <h3>Message me!</h3>
-      </button>
 
-      <!-- Book me button + modal -->
-      <button type="button" class="btn-effect btn-profile" id="book-me-display" data-toggle="modal" data-target="#exampleModalCenter">
-        <h3>Book me!</h3>
-      </button>
+    <div class="col-12">
+      <div id="dashboard-button" class="row d-flex justify-content-center">
+      <!-- Message chat button -->
+        <button class="btn-effect btn-profile" id="messages-display">
+          <h3>Message me!</h3>
+        </button>
+
+        <!-- Book me button + modal -->
+        <button class="btn-effect btn-profile" id="book-me-display" data-toggle="modal" data-target="#exampleModalCenter">
+          <h3>Book me!</h3>
+        </button>
+      </div>
+    </div>
 
   </div> <!-- closes left column -->
 
