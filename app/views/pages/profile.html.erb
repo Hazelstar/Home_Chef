@@ -1,4 +1,4 @@
-<div class="profile d-flex justify-content-center" style="margin-top: 20vh; margin-bottom: 5vh; margin-left: 2vh; margin-right: 2vh;">
+<div class="profile" style="margin-top: 20vh; margin-bottom: 5vh; margin-left: 2vh; margin-right: 2vh;">
   <div class="profile-layout row px-5 pt-5 pb-3 m-2">
 
     <!-- Left column that statically displays users info -->
@@ -18,6 +18,7 @@
       </div>
 
       <div class="p-3">
+        <!-- info displayed if user is a cook -->
         <% if current_user.is_a_cook? %>
           <div id="info-column" class="d-flex to-row justify content-around">
             <div class="mx-3 my-1 p-2" id="cook-display">
@@ -32,34 +33,29 @@
           </div>
         <% end %>
 
-      <!-- User's bio -->
-      <% if current_user.bio == nil %>
-        <h3 class="ml-3">Please go to edit your profile and fill in your info!</h3>
-        <p class="ml-3">Increase your chances of being booked by telling our users a bit about yourself and adding your profile picture!s</p>
-        <%= link_to edit_user_registration_path do %>
-          <div class="btn-effect btn-profile">
-              Edit profile
-          </div>
+        <!-- User's bio -->
+        <% if current_user.bio == nil %>
+          <h3 class="ml-3">Please got to edit profile and fill in your info!</h3>
+        <% else %>
+          <blockquote class="quotebox quotebox--quotes">
+            <p class="text-justify"><%= current_user.bio %></p>
+          </blockquote>
         <% end %>
-      <% else %>
-        <blockquote class="quotebox quotebox--quotes">
-          <p class="text-justify"><%= current_user.bio %></p>
-        </blockquote>
-      <% end %>
-
+      </div>
     </div>
+
     <!-- Right column that dynamically displays sections -->
-    <div class="col-md-6 col-sm-12 p-0">
+    <div class="col-md-6 col-sm-12 px-3">
       <div class="d-block" >
         <!-- This is the display of the bookings section (DEFAULT)-->
-        <h3 class="text-center">My next bookings:</h3>
-        <ul class="list-group">
+        <h3 class="text-center mb-3">My next bookings:</h3>
+        <ul class="list-group text-center">
           <% @user_bookings.each do |user_booking| %>
           <li class="list-group-item">
             <% if !current_user.is_a_cook? %>
-              <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %>
-            <% else %>
               <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
+            <% else %>
+              <%= user_booking.number_of_meals %> meals for <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
             <% end %>
           </li>
           <% end %>
