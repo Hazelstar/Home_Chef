@@ -2,6 +2,7 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.includes(messages: :user).find(params[:id])
     @message = Message.new
+    @message.user = current_user
   end
 
   def new
