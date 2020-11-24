@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
     @user_availabilities = Availability.where(user: current_user) if current_user.is_a_cook?
     @user_messages = Message.where(user: current_user)
-    @user_chatrooms = Chatroom.where(messages: @user_messages)
+    @user_chatrooms = current_user.chatrooms
 
   end
 

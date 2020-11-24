@@ -1,0 +1,5 @@
+<div id="create_chatroom">
+  <%= simple_form_for @chatroom do |f| %>
+  <%= f.input :name, placeholder: "Message ##{@chatroom.name}" %>
+  <% end %>
+</div>

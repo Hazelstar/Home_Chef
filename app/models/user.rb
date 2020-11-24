@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :availabilities, dependent: :destroy
 
+  has_many :messages, dependent: :destroy
+  has_many :chatrooms, through: :messages
 
   def is_a_cook?
     self.is_a_cook == "true"
