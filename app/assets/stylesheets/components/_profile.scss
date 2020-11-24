@@ -4,8 +4,16 @@
     align-items: center;
     flex-direction: column;
   }
+
   #dashboard-button {
     flex-basis: auto;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .profile {
+    padding-left: 20vh;
+    padding-right: 20vh;
   }
 }
 
@@ -16,7 +24,6 @@
   box-shadow: 4px 4px 1px $dark-gray;
   // width: 85vw;
   // height: 70vh;
-  margin: auto;
     h6 {
       // margin-top: 20px;
       // margin-bottom: 16px;
@@ -40,7 +47,7 @@
 .quotebox--quotes:before,
 .quotebox--quotes:after {
   position: absolute;
-  font-family: serif;
+  font-family: sans-serif;
   font-size: 60px;
   font-weight: bold;
   line-height: 1;
