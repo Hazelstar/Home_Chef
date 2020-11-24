@@ -6,6 +6,6 @@ class Booking < ApplicationRecord
 
   def time_to_cook
     # 10 min preparation time + 30 min per meal
-    10 + 30 * self.number_of_meals
+    "#{((10 + 30 * self.number_of_meals) / 60).floor}:#{(10 + 30 * self.number_of_meals) % 60} hour"
   end
 end
