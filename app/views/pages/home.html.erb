@@ -51,10 +51,24 @@
       <div class="bio m-5">
         <blockquote class="quotebox quotebox--quotes mb-0">
           <h4 class="p-3 text-center">If you love cooking, HOME CHEF is also a great way to share your passion with people while earning some side income.</h4>
-          <%= link_to edit_user_registration_path do %>
+          <% if user_signed_in? && current_user.is_a_cook? %>
+              <%= link_to profile_path do %>
+              <button class="text-center btn-banner" id="cooker">
+                <h3>Become a cook</h3>
+              </button>
+            <% end %>
+          <% elsif user_signed_in? && !current_user.is_a_cook? %>
+           <%= link_to edit_user_registration_path do %>
             <button class="text-center btn-banner" id="cooker">
               <h3>Become a cook</h3>
             </button>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+              <button class="text-center btn-banner" id="cooker">
+                <h3>Become a cook</h3>
+              </button>
+            <% end %>
           <% end %>
           <br>
           <h4 class="p-3 text-center">You can set up your calendar as you like, monitor your bookings and showcase your signature dishes!</h4>
