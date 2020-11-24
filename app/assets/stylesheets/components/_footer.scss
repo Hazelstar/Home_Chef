@@ -2,11 +2,7 @@
   // height: 15%;
   width: 100%;
   background: #F2F4F8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0px 50px;
+  padding: 0px 30px;
   color: $dark-gray;
     h6 {
       opacity: 0.8;
@@ -17,8 +13,9 @@
 }
 .footer-links {
   display: flex;
-  align-items: center;
+  // align-items: center;
 }
+
 .footer-links a {
   color: #0f1108;
   opacity: 0.15;
@@ -32,28 +29,7 @@
   opacity: 1;
 }
 
-
-@media screen and (max-height: 600px){
-  .footer-effect .footer-links {
-    display: block;
-    width: 100%;
-    text-align: center;
-    display: flex;
-    position: absolute;
-  }
-}
-
-@media screen and(min-height: 601px){
-  .footer-effect .footer-links {
-    display: block;
-    width: 100%;
-    text-align: center;
-    display: flex;
-    position: absolute;
-  }
-}
-
-@media screen and (min-height: 992px){
+@media only screen and (max-height:600px) {
   .footer-effect .footer-links {
     display: block;
     width: 100%;

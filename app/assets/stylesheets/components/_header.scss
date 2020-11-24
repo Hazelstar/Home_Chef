@@ -4,18 +4,21 @@
   padding: 20px;
   background-color: $light-blue;
   z-index: 1;
-  margin-bottom: 15px;
-    h1 {
-    font-size: 50px;
+
+  #header-button {
+    a {
+    font-size: 60px;
+    position: absolute;
+    top: 0;
     font-weight: bolder;
     color: $dark-gray;
     text-shadow: 3px 3px $sunshine;
     margin: 20px;
-  }
-    h3 {
-      font-size: 20px;
-      margin: 0 40px;
+      &:hover {
+        text-shadow: -3px 3px $medium-blue;
+      }
     }
+  }
 }
 
 .sticky {
@@ -27,3 +30,4 @@
 .sticky + .content {
   padding-top: 102px;
 }
+
