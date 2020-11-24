@@ -1,3 +1,12 @@
+@media only screen and (max-width: 600px) {
+  .to-row {
+    flex-direction: column;
+  }
+  .center-my-form {
+    margin-left: 5px;
+  }
+}
+
 body {
   background-color: $dark-blue !important;
 }

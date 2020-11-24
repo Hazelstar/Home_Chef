@@ -1,16 +1,14 @@
 
 // Specific CSS for your home-page
 @media only screen and (max-width: 600px) {
-  .row {
+  .row-home-page {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    #row-reverse {
-      flex-wrap: wrap-reverse;
-    }
   }
   #row-reverse {
-    flex-direction: row-reverse;
+    flex-direction: column-reverse;
+
   }
 }
 
