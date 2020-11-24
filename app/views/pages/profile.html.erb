@@ -1,9 +1,8 @@
-
-<div class="profile" style="margin-top: 20vh; margin-bottom: 5vh;">
-  <div class="profile-layout row p-2 m-2">
+<div class="profile d-flex justify-content-center" style="margin-top: 20vh; margin-bottom: 5vh; margin-left: 2vh; margin-right: 2vh;">
+  <div class="profile-layout row px-5 pt-5 pb-3 m-2">
     <!-- Left column that statically displays users info -->
     <div class="col-md-6 col-sm-12 p-0">
-      <div class="d-flex pb-5">
+      <div id="info-column" class="d-flex pb-2">
         <div class="pr-2">
             <!--  profile img -->
             <%= cl_image_tag current_user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
@@ -17,12 +16,15 @@
       </div>
       <div class="p-3">
         <% if current_user.is_a_cook? %>
-          <div class="d-flex justify-content-between pb-5">
-            <div class="m-5 my-auto" id="cook-display">
+          <div id="info-column" class="d-flex to-row justify content-around">
+            <div class="mx-3 my-1 p-2" id="cook-display">
               <h6 class="text-center mb-0">You are cooking!</h6>
             </div>
-            <div class="m-5 my-auto" id="cook-display">
+            <div class="mx-3 my-1 p-2" id="cook-display">
               <h6 class="text-center mb-0"><%= current_user.price %> € / hour</h6>
+            </div>
+            <div class="mx-3 my-1 p-2" id="cook-display">
+              <h6 class="text-center mb-0">Favorite utensil: wooden spoon<%#= current_user.utensil %></h6>
             </div>
           </div>
         <% end %>
