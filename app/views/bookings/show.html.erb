@@ -8,11 +8,9 @@
           <div class="form-post">
             <h3 class="mb-3">Congratulations!</h3>
             <h3 class="mb-4">You've booked with <%= @booking.cooker.first_name.capitalize %> <%= @booking.cooker.last_name.capitalize %>!</h3>
-
             <p>Booking date: <%= @booking.start_date.strftime("%d of %B, %Y") %></p>
             <p>Number of meals: <%= @booking.number_of_meals %></p>
             <p>Cooking Time: <%= @booking.time_to_cook %> min</p>
-
             <%= link_to "Back to my profile", :profile, class: "btn-effect px-2 mt-2" %>
             <br>
             <br>
@@ -25,6 +23,5 @@
     <div class="col-sm-12 col-md-6">
       <%= render "components/image" %>
     </div>
-
   </div> <!-- closes row -->
 </div>
