@@ -6,7 +6,7 @@
       <div class="d-flex pb-5">
         <div class="pr-2">
             <!--  profile img -->
-            <%= cl_image_tag current_user.photo.key, :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
         </div>
         <div class="pl-2 mt-4">
             <!-- welcome msg -->
