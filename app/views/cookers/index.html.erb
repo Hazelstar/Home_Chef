@@ -27,3 +27,16 @@
   <% end %>
 </div>
 
+<div class="container">
+  <div class="row justify-content-center pt-3">
+    <div class="col-sm-6">
+      <%= form_tag cookers_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a cook" %>
+          <%= submit_tag "Search", class: "btn-effect btn-profile" %>
+      <% end %>
+    </div>
+  </div>
+</div>
