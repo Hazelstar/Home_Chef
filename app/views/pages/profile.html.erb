@@ -4,7 +4,7 @@
     <!-- Left column that statically displays users info -->
     <div class="col-md-6 col-sm-12 p-0">
 
-      <div id="info-column" class="d-flex pb-2">
+      <div id="info-column" class="d-flex pb-2 mx-3">
         <!--  profile img -->
         <div class="pr-2">
           <%= cl_image_tag current_user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
@@ -112,7 +112,7 @@
     </div> <!-- closes right column -->
 
     <!-- dashboard buttons -->
-    <div class="col-12">
+    <div id="dashboard-button" class="col-12">
       <div class="row to-row d-flex justify-content-center">
         <!-- button to display bookings -->
         <button class="btn-effect btn-profile" id="bookings-display">
