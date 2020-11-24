@@ -1,19 +1,22 @@
 <div class="profile d-flex justify-content-center" style="margin-top: 20vh; margin-bottom: 5vh; margin-left: 2vh; margin-right: 2vh;">
   <div class="profile-layout row px-5 pt-5 pb-3 m-2">
+
     <!-- Left column that statically displays users info -->
     <div class="col-md-6 col-sm-12 p-0">
+
       <div id="info-column" class="d-flex pb-2">
+        <!--  profile img -->
         <div class="pr-2">
-            <!--  profile img -->
-            <%= cl_image_tag current_user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
         </div>
+        <!-- welcome msg -->
         <div class="pl-2 mt-4">
-            <!-- welcome msg -->
-            <h3>Welcome <%= current_user.first_name.capitalize %>!</h3>
-            <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
-            <p><i class="fas fa-home"></i> <%= current_user.address %></p>
+          <h3>Welcome <%= current_user.first_name.capitalize %>!</h3>
+          <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
+          <p><i class="fas fa-home"></i> <%= current_user.address %></p>
         </div>
       </div>
+
       <div class="p-3">
         <% if current_user.is_a_cook? %>
           <div id="info-column" class="d-flex to-row justify content-around">
