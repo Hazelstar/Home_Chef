@@ -11,8 +11,13 @@ const showInfo = () => {
       displays.forEach((section) => $(section).hide());
       var display = btn.getAttribute('id');
       var content = document.getElementsByClassName(display);
-        $(content).show();
-        $(btn).addClass('toto');
+      $(content).show();
+
+      buttons.forEach((button) => {
+        $(button).removeClass('active-toto')
+      });
+
+      $(btn).addClass('active-toto');
     });
   })
 }
