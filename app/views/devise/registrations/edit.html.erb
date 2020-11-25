@@ -36,6 +36,10 @@
               <%= f.input :price, :label => "Define your hourly price in €", as: :integer,
                           required: true,
                           input_html: { autocomplete: "My hourly price"} %>
+              <%= f.input :favorite_utensil,
+                          hint: "What's your favorite kitchen utensil? 🧑🏻‍🍳",
+                          required: true,
+                          input_html: { autocomplete: "Fav utensil" } %>
             </div>
 
             <%= f.input :bio,
