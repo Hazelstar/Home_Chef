@@ -31,28 +31,22 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
-
-  <body class="<%= controller_name %>-<%= action_name %>">
-
-     <div class='page-container'>
-       <% if controller_name == 'pages' && action_name == 'home' %>
-      <%= render "components/banner" %>
-      <div id="yield-content">
-        <%= yield %>
-      </div>
-    <% else %>
-      <%= render "components/header" %>
-      <div id="yield-content" style="margin-top: 15vh;"> <!-- don't change the vh here!!!!!! -->
-        <%= yield %>
-      </div>
-    <% end %>
-
+  <body class="<%= controller_name %>-<%= action_name %> mb-0">
+    <div class='page-container'>
+      <% if controller_name == 'pages' && action_name == 'home' %>
+        <%= render "components/banner" %>
+        <div id="yield-content">
+          <%= yield %>
+        </div>
+      <% else %>
+        <%= render "components/header" %>
+        <div id="yield-content" style="margin-top: 15vh;"> <!-- don't change the vh here!!!!!! -->
+          <%= yield %>
+        </div>
+      <% end %>
       <%= render "components/navbar" %>
-
-
-    <%= render 'components/footer' %>
-    <%= render 'shared/flashes' %>
-
-  </div>
+      <%= render 'components/footer' %>
+      <%= render 'shared/flashes' %>
+    </div>
   </body>
 </html>
