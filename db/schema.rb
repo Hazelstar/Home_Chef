@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_104817) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "start_date", default: "2020-11-24 12:00:00"
+    t.datetime "start_date", default: "2020-11-25 12:00:00"
     t.integer "number_of_meals", default: 3
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

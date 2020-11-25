@@ -80,7 +80,7 @@
           <ul>
             <% @cooker.availabilities.each do |availability| %>
               <li>
-                <%= availability.event_date %>
+                <%= availability.good_availability_format %>
               </li>
              <% end %>
           </ul>
@@ -106,7 +106,7 @@
               </button>
             </div>
 
-            <%= simple_form_for @booking, url: user_bookings_path(current_user), method: :post do |f| %>
+            <%= simple_form_for @booking, url: user_bookings_path(@cooker), method: :post do |f| %>
               <div class="modal-body" style="background-color: #F2F4F8;">
                 <div class="form-group mb-0 mx-3 mt-3">
                   <%= f.input :number_of_meals,
@@ -114,18 +114,29 @@
                               :collection => 3..50 %>
                   <%= f.input :cooker_id, as: :hidden, input_html: { value: @cooker.id } %>
 
-                    <div  class="d-flex justify-content-around">
-                      <div class="mb-2" id="time">
-                        Cooking Time: 100 min
-                      </div>
-                      <script type="text/javascript"> var cooker_price = <%= @cooker.price.nil? ? 0 : @cooker.price %>; </script>
-                      <div class="mb-2" id="price-meals">
-                        Total Price: <%= @cooker.price.nil? ? 0 : @cooker.price * 3 %> €
-                      </div>
+                  <div  class="d-flex justify-content-around">
+                    <div class="mb-2" id="time">
+                      Cooking Time: 100 min
                     </div>
+                    <script type="text/javascript"> var cooker_price = <%= @cooker.price.nil? ? 0 : @cooker.price %>; </script>
+                    <div class="mb-2" id="price-meals">
+                      Total Price: <%= @cooker.price.nil? ? 0 : @cooker.price * 3 %> €
+                    </div>
+                  </div>
+
+                  <div class="date-availability" data-available="<%= @cooker.available_dates.to_json %>">
 
                     <label class="mt-3">When would you like <%= "#{@cooker.first_name.capitalize}"%> to come?</label>
-                  <%= f.collection_radio_buttons :start_date, @availabilities, :good_availability_format, :good_availability_format, item_wrapper_class: :block_radio_button_collection %>
+                    <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+                    <%#= f.collection_radio_buttons :start_date, @availabilities, :good_availability_format, :good_availability_format, item_wrapper_class: :block_radio_button_collection %>  
+                  </div>
+                  <ul class="text-center">
+                    <% @cooker.availabilities.each do |availability| %>
+                      <li style="list-style: none;">
+                        <%= availability.good_availability_format %>
+                      </li>
+                    <% end %>
+                  </ul>                  
                 </div>
               </div>
               <div class="modal-footer p-0">

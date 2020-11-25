@@ -2,7 +2,7 @@
   font-size: 14px;
   color: #0f1108;
   padding: 20px;
-  border: 1px solid #F2F4F8;
+  border: 2.5px solid #F2F4F8;
   border-top: none;
   border-bottom-width: 0;
   max-height: calc(100vh - 70px - 45px - 61px - 30px);
@@ -21,7 +21,7 @@
 }
 .message-content {
   background-color: #F2F4F8;
-  border-radius: 3px;
+  border-radius: 4px;
   margin: 0 10px;
   padding: 11px 10px 8px 10px;
 }
@@ -37,6 +37,7 @@
 }
 input.form-control {
   border: 1px solid #F2F4F8;
+  border-radius: 4px;
   box-shadow: none;
   font-size: 14px;
   color: #0f1108;
@@ -49,10 +50,11 @@ input.form-control {
 
 .chat-header {
   background-color: #F2F4F8;
+  border-radius: 4px;
   color: #EFC11A;
   padding: 10px 20px;
   margin-top: 10px;
-  h4 {
+  h1 {
     margin: 0;
   }
 }

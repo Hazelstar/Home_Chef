@@ -36,6 +36,3 @@ chatroom_1 = Chatroom.create(name:'General', booking: booking_1)
 message_1 = Message.create(content: 'Hellooooooo', user: user_1, chatroom: chatroom_1)
 message_2 = Message.create(content: 'hello', user: user_2, chatroom: chatroom_1)
 
-
-
-
