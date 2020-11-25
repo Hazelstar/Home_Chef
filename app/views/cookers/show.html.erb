@@ -6,9 +6,11 @@
 
       <div id="info-column" class="d-flex pb-2 mx-3">
        <!--  profile img -->
-        <div class="pr-2">
-          <%= cl_image_tag @cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
-        </div>
+       <% if @cooker.photo.attached? %>
+         <%= cl_image_tag @cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
+       <% else %>
+
+       <% end %>
 
       <!-- welcome msg -->
       <div class="pl-2 mt-4">
@@ -22,7 +24,7 @@
 
         <div id="info-column" class="d-flex to-row justify content-around">
           <div class="mx-3 my-1 p-2" id="cook-display">
-            <h6 class="text-center mb-0">Favorite utensil: wooden spoon<%#= current_user.utensil %></h6>
+            <h6 class="text-center mb-0">Favorite utensil: <%= @cooker.favorite_utensil %></h6>
           </div>
           <div class="mx-3 my-1 p-2" id="cook-display">
             <h6 class="text-center mb-0"><%= @cooker.price %> € / hour</h6>
@@ -61,12 +63,10 @@
   <div class="col-6 p-4" id="content-column">
     <div class="d-flex justify-content-center p-4">
 
-      <!-- This is the display of the messages box -->
-      <div class="content-display messages-display" style="display:none;">
+      <!-- This is the display of the messages box (NOT USED BECAUSE CONVERSATION STARTS WITH BOOKING)-->
+<!--       <div class="content-display messages-display" style="display:none;">
         <h3 class="mb-5 mt-2 text-center">Chat with <%= @cooker.first_name %>:</h3>
-
-
-      </div>
+      </div> -->
 
       <!-- This is the display of the availabilities index -->
       <div class="content-display availabilities-display">
