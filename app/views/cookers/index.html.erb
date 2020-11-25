@@ -1,7 +1,7 @@
 <!-- Search bar -->
 <div class="d-flex justify-content-center">
- <div class="search-bar row m-3 p-4">
-    <div class="form d-flex justify-content-center w-100">
+ <div class="search-bar row m-3">
+    <div class="form d-flex justify-content-center pt-2 w-100">
       <%= form_tag cookers_path, method: :get, class: "search-responsive" do %>
 
           <%= text_field_tag :query,
@@ -14,31 +14,31 @@
           <%= text_field_tag :min_price,
             params[:min_price],
             class: "form-control d-none d-sm-block",
-            style: "max-width: 110px;",
+            style: "max-width: 105px;",
             placeholder: "Min price" %>
           <%= text_field_tag :max_price,
             params[:max_price],
             class: "form-control d-none d-sm-block",
-            style: "max-width: 110px;",
+            style: "max-width: 105px;",
             placeholder: "Max price" %>
 
-          <%= submit_tag "Search", class: "btn-effect btn-profile d-none d-sm-block" %>
+          <%= submit_tag "Search", class: "btn-search d-none d-sm-block"%>
 
           <!-- this is to display responsive bar on xs to small screens -->
           <div class="d-flex d-sm-none">
             <%= text_field_tag :min_price,
               params[:min_price],
               class: "form-control",
-              style: "max-width: 110px;",
+              style: "max-width: 105px;",
               placeholder: "Min price" %>
             <%= text_field_tag :max_price,
               params[:max_price],
               class: "form-control",
-              style: "max-width: 110px;",
+              style: "max-width: 105px;",
               placeholder: "Max price" %>
           </div>
           <div class="d-flex justify-content-center d-sm-none">
-            <%= submit_tag "Search", class: "btn-effect" %>
+            <%= submit_tag "Search", class: "btn-search" %>
           </div>
 
       <% end %>

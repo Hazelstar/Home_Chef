@@ -95,8 +95,29 @@ a {
   background-color: $sunshine;
 }
 
-
-
+// Button for search bar
+.btn-search {
+  background-color: #EFC11A;
+  color: $dark-gray;
+  border-radius: 15px;
+  width: 180px;
+  font-family: 'Staatliches', 'sans-serif';
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 4px 4px 1px $dark-gray;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  outline: none;
+  border: none;
+  &:hover {
+    color: $light-blue;
+    box-shadow: 4px 4px 1px $light-blue;
+    }
+  &:focus {
+    outline: none;
+  }
+}
 
 
 
