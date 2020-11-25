@@ -44,3 +44,4 @@ booking_2 = Booking.create(number_of_meals: 5, user: user_1, cooker: user_6)
 chatroom_2 = Chatroom.create(name:'Booking 2', booking: booking_2)
 message_3 = Message.create(content: "Hello Diogo, I love desserts, but you should know that I'm allergic to peanut!", user: user_1, chatroom: chatroom_1)
 message_4 = Message.create(content: "Hi there Lola, no problem, I won't use any peanut nor peanut butter in the desserts for you!", user: user_6, chatroom: chatroom_1)
+

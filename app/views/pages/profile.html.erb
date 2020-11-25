@@ -75,7 +75,7 @@
 
           <ul>
             <% @user_bookings.each do |booking| %>
-              <li style="list-style: none;"> <%= link_to @user.first_name, user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %> </li>
+              <li style="list-style: none;"> <%= link_to booking.cooker.first_name, user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %> </li>
             <% end %>
           </ul>
         </div>
