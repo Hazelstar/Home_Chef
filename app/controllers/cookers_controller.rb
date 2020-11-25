@@ -9,7 +9,7 @@ class CookersController < ApplicationController
       @cookers = User.search(params[:query])
 
       if params[:min_price].present? && params[:max_price].present?
-        @cookers = @cookers.where("price >= ? and price => ?", params[:min_price].to_i, params[:max_price].to_i)
+        @cookers = @cookers.where("price >= ? and price <= ?", params[:min_price].to_i, params[:max_price].to_i)
       elsif params[:min_price].present?
         @cookers = @cookers.where("price >= ?", params[:min_price].to_i)
       elsif params[:max_price].present?
@@ -18,7 +18,7 @@ class CookersController < ApplicationController
 
     else
       if params[:min_price].present? && params[:max_price].present?
-        @cookers = @cookers.where("price >= ? and price => ?", params[:min_price].to_i, params[:max_price].to_i)
+        @cookers = @cookers.where("price >= ? and price <= ?", params[:min_price].to_i, params[:max_price].to_i)
       elsif params[:min_price].present?
         @cookers = @cookers.where("price >= ?", params[:min_price].to_i)
       elsif params[:max_price].present?
