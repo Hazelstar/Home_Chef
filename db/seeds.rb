@@ -23,8 +23,8 @@ Booking.destroy_all
 User.destroy_all
 
 
-user_1 = User.create(email:'me@me.com', password:'123456')
-user_2 = User.create(email:'lilou@lilou.com', password:'123456')
+user_1 = User.create(first_name: "meme", last_name: "meme", email:'me@me.com', password:'123456')
+user_2 = User.create(first_name: "lola", last_name: "lola", email:'lilou@lilou.com', password:'123456')
 booking_1 = Booking.create(number_of_meals: 3, user: user_2, cooker: user_1)
 
 chatroom_1 = Chatroom.create(name:'general', booking: booking_1)

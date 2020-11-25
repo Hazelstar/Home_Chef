@@ -20,4 +20,10 @@ class User < ApplicationRecord
   def is_a_cook?
     self.is_a_cook == "true"
   end
+
+  def available_dates
+    self.availabilities.map do |availability|
+      availability.event_date
+    end
+  end
 end
