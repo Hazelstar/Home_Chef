@@ -6,9 +6,11 @@
 
       <div id="info-column" class="d-flex pb-2 mx-3">
        <!--  profile img -->
-        <div class="pr-2">
-          <%= cl_image_tag @cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
-        </div>
+       <% if @cooker.photo.attached? %>
+         <%= cl_image_tag @cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
+       <% else %>
+         <%= render "components/cookdefaultpic" %>
+       <% end %>
 
       <!-- welcome msg -->
       <div class="pl-2 mt-4">
