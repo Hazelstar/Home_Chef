@@ -6,6 +6,9 @@ class PagesController < ApplicationController
 
   def profile
     @user = current_user
+    # @cooker = User.where(cooker: current_user)
+    # @cooker = User.find(params[:user]['cooker_id'].to_i)
+
     @user_bookings = Booking.where(user: current_user)
     @cooker_bookings = Booking.where(cooker: current_user)
     @user_availabilities = Availability.where(user: current_user) if current_user.is_a_cook?
