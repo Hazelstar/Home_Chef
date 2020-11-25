@@ -16,6 +16,7 @@
 
 .search-responsive {
   display: flex;
+  width: 95%;
   @media only screen and (max-width: 600px) {
     display: block;
   }
@@ -23,6 +24,7 @@
 
 #min_price {
   margin: 10px 16px;
+  max-width: 105px;
   @media only screen and (max-width: 600px) {
     margin: 0;
   }
@@ -30,9 +32,16 @@
 
 #max_price {
   margin: 10px 0;
+  max-width: 105px;
   @media only screen and (max-width: 600px) {
     margin: 0 0 10px 0;
   }
 }
 
-
+.query-search {
+  margin: 10px 0;
+  max-width: 50%;
+  @media only screen and (max-width: 600px) {
+    max-width: 100%;
+  }
+}

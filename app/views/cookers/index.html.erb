@@ -1,4 +1,4 @@
-<!-- Search bar -->
+<!-- Search bar responsive on desktop screen -->
 <div class="d-flex justify-content-center">
  <div class="search-bar row m-3">
     <div class="form d-flex justify-content-center pt-2 w-100">
@@ -6,45 +6,53 @@
 
           <%= text_field_tag :query,
             params[:query],
-            class: "form-control",
-            style: "margin: 10px 0; max-width: 300px;",
-            placeholder: "Search by city, cook, dish specialty" %>
-
-            <!-- this is to display responsive bar on medium to large screens -->
+            class: "form-control query-search",
+            placeholder: "Search by city, cook, dish specialty",
+            autofocus: true %>
           <%= text_field_tag :min_price,
             params[:min_price],
             class: "form-control d-none d-sm-block",
-            style: "max-width: 105px;",
             placeholder: "Min price" %>
           <%= text_field_tag :max_price,
             params[:max_price],
             class: "form-control d-none d-sm-block",
-            style: "max-width: 105px;",
             placeholder: "Max price" %>
 
           <%= submit_tag "Search", class: "btn-search d-none d-sm-block"%>
-
-          <!-- this is to display responsive bar on xs to small screens -->
-          <div class="d-flex d-sm-none">
-            <%= text_field_tag :min_price,
-              params[:min_price],
-              class: "form-control",
-              style: "max-width: 105px;",
-              placeholder: "Min price" %>
-            <%= text_field_tag :max_price,
-              params[:max_price],
-              class: "form-control",
-              style: "max-width: 105px;",
-              placeholder: "Max price" %>
-          </div>
-          <div class="d-flex justify-content-center d-sm-none">
-            <%= submit_tag "Search", class: "btn-search" %>
-          </div>
-
       <% end %>
     </div>
   </div>
 </div>
+
+<!-- this is to display RESPONSIVE bar on xs to small screens -->
+<div class="d-flex justify-content-center d-block d-sm-none">
+ <div class="search-bar row m-3">
+    <div class="form d-flex justify-content-center pt-2 w-100">
+      <%= form_tag cookers_path, method: :get, class: "search-responsive" do %>
+
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control query-search",
+          placeholder: "Search by city, cook, dish specialty",
+          autofocus: true %>
+        <div class="d-flex d-sm-none">
+          <%= text_field_tag :min_price,
+            params[:min_price],
+            class: "form-control",
+            placeholder: "Min price" %>
+          <%= text_field_tag :max_price,
+            params[:max_price],
+            class: "form-control",
+            placeholder: "Max price" %>
+        </div>
+        <div class="d-flex justify-content-center">
+          <%= submit_tag "Search", class: "btn-search" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 
 <!-- Display of the cooks -->
 <div class="mt-5 ml-3">
