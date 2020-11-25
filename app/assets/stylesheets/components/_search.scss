@@ -1,0 +1,16 @@
+.search-bar {
+  display:  flex;
+  background-color: $medium-blue;
+  border-radius: 40px;
+  box-shadow: 5px 5px 1px $dark-gray;
+}
+
+.sticky-search {
+  position: fixed;
+  top: 10%;
+  width: 70%;
+}
+
+.sticky-search + .content {
+  padding-top: 102px;
+}
