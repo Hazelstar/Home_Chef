@@ -14,8 +14,16 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :availabilities, dependent: :destroy
 
+  include PgSearch::Model
+    pg_search_scope :search, # <- you can name your method
+      against: [ :first_name, :last_name, :address, :bio ],
+      using: {
+      tsearch: { prefix: true }
+    }
 
   def is_a_cook?
     self.is_a_cook == "true"
   end
 end
+
+

@@ -15,11 +15,16 @@ class CookersController < ApplicationController
   def index
     @cookers = User.where(is_a_cook: 'true')
     if params[:query].present?
-      @cookers = User.where(first_name: params[:query])
+      @cookers = User.search(params[:query])
+      if params[:min_price].present? && params[:max_price].present?
+        @cookers = @cookers.where("price >= ? and price <= ?", params[:min_price].to_i, params[:max_price].to_i)
+      elsif params[:min_price].present?
+        @cookers = @cookers.where("price >= ?", params[:min_price].to_i)
+      elsif params[:max_price].present?
+        @cookers = @cookers.where("price <= ?", params[:max_price].to_i)
+      end
     end
-
   end
-
 
   def show
     @cooker = User.find(params[:id])

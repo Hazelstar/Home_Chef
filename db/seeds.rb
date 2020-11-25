@@ -10,18 +10,17 @@ Chatroom.destroy_all
 Booking.destroy_all
 User.destroy_all
 
-user_1 = User.create(email:'me@me.com’, password:‘123456’)
-user_2 = User.create(email:'lilou@lilou.com’, password:‘123456’)
-user_3 = User.create(:first_name 'Lola', :last_name 'Guérin', :address 'lisbon',
-  :phone_number '+33610205610', :is_a_cook :true,
-  :bio "I really like to cook asian food. I find my inspirations through
+user_1 = User.create(email:'lucien@lucien.com', password:'123456', first_name: 'Lucien', last_name: "Andrieux", is_a_cook: :true)
+user_2 = User.create(email:'marion@marion.com', password:'123456', first_name: 'Marion')
+user_3 = User.create(first_name: 'Lola', last_name: 'Guérin', address: 'Lisbon', phone_number: '+33610205610',
+  is_a_cook: :true, bio: "I really like to cook asian food. I find my inspirations through
   my travels and a lot of books and chiefs. My Mum it's Italian so I can also
-  food a tradition in our culture.", :price 30)
+  food a tradition in our culture.", price: 30)
 
 booking_1 = Booking.create(number_of_meals: 3, user: user_2, cooker: user_1)
-chatroom_1 = Chatroom.create(name:‘general’, booking: booking_1)
-message_1 = Message.create(content: ‘hellooooooo’, user: user_1, chatroom: chatroom_1)
-message_2 = Message.create(content: ‘hello’, user: user_2, chatroom: chatroom_1)
+chatroom_1 = Chatroom.create(name:'General', booking: booking_1)
+message_1 = Message.create(content: 'Hellooooooo', user: user_1, chatroom: chatroom_1)
+message_2 = Message.create(content: 'hello', user: user_2, chatroom: chatroom_1)
 
 
 

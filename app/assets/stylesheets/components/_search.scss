@@ -1,16 +1,33 @@
 .search-bar {
-  display:  flex;
+  display: flex;
   background-color: $medium-blue;
-  border-radius: 40px;
+  height: 10vh;
+  width: 70vw;
+  border-radius: 30px;
   box-shadow: 5px 5px 1px $dark-gray;
+  @media only screen and (max-width: 600px) {
+    min-height: 20vh;
+    padding: 8px;
+  }
 }
 
-.sticky-search {
-  position: fixed;
-  top: 10%;
-  width: 70%;
+.search-responsive {
+  display: flex;
+  @media only screen and (max-width: 600px) {
+    display: block;
+  }
 }
 
-.sticky-search + .content {
-  padding-top: 102px;
+#min_price {
+  margin: 10px 16px;
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+  }
+}
+
+#max_price {
+  margin: 10px 0;
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+  }
 }
