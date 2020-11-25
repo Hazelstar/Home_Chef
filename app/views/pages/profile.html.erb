@@ -67,8 +67,8 @@
         <div class="content-display messages-display text-center" style="display:none;">
           <h3 class="mb-3 mt-2">My messages:</h3>
           <ul>
-            <%  @user_chatrooms.each do |chatroom| %>
-              <%= link_to @user.first_name, user_chatroom_path(current_user, chatroom) %>
+            <% @user_chatrooms.each do |chatroom| %>
+              <li style="list-style: none;"> <%= link_to @user.first_name, user_chatroom_path(current_user, chatroom) %> </li>
             <% end %>
           </ul>
         </div>

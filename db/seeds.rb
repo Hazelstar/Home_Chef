@@ -18,9 +18,7 @@
 #   my travels and a lot of books and chiefs. My Mum it's Italian so I can also
 #   food a tradition in our culture.", price: 2)
 Message.destroy_all
-
 Chatroom.destroy_all
-
 Booking.destroy_all
 User.destroy_all
 
