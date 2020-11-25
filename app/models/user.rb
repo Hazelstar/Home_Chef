@@ -15,18 +15,16 @@ class User < ApplicationRecord
   has_many :availabilities, dependent: :destroy
 
   include PgSearch::Model
-    pg_search_scope :search, # <- you can name your method
-      against: [ :first_name, :last_name, :address, :bio ],
-      using: {
-      tsearch: { prefix: true }
+  pg_search_scope :search, # <- you can name your method
+    against: [:first_name, :last_name, :address, :bio, :favorite_utensil],
+    using: {
+    tsearch: { prefix: true }
     }
   has_many :messages, dependent: :destroy
   has_many :chatrooms, -> { distinct }, through: :messages
-
 
   def is_a_cook?
     self.is_a_cook == "true"
   end
 end
-
 

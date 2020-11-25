@@ -28,7 +28,7 @@
               <h6 class="text-center mb-0"><%= current_user.price %> € / hour</h6>
             </div>
             <div class="mx-3 my-1 p-2" id="cook-display">
-              <h6 class="text-center mb-0">Favorite utensil: wooden spoon<%#= current_user.utensil %></h6>
+              <h6 class="text-center mb-0">Favorite utensil: <%= current_user.favorite_utensil %></h6>
             </div>
           </div>
         <% end %>
