@@ -33,6 +33,7 @@ class CookersController < ApplicationController
     @availabilities = Availability.where(user: @cooker)
 
     @booking = Booking.new
+
   end
 
   private

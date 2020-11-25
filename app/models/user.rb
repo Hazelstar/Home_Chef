@@ -20,6 +20,9 @@ class User < ApplicationRecord
       using: {
       tsearch: { prefix: true }
     }
+  has_many :messages, dependent: :destroy
+  has_many :chatrooms, -> { distinct }, through: :messages
+
 
   def is_a_cook?
     self.is_a_cook == "true"

@@ -33,7 +33,7 @@ import "bootstrap";
 import { UpdatePrice } from 'pluggins/checkbox';
 import { nb_meals, price } from 'pluggins/refresh';
 import { showInfo } from 'pluggins/dashboard';
-import { clearSearch } from 'pluggins/search';
+import { initChatroomCable } from 'channels/chatroom_channel.js';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -42,7 +42,9 @@ document.addEventListener('turbolinks:load', () => {
   price();
   showInfo();
   UpdatePrice();
-  clearSearch();
+  initChatroomCable();
 });
+
+
 
 
