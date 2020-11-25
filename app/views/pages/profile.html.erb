@@ -66,9 +66,16 @@
         <!-- This is the display of the messages section -->
         <div class="content-display messages-display text-center" style="display:none;">
           <h3 class="mb-3 mt-2">My messages:</h3>
+
           <ul>
-            <% @user_chatrooms.each do |chatroom| %>
-              <li style="list-style: none;"> <%= link_to @user.first_name, user_chatroom_path(current_user, chatroom) %> </li>
+            <% @cooker_bookings.each do |booking| %>
+              <li style="list-style: none;"> <%= link_to @user.first_name, user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %> </li>
+            <% end %>
+          </ul>
+
+          <ul>
+            <% @user_bookings.each do |booking| %>
+              <li style="list-style: none;"> <%= link_to @user.first_name, user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %> </li>
             <% end %>
           </ul>
         </div>
