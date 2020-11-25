@@ -2,17 +2,16 @@
 <div class="my-0">
 
   <!-- First row -->
-  <div class="row m-0 justify-content-between min-height">
+  <div class="row row-home-page m-0 justify-content-between min-height">
     <div class="col-sm-1 col-md-6 p-5 align-items-center">
-      <div class="bio m-5">
-        <i class="fas fa-quote-left"></i>
+      <div class="bio my-5">
+        <blockquote class="quotebox quotebox--quotes px-0 mb-0 mx-3">
           <h4 class="p-3 text-center">I was tired of ordering from the same restaurants every other day. On a daily basis I really prefer homemade food, as it lets me in control of what I put in my plate.</h4>
           <p class="p-3 text-right">Marc, DevOps Engineer, Paris</p>
-        <i class="fas fa-quote-right"></i>
-        <i class="fas fa-quote-left"></i>
+          <br>
           <h4 class="pb-3 text-center">I really enjoy cooking for others. I have grown comfortable putting my personal touch in my dishes, so my friends are always asking for my cooking secrets!</h4>
           <p class="p-3 text-right">Maria, Freelancer, Lisbon</p>
-        <i class="fas fa-quote-right"></i>
+        </blockquote>
       </div>
     </div>
 
@@ -22,43 +21,62 @@
   </div>
 
   <!-- Second row -->
-  <div class="row m-0 justify-content-between min-height">
+  <div id="row-reverse" class="row row-home-page m-0 justify-content-between min-height">
 
     <div class="col-sm-1 col-md-6 col-md-6-push p-0">
       <%= render "components/imagehome2" %>
     </div>
 
-    <div class="col-sm-1 col-md-6 col-md-6-pull p-5 text-center align-items-center">
-      <div class="bio m-5">
-        <i class="fas fa-quote-left"></i>
-        <h4 class="p-3 text-center">HOME CHEF allows you to find the perfect local cook for tailored weekly meals prepared from the comfort of your home.</h4>
-        <%= link_to cookers_path do %>
-          <button class="text-center btn-banner">
-            <h3>Browse cooks</h3>
-          </button>
-        <% end %>
-        <br>
-        <h4 class="p-3 text-center">Say goodbye to stress over organising your weekly menu, groceries shopping, and time consuming preparation.</h4>
-        <i class="fas fa-quote-right"></i>
+    <div class="col-sm-1 col-md-6 p-5 text-center align-items-center">
+      <div class="bio my-5">
+        <blockquote class="quotebox quotebox--quotes px-0 mb-0 mx-3">
+          <h4 class="text-center">HOME CHEF allows you to find the perfect local cook for tailored weekly meals prepared from the comfort of your home.</h4>
+        </blockquote>
+          <%= link_to cookers_path do %>
+            <button class="text-center btn-banner">
+              <h3>Browse cooks</h3>
+            </button>
+          <% end %>
+          <br>
+        <blockquote class="quotebox quotebox--quotes px-0 mb-0 mx-3">
+          <h4 class="text-center">Say goodbye to stress over organising your weekly menu, groceries shopping, and time consuming preparation.</h4>
+        </blockquote>
       </div>
     </div>
 
   </div>
 
   <!-- Third row -->
-  <div id="row-reverse" class="row m-0 justify-content-between min-height">
+  <div class="row row-home-page m-0 justify-content-between min-height">
     <div class="col-sm-1 col-md-6 p-5 text-center align-items-center">
-      <div class="bio m-5">
-        <i class="fas fa-quote-left"></i>
-        <h4 class="p-3 text-center">If you love cooking, HOME CHEF is also a great way to share your passion with people while earning some side income.</h4>
-        <%= link_to cookers_path do %>
-          <button class="text-center btn-banner" id="cooker">
-            <h3>Become a cook</h3>
-          </button>
-        <% end %>
-        <br>
-        <h4 class="p-3 text-center">You can set up your calendar as you like, monitor your bookings and showcase your signature dishes!</h4>
-        <i class="fas fa-quote-right"></i>
+
+      <div class="bio my-5">
+        <blockquote class="quotebox quotebox--quotes px-0 mb-0 mx-3">
+          <h4 class="text-center">If you love cooking, HOME CHEF is also a great way to share your passion with people while earning some side income.</h4>
+        </blockquote>
+          <% if user_signed_in? && current_user.is_a_cook? %>
+              <%= link_to profile_path do %>
+              <button class="text-center btn-banner" id="cooker">
+                <h3>Become a cook</h3>
+              </button>
+            <% end %>
+          <% elsif user_signed_in? && !current_user.is_a_cook? %>
+           <%= link_to edit_user_registration_path do %>
+            <button class="text-center btn-banner" id="cooker">
+              <h3>Become a cook</h3>
+            </button>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+              <button class="text-center btn-banner" id="cooker">
+                <h3>Become a cook</h3>
+              </button>
+            <% end %>
+          <% end %>
+          <br>
+        <blockquote class="quotebox quotebox--quotes px-0 mb-0 mx-3">
+          <h4 class="text-center">You can set up your calendar as you like, monitor your bookings and showcase your signature dishes!</h4>
+        </blockquote>
         <br>
       </div>
       <!-- button back to top -->

@@ -1,18 +1,16 @@
 <div class="m-0">
-  <div class="row justify-content-between min-height">
+  <div class="row justify-content-between min-height flex-wrap">
 
-    <div class="col" style="margin-top: 5vh; padding-left: 5vh;">
-      <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
+    <div class="col-sm-12 col-md-6" style="margin-top: 5vh;">
+      <div class="row m-0 justify-content-center">
+        <div class="col-12 text-center">
 
           <div class="form-post">
             <h3 class="mb-3">Congratulations!</h3>
             <h3 class="mb-4">You've booked with <%= @booking.cooker.first_name.capitalize %> <%= @booking.cooker.last_name.capitalize %>!</h3>
-
             <p>Booking date: <%= @booking.start_date.strftime("%d of %B, %Y") %></p>
             <p>Number of meals: <%= @booking.number_of_meals %></p>
             <p>Cooking Time: <%= @booking.time_to_cook %> min</p>
-
             <%= link_to "Back to my profile", :profile, class: "btn-effect px-2 mt-2" %>
             <br>
             <br>
@@ -22,9 +20,8 @@
       </div>
     </div> <!-- closes left column with form -->
 
-    <div class="col">
+    <div class="col-sm-12 col-md-6">
       <%= render "components/image" %>
     </div>
-
   </div> <!-- closes row -->
 </div>

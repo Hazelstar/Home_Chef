@@ -6,11 +6,15 @@ button {
   h3 {
     margin: 0;
   }
+  &:focus {
+    outline: none;
+  }
 }
 
 .btn {
   color: $sunshine;
   font-family: 'Staatliches', 'sans-serif';
+  outline: 0;
   &:hover {
     color: $dark-gray;
   }
@@ -27,6 +31,7 @@ button {
   text-align: center;
   padding: 5px;
   margin: 20px 10px;
+  outline: none;
     h3 {
       font-size: 20px;
       color: $dark-gray;
@@ -46,6 +51,7 @@ button {
 a {
   text-decoration: none !important;
   color: $sunshine;
+  outline: none;
   font-family: 'Staatliches', 'sans-serif';
   &:hover {
     color: $dark-gray;
@@ -53,10 +59,13 @@ a {
 }
 
 // Class active
-.toto {
-  color: red;
-  box-shadow: 4px 4px 1px blue;
+.active-toto {
+  background-color: $light-blue;
+  box-shadow: 4px 4px 1px $medium-blue;
 }
+// .active {
+//   border-style: none;
+// }
 
 
 // banner buttons
@@ -69,6 +78,7 @@ a {
   background-color: $medium-blue;
   color: $dark-gray;
   text-align: center;
+  outline: none;
     h3 {
       margin: 0;
     }
@@ -76,13 +86,14 @@ a {
       color: $light-blue;
       box-shadow: 4px -4px 1px $light-blue;
     }
+    &:focus {
+      outline: none;
+    }
   }
 
 #cooker {
   background-color: $sunshine;
 }
-
-
 
 
 
