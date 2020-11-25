@@ -35,7 +35,3 @@ booking_1 = Booking.create(number_of_meals: 3, user: user_2, cooker: user_1)
 chatroom_1 = Chatroom.create(name:'General', booking: booking_1)
 message_1 = Message.create(content: 'Hellooooooo', user: user_1, chatroom: chatroom_1)
 message_2 = Message.create(content: 'hello', user: user_2, chatroom: chatroom_1)
-
-
-
-
