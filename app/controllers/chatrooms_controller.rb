@@ -1,11 +1,11 @@
 class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.includes(messages: :user).find(params[:id])
+    # @chatroom.name = chatroom.where(cooker: :user)
+
     @message = Message.new
     @message.user = current_user
 
-    @user_bookings = Booking.where(user: current_user)
-    @cooker_bookings = Booking.where(cooker: current_user)
   end
 
   def new
@@ -15,5 +15,9 @@ class ChatroomsController < ApplicationController
   private
   def chatroom_params
     params.require(:message).permit(:content)
+  end
+
+  def cooker
+    @cooker = User.find(params[:user_id])
   end
 end
