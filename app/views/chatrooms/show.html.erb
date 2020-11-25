@@ -11,7 +11,7 @@
         </div>
 
         <div id="create_message">
-          <%= simple_form_for [current_user, @chatroom, @message], remote: true do |f| %>
+          <%= simple_form_for [current_user, @chatroom.booking, @chatroom, @message], remote: true do |f| %>
           <%= f.input :content, label: false, placeholder: "Write your message", input_html: { autocomplete: "off", autofocus: "autofocus" } %>
           <% end %>
         </div>

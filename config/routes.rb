@@ -6,18 +6,19 @@ Rails.application.routes.draw do
   get '/404', to: "errors#not_found"
   get '/422', to: "errors#unacceptable"
   get '/500', to: "errors#internal_error"
-  
+
   get '/profile', to: 'pages#profile'
   patch '/edit_user_registration', to: 'pages#change_role'
   # delete '/users/sign_out', to: 'sessions#destroy'
   resources :cookers, only: [:index,:show ]
 
   resources :users, only: [:index] do
-    resources :bookings, only: [ :new, :create ]
-    resources :availabilities, only: [:index, :new, :create]
-    resources :chatrooms, only: [:create, :new, :show, :index] do
-      resources :messages, only: :create
+    resources :bookings, only: [ :new, :create ] do
+      resources :chatrooms, only: [:create, :new, :show, :index] do
+        resources :messages, only: :create
+      end
     end
+    resources :availabilities, only: [:index, :new, :create]
   end
   resources :availabilities, only: [:destroy]
   resources :bookings, only:[ :destroy, :show ]

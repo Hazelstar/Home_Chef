@@ -43,9 +43,9 @@
     <div class="col-12">
       <div id="dashboard-button" class="row d-flex justify-content-center">
       <!-- Message chat button -->
-        <button class="btn-effect btn-profile" id="messages-display">
+       <!--  <button class="btn-effect btn-profile" id="messages-display">
           <h3>Message me!</h3>
-        </button>
+        </button> -->
 
         <!-- Book me button + modal -->
         <button class="btn-effect btn-profile" id="book-me-display" data-toggle="modal" data-target="#exampleModalCenter">
@@ -63,8 +63,9 @@
 
       <!-- This is the display of the messages box -->
       <div class="content-display messages-display" style="display:none;">
-        <h3 class="mb-5 mt-2 text-center">Chat with @cooker.first_name:</h3>
-        <p>Hellooooooo I'm the message!</p>
+        <h3 class="mb-5 mt-2 text-center">Chat with <%= @cooker.first_name %>:</h3>
+
+
       </div>
 
       <!-- This is the display of the availabilities index -->
@@ -109,6 +110,7 @@
                   <%= f.input :number_of_meals,
                               :label => "How many meals would you like to have prepared?",
                               :collection => 3..50 %>
+                  <%= f.input :cooker_id, as: :hidden, input_html: { value: @cooker.id } %>
 
                   <div  class="d-flex justify-content-around">
                     <div class="mb-2" id="time">

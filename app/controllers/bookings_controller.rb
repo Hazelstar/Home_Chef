@@ -8,6 +8,8 @@ class BookingsController < ApplicationController
     # @booking = Booking.find(bookings_params)
     # @cooker = @booking.cooker_id
     # @user = @booking.booker_id
+    @user_chatrooms = current_user.chatrooms
+
   end
 
   def new
@@ -17,9 +19,9 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(bookings_params)
     @booking.user = current_user
-    @booking.cooker = @cooker
-
+    @booking.cooker = User.find(params[:booking]['cooker_id'].to_i)
     if @booking.save
+      @chatroom = Chatroom.create(name: @booking.cooker.first_name, booking: @booking)
       redirect_to booking_path(@booking)
     else
       render :new

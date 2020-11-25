@@ -2,12 +2,29 @@ class CookersController < ApplicationController
   before_action :set_counter, only: [:show]
   skip_before_action :authenticate_user!, only: [:index]
 
+  # index with search bar
   def index
     @cookers = User.where(is_a_cook: 'true')
+    if params[:query].present?
+      @cookers = User.search(params[:query])
 
-    respond_to do |format|
-      format.html
-      format.json { render json: { cookers: @cookers } }
+      if params[:min_price].present? && params[:max_price].present?
+        @cookers = @cookers.where("price >= ? and price <= ?", params[:min_price].to_i, params[:max_price].to_i)
+      elsif params[:min_price].present?
+        @cookers = @cookers.where("price >= ?", params[:min_price].to_i)
+      elsif params[:max_price].present?
+        @cookers = @cookers.where("price <= ?", params[:max_price].to_i)
+      end
+
+    else
+      if params[:min_price].present? && params[:max_price].present?
+        @cookers = @cookers.where("price >= ? and price <= ?", params[:min_price].to_i, params[:max_price].to_i)
+      elsif params[:min_price].present?
+        @cookers = @cookers.where("price >= ?", params[:min_price].to_i)
+      elsif params[:max_price].present?
+        @cookers = @cookers.where("price <= ?", params[:max_price].to_i)
+      end
+
     end
   end
 
@@ -16,6 +33,7 @@ class CookersController < ApplicationController
     @availabilities = Availability.where(user: @cooker)
 
     @booking = Booking.new
+
   end
 
   private
