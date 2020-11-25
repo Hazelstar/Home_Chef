@@ -62,11 +62,17 @@
             <% end %>
           </ul>
         </div>
+
         <!-- This is the display of the messages section -->
         <div class="content-display messages-display text-center" style="display:none;">
           <h3 class="mb-3 mt-2">My messages:</h3>
-          <p>Hellooooooo I'm the message!</p>
+          <ul>
+            <% @user_chatrooms.each do |chatroom| %>
+              <li style="list-style: none;"> <%= link_to @user.first_name, user_chatroom_path(current_user, chatroom) %> </li>
+            <% end %>
+          </ul>
         </div>
+
         <!-- This is the display of the availabilities index -->
         <div class="content-display availabilities-display text-center" style="display:none;">
           <% if @user.availabilities.any? %>
