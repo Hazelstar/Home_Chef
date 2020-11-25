@@ -3,6 +3,9 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.includes(messages: :user).find(params[:id])
     @message = Message.new
     @message.user = current_user
+
+    @user_bookings = Booking.where(user: current_user)
+    @cooker_bookings = Booking.where(cooker: current_user)
   end
 
   def new

@@ -15,10 +15,8 @@
             <br>
             <br>
             <% if @booking.chatrooms.present?  %>
-              <%= link_to "Talk to ", user_booking_chatroom_path(current_user, @booking, @booking.chatrooms.first), class: "btn-effect px-2 mt-2" %>
-
+              <%= link_to "Talk to #{@booking.cooker.first_name.capitalize}", user_booking_chatroom_path(current_user, @booking, @booking.chatrooms.first), class: "btn-effect px-2 mt-2" %>
             <% end %>
-
             <br>
             <br>
             <%= link_to "Back to cook", :cooker %>
