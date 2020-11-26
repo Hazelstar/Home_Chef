@@ -5,8 +5,9 @@ class CookersController < ApplicationController
   # index with search bar
   def index
     @cookers = User.where(is_a_cook: 'true')
+
     if params[:query].present?
-      @cookers = User.search(params[:query])
+      @cookers = User.where(is_a_cook: 'true').search(params[:query])
 
       if params[:min_price].present? && params[:max_price].present?
         @cookers = @cookers.where("price >= ? and price <= ?", params[:min_price].to_i, params[:max_price].to_i)
