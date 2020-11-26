@@ -50,14 +50,16 @@
         </button> -->
 
         <!-- Book me button + modal -->
-        <button class="btn-effect btn-profile" id="book-me-display" data-toggle="modal" data-target="#exampleModalCenter">
-          <h3>Book me!</h3>
-        </button>
+        <% if @cooker.availabilities.any? %>
+          <button class="btn-effect btn-profile" id="book-me-display" data-toggle="modal" data-target="#exampleModalCenter">
+            <h3>Book me!</h3>
+          </button>
+        <% else %>
+          <a class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">Book me!</a>
+        <% end %>
       </div>
     </div>
-
   </div> <!-- closes left column -->
-
 
   <!-- Right column that dynamically displays sections -->
   <div class="col-6 p-4" id="content-column">
@@ -69,7 +71,7 @@
       </div> -->
 
       <!-- This is the display of the availabilities index -->
-      <div class="content-display availabilities-display">
+      <div class="availabilities-display">
 
         <% if @cooker.availabilities.any? %>
           <h3 class="mb-3 mt-2 text-center">My schedule:</h3>
@@ -128,7 +130,7 @@
                     <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
                     <%#= f.collection_radio_buttons :start_date, @availabilities, :good_availability_format, :good_availability_format, item_wrapper_class: :block_radio_button_collection %>
                   </div>
-                  <ul class="text-center">
+                  <ul class="text-left">
                     <% @cooker.availabilities.each do |availability| %>
                       <li style="list-style: none;">
                         <%= availability.good_availability_format %>
