@@ -124,7 +124,24 @@
         <!-- This is the display of the photo section -->
         <div class="content-display pictures-display text-center" style="display:none;">
           <h3 class="mb-3 mt-2">My dishes:</h3>
-          <p>👷🏻‍♀️*** Section under construction! *** 👷🏻‍♀️</p>
+    <!--       <p>👷🏻‍♀️*** Section under construction! *** 👷🏻‍♀️</p> -->
+
+            <div class="d-flex justify-content-center">
+              <%= link_to new_user_photo_path(current_user.id) do %>
+                <button class="text-center btn-effect">
+                  <h3>Add Pictures</h3>
+                </button>
+              <% end %>
+            </div>
+
+            <div class="pr-2">
+              <% @user.photos.each do |photo| %>
+               <% if photo.photo.attached? %>
+                <%= cl_image_tag photo.photo.key, height: 300, width: 300 %>
+                <%= photo.title %>
+                <% end %>
+              <% end %>
+            </div>
         </div>
 
       </div> <!-- closes the display div that changes -->

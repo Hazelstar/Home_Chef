@@ -1,0 +1,27 @@
+<div class="m-0">
+  <div class="row justify-content-between min-height flex-wrap">
+
+    <div class="col-sm-12 col-md-6" style="margin-top: 5vh;">
+      <div class="row m-0 justify-content-center">
+        <div class="col-12 text-center">
+
+          <div class="form-post">
+            <h3 class="mb-5">Please upload your wonderful pictures of your meals:</h3>
+
+            <%= simple_form_for [@user, @photo] do |f| %>
+              <%= f.input :title %>
+              <%= f.input :photo, as: :file %>
+              <%= f.button :submit, 'Save', class: 'button btn-effect' %>
+            <% end %>
+            <%= link_to "Back", :profile %>
+          </div>
+        </div>
+      </div>
+    </div> <!-- closes right column with form -->
+
+    <div class="col-sm-12 col-md-6">
+      <%= render "components/image" %>
+    </div>
+
+  </div> <!-- closes row -->
+</div>

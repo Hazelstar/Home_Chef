@@ -23,6 +23,8 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :chatrooms, -> { distinct }, through: :messages
 
+  has_many :photos
+
   def is_a_cook?
     self.is_a_cook == "true"
   end
