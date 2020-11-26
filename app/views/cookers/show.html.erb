@@ -55,9 +55,11 @@
             <h3>Book me!</h3>
           </button>
         <% else %>
-          <a class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">Book me!</a>
+          <button class="btn-disabled btn disabled" role="button" aria-disabled="true">
+          <h4>Book me</h4>
+        </button>
         <% end %>
-        
+
        <!-- Picture button -->
         <button class="btn-effect btn-profile" id="pictures-display" >
           <h3><%= @cooker.first_name %>'s Speciality</h3>

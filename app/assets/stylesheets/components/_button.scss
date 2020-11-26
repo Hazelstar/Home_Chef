@@ -121,7 +121,18 @@ a {
   }
 }
 
-
+.btn-disabled {
+  background-color: $medium-blue;
+  color: $dark-gray;
+  border-radius: 15px;
+  width: 137px;
+  font-family: 'Staatliches', 'sans-serif';
+  text-decoration: none;
+  text-align: center;
+  padding: 5px;
+  margin: 20px 10px;
+  outline: none;
+}
 
 
 
