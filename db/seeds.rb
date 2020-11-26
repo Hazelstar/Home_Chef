@@ -35,13 +35,13 @@ user_6 = User.create(email: 'sharon@sharon.com', password: '123456', first_name:
   home my whole life as I learned with my mom and grandmother. When I'm not coding (I'm a full-stack developper),
   I like to experiment with food preparation. My friends always ask for my secret recipe: chocolate mousse!", price: 15)
 
-booking_1 = Booking.create(number_of_meals: 3, user: user_1, cooker: user_3)
-chatroom_1 = Chatroom.create(name:'Booking 1', booking: booking_1)
-message_1 = Message.create(content: "Hey Marion! Looking forward to your nice dishes inspired by Asia!", user: user_1, chatroom: chatroom_1)
-message_2 = Message.create(content: "Hi Lola, yes I have a nice Pad Thai recipe for you. Don't forget to buy cilentro!", user: user_2, chatroom: chatroom_1)
+# booking_1 = Booking.create(number_of_meals: 3, user: user_1, cooker: user_3)
+# chatroom_1 = Chatroom.create(name:'Booking 1', booking: booking_1)
+# message_1 = Message.create(content: "Hey Marion! Looking forward to your nice dishes inspired by Asia!", user: user_1, chatroom: chatroom_1)
+# message_2 = Message.create(content: "Hi Lola, yes I have a nice Pad Thai recipe for you. Don't forget to buy cilentro!", user: user_2, chatroom: chatroom_1)
 
-booking_2 = Booking.create(number_of_meals: 5, user: user_1, cooker: user_6)
-chatroom_2 = Chatroom.create(name:'Booking 2', booking: booking_2)
-message_3 = Message.create(content: "Hello Diogo, I love desserts, but you should know that I'm allergic to peanut!", user: user_1, chatroom: chatroom_1)
-message_4 = Message.create(content: "Hi there Lola, no problem, I won't use any peanut nor peanut butter in the desserts for you!", user: user_6, chatroom: chatroom_1)
+# booking_2 = Booking.create(number_of_meals: 5, user: user_1, cooker: user_6)
+# chatroom_2 = Chatroom.create(name:'Booking 2', booking: booking_2)
+# message_3 = Message.create(content: "Hello Diogo, I love desserts, but you should know that I'm allergic to peanut!", user: user_1, chatroom: chatroom_1)
+# message_4 = Message.create(content: "Hi there Lola, no problem, I won't use any peanut nor peanut butter in the desserts for you!", user: user_6, chatroom: chatroom_1)
 
