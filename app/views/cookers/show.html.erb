@@ -77,9 +77,9 @@
           <h3 class="mb-3 mt-2 text-center">My schedule:</h3>
 
           <!-- List of availabilities TO BE CHANGES INTO A CALENDAR DISPLAY -->
-          <ul>
-            <% @cooker.availabilities.each do |availability| %>
-              <li>
+          <ul class="list-group text-center pb-3">
+            <% @cooker.availabilities.order(:event_date).each do |availability| %>
+              <li class="list-group-item" style="list-style: none;">
                 <%= availability.good_availability_format %>
               </li>
              <% end %>
