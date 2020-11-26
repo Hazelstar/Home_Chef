@@ -19,7 +19,10 @@ Rails.application.routes.draw do
       end
     end
     resources :availabilities, only: [:index, :new, :create]
+    resources :photos, only: [:index, :new, :create]
   end
   resources :availabilities, only: [:destroy]
   resources :bookings, only:[ :destroy, :show ]
+  resources :photos, only: [:destroy]
+
 end

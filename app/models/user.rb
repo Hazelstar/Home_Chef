@@ -24,6 +24,8 @@ class User < ApplicationRecord
     tsearch: { prefix: true }
     }
 
+  has_many :photos
+
   def is_a_cook?
     self.is_a_cook == "true"
   end

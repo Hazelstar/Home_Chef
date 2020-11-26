@@ -57,6 +57,12 @@
         <% else %>
           <a class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">Book me!</a>
         <% end %>
+        
+       <!-- Picture button -->
+        <button class="btn-effect btn-profile" id="pictures-display" >
+          <h3><%= @cooker.first_name %>'s Speciality</h3>
+        </button>
+
       </div>
     </div>
   </div> <!-- closes left column -->
@@ -89,6 +95,21 @@
           <h3 class="mb-5 mt-2 text-center">Oh no! <%= @cooker.first_name %> has no availabilities yet.</h3>
         <% end %>
       </div> <!-- closes the availabilities section -->
+
+      <!-- display section cook picture -->
+      <div class="content-display pictures-display text-center" style="display:none;">
+          <h3 class="mb-3 mt-2"><%= @cooker.first_name %>'s Speciality:</h3>
+            <div class="card-picture">
+              <% @cooker.photos.each do |photo| %>
+               <% if photo.photo.attached? %>
+                <%= cl_image_tag photo.photo.key%>
+                <div class="text-center">
+                  <h6><%= photo.title %></h6>
+                </div>
+                <% end %>
+              <% end %>
+            </div>
+        </div>
 
     </div> <!-- closes the display div that changes -->
 
