@@ -132,6 +132,9 @@ a {
   padding: 5px;
   margin: 20px 10px;
   outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 
