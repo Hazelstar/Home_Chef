@@ -51,7 +51,7 @@ class AvailabilitiesController < ApplicationController
     # @availability.destroy
     @availability = Availability.find(params[:id])
     @availability.destroy
-    redirect_to user_availabilities_path(current_user)
+    redirect_to profile_path
   end
 
   private

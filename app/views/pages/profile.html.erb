@@ -99,7 +99,7 @@
               </div>
             <!-- List of availabilities TO BE CHANGES INTO A CALENDAR DISPLAY -->
             <ul class="list-group text-center pb-3">
-              <% @user.availabilities.each do |availability| %>
+              <% @user.availabilities.order(:event_date).each do |availability| %>
                 <li class="list-group-item" style="list-style: none;">
                   <%= availability.event_date.strftime("%D") %> - <%= availability.start_hour.strftime("from %I:%M %p") %> <%= availability.end_hour.strftime("to %I:%M %p") %>
                   <%= link_to availability_path(availability), method: :delete,
