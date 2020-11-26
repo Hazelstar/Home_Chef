@@ -50,35 +50,40 @@
         <!-- This is the display of the bookings section (DEFAULT)-->
         <div class="content-display bookings-display text-center" >
           <h3 class="mb-3 mt-2">My next bookings:</h3>
+          <h6>Click on a booking below to open the conversation</h6>
           <ul class="list-group text-center pb-3">
-            <% @user_bookings.each do |user_booking| %>
-            <li class="list-group-item">
-              <% if !current_user.is_a_cook? %>
-                <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
-              <% else %>
-                <%= user_booking.number_of_meals %> meals for <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
-              <% end %>
-            </li>
+            <% @user_bookings.each do |booking| %>
+              <li class="list-group-item">
+                <%= link_to "#{booking.number_of_meals} meals with #{booking.cooker.first_name.capitalize} on #{booking.start_date.strftime("%d of %B, %Y")}", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
+              </li>
+            <% end %>
+          </ul>
+
+          <ul class="list-group text-center pb-3">
+            <% @cooker_bookings.each do |booking| %>
+              <li class="list-group-item">
+                <%= link_to "#{booking.number_of_meals} meals with #{booking.user.first_name.capitalize} on #{booking.start_date.strftime("%d of %B, %Y")}", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
+              </li>
             <% end %>
           </ul>
         </div>
 
-        <!-- This is the display of the messages section -->
-        <div class="content-display messages-display text-center" style="display:none;">
+        <!-- This is the display of the messages section (OLD, now messages are accessible directly in the  bookings"-->
+<!--         <div class="content-display messages-display text-center" style="display:none;">
           <h3 class="mb-3 mt-2">My messages:</h3>
 
           <ul>
-            <% @cooker_bookings.each do |booking| %>
-              <li style="list-style: none;"> <%= link_to booking.user.first_name, user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %> </li>
-            <% end %>
+            <%# @cooker_bookings.each do |booking| %>
+              <li style="list-style: none;"> <%#= link_to booking.user.first_name, user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %> </li>
+            <%# end %>
           </ul>
 
           <ul>
-            <% @user_bookings.each do |booking| %>
-              <li style="list-style: none;"> <%= link_to booking.cooker.first_name, user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %> </li>
-            <% end %>
+            <%# @user_bookings.each do |booking| %>
+              <li style="list-style: none;"> <%#= link_to booking.cooker.first_name, user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %> </li>
+            <%# end %>
           </ul>
-        </div>
+        </div> -->
 
         <!-- This is the display of the availabilities index -->
         <div class="content-display availabilities-display text-center" style="display:none;">
@@ -92,9 +97,9 @@
                   <% end %>
               </div>
             <!-- List of availabilities TO BE CHANGES INTO A CALENDAR DISPLAY -->
-            <ul class="text-center">
+            <ul class="list-group text-center pb-3">
               <% @user.availabilities.each do |availability| %>
-                <li class="my-1" style="list-style: none;">
+                <li class="list-group-item" style="list-style: none;">
                   <%= availability.event_date.strftime("%D") %> - <%= availability.start_hour.strftime("from %I:%M %p") %> <%= availability.end_hour.strftime("to %I:%M %p") %>
                   <%= link_to availability_path(availability), method: :delete,
                     data: { confirm: "Really?!", toggle: "tooltip", placement: "top" } do %>
@@ -130,11 +135,6 @@
         <!-- button to display bookings -->
         <button class="btn-effect btn-profile" id="bookings-display">
           <h3>My Bookings</h3>
-        </button>
-
-        <!-- button to display messages -->
-        <button class="btn-effect btn-profile" id="messages-display">
-          <h3>My Messages</h3>
         </button>
 
         <!-- button to display availabilities and pictures (cooker) -->
