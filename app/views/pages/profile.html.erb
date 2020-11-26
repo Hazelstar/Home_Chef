@@ -51,14 +51,18 @@
         <div class="content-display bookings-display text-center" >
           <h3 class="mb-3 mt-2">My next bookings:</h3>
           <ul class="list-group text-center pb-3">
-            <% @user_bookings.each do |user_booking| %>
-            <li class="list-group-item">
-              <% if !current_user.is_a_cook? %>
-                <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
-              <% else %>
-                <%= user_booking.number_of_meals %> meals for <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
-              <% end %>
-            </li>
+            <% @user_bookings.each do |booking| %>
+              <li class="list-group-item">
+                <%= booking.number_of_meals %> meals with <%= booking.cooker.first_name.capitalize %> on <%= booking.start_date.strftime("%d of %B, %Y") %>.
+              </li>
+            <% end %>
+          </ul>
+
+          <ul class="list-group text-center pb-3">
+            <% @cooker_bookings.each do |booking| %>
+              <li class="list-group-item">
+                <%= booking.number_of_meals %> meals with <%= booking.user.first_name.capitalize %> on <%= booking.start_date.strftime("%d of %B, %Y") %>.
+              </li>
             <% end %>
           </ul>
         </div>
