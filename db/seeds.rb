@@ -8,6 +8,7 @@
 Message.destroy_all
 Chatroom.destroy_all
 Booking.destroy_all
+Photo.destroy_all
 User.destroy_all
 
 booker_1 = User.create(email: 'lola@lola.com', password: '123456', first_name: 'Lola', last_name: 'Guérin', address: 'Lisbon', phone_number: '+33607080910',
@@ -46,12 +47,12 @@ cooker_8 = User.create(email: 'olivier@olivier.com', password: '123456', first_n
 cooker_9 = User.create(email: 'clement@clement.com', password: '123456', first_name: 'Clement', last_name: 'Bourpif', address: 'Berlin', phone_number: '+351414199745',
   is_a_cook: :true, favorite_utensil: "spreading knife", bio: "Hello I'm Clement. I'm an expert of confitures and marmalades. If you want homemade fresh confiture for your mornings, I can prepare them
   for you, I'm sure you won't regret it!", price: 40)
-cooker_9 = User.create(email: 'newton@newton.com', password: '123456', first_name: 'Isaac', last_name: 'Newton', address: 'Barcelona', phone_number: '+351417799745',
+cooker_10 = User.create(email: 'newton@newton.com', password: '123456', first_name: 'Isaac', last_name: 'Newton', address: 'Barcelona', phone_number: '+351417799745',
   is_a_cook: :true, favorite_utensil: "hands", bio: "Hello I'm Isaac. I'm from Algeria and I can cook traditional Maghrebian food for you. Couscous, bricks, brochettes, fresh salads, Algerian sweet cakes with almonds,
   candied fruit with honey. Book me, you won't regret it!", price: 35)
-booker_3 = User.create(email: 'basile@basile.com', password: '123456', first_name: 'Basile', last_name: 'Bpikette', address: 'London', phone_number: '+351923414915',
-  is_a_cook: :false, bio: "Hello I'm Basile, I'm a trader and I work 12 hours a day. I don't know how to cook: even making fried eggs is a challenge for me! I'm a bit overweight so I'm mostly here to look for
-  healthy diet food.")
+cooker_11 = User.create(email: 'simone@simone.com', password: '123456', first_name: 'Simone', last_name: 'Saüt', address: 'Bordeaux', phone_number: '+33556283500',
+  is_a_cook: :true, bio: "My name is Simone, I am 70 years old, and cooking has been my whole life: I was a cook when I was younger, my favorite dish to prepare was (and still is) the blanquette de veau. You have to be
+  French to know how to cook it, hahah!", price: 55)
 
 
 # booking_1 = Booking.create(number_of_meals: 3, user: user_1, cooker: user_3)

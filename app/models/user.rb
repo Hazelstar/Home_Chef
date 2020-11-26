@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :availabilities, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :chatrooms, -> { distinct }, through: :messages
+  has_many :photos, dependent: :destroy
 
   include PgSearch::Model
   pg_search_scope :search, # <- you can name your method
@@ -24,7 +25,6 @@ class User < ApplicationRecord
     tsearch: { prefix: true }
     }
 
-  has_many :photos
 
   def is_a_cook?
     self.is_a_cook == "true"
