@@ -35,8 +35,7 @@ import { UpdatePrice } from 'pluggins/checkbox';
 import { nb_meals, price } from 'pluggins/refresh';
 import { showInfo } from 'pluggins/dashboard';
 import { initChatroomCable } from 'channels/chatroom_channel.js';
-
-import { toggleDateInputs } from 'pluggins/flatpickr.js';
+// import { toggleDateInputs } from 'pluggins/flatpickr.js';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -46,7 +45,7 @@ document.addEventListener('turbolinks:load', () => {
   showInfo();
   UpdatePrice();
   initChatroomCable();
-  toggleDateInputs();
+  // toggleDateInputs();
 });
 
 
