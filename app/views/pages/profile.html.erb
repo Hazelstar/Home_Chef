@@ -52,6 +52,7 @@
           <h3 class="mb-3 mt-2">My next bookings:</h3>
           <h6>Click on a booking below to open the conversation</h6>
           <ul class="list-group text-center pb-3">
+
             <% @user_bookings.each do |booking| %>
               <li class="list-group-item">
                 <%= link_to "#{booking.number_of_meals} meals with #{booking.cooker.first_name.capitalize} on #{booking.start_date.strftime("%d of %B, %Y")}", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
@@ -63,7 +64,7 @@
             <% @cooker_bookings.each do |booking| %>
               <li class="list-group-item">
                 <%= link_to "#{booking.number_of_meals} meals with #{booking.user.first_name.capitalize} on #{booking.start_date.strftime("%d of %B, %Y")}", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
-              </li>
+
             <% end %>
           </ul>
         </div>

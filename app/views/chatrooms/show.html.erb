@@ -1,6 +1,8 @@
-<div class="container text-center my-3">
+<div class="container my-3">
   <div class="row justify-content-center">
-    <div class="col-sm-6 col-sm-offset-3">
+
+
+    <div class="col-sm-6 col-sm-offset-3 text-center">
       <% if @chatroom.booking.cooker == current_user %>
         <div class="chat-header"><h1> <%= @chatroom.booking.user.first_name %> </h1></div>
       <% else %>
@@ -17,15 +19,10 @@
         <div id="create_message">
           <%= simple_form_for [current_user, @chatroom.booking, @chatroom, @message], remote: true do |f| %>
           <%= f.input :content, label: false, placeholder: "Write your message", input_html: { autocomplete: "off", autofocus: "autofocus" } %>
+          <%= f.submit "Send", class: 'button btn-effect' %>
           <% end %>
+          <%= link_to "Back to my profile", :profile, class: " text-center px-2 mt-2"  %>
         </div>
-
-        <div style="margin-top: 30px">
-          <%= link_to "Back to my profile", :profile, class: "btn-effect px-2 mt-2"  %>
-        </div>
-
-
-
     </div>
   </div>
 </div>
