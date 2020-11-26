@@ -10,7 +10,7 @@
           <%= cl_image_tag current_user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if current_user.photo.attached? %>
         </div>
         <!-- welcome msg -->
-        <div class="pl-2 mt-4">
+        <div class="px-4 mt-4">
           <h3>Welcome <%= current_user.first_name.capitalize %>!</h3>
           <p><i class="fas fa-phone"></i> <%= current_user.phone_number %></p>
           <p><i class="fas fa-home"></i> <%= current_user.address %></p>
@@ -99,7 +99,7 @@
               </div>
             <!-- List of availabilities TO BE CHANGES INTO A CALENDAR DISPLAY -->
             <ul class="list-group text-center pb-3">
-              <% @user.availabilities.each do |availability| %>
+              <% @user.availabilities.order(:event_date).each do |availability| %>
                 <li class="list-group-item" style="list-style: none;">
                   <%= availability.event_date.strftime("%D") %> - <%= availability.start_hour.strftime("from %I:%M %p") %> <%= availability.end_hour.strftime("to %I:%M %p") %>
                   <%= link_to availability_path(availability), method: :delete,
