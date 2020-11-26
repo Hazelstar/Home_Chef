@@ -11,13 +11,13 @@
             <p>Booking date: <%= @booking.start_date.strftime("%d of %B, %Y") %></p>
             <p>Number of meals: <%= @booking.number_of_meals %></p>
             <p>Cooking Time: <%= @booking.time_to_cook %></p>
-            <%= link_to "Back to my profile", :profile, class: "btn-effect px-2 mt-2" %>
             <br>
             <br>
             <% if @booking.chatrooms.present?  %>
               <%= link_to "Talk to #{@booking.cooker.first_name.capitalize}", user_booking_chatroom_path(current_user, @booking, @booking.chatrooms.first), class: "btn-effect px-2 mt-2" %>
             <% end %>
             <br>
+            <%= link_to "Back to my profile", :profile %>
             <br>
             <%= link_to "Back to cook", :cooker %>
           </div>
