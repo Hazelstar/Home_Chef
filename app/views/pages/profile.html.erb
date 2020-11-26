@@ -56,7 +56,7 @@
               <% if !current_user.is_a_cook? %>
                 <%= user_booking.number_of_meals %> meals with <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
               <% else %>
-                <%= user_booking.number_of_meals %> meals for <%= user_booking.cooker.first_name.capitalize %> <%= user_booking.cooker.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
+                <%= user_booking.number_of_meals %> meals for <%= user_booking.user.first_name.capitalize %> <%= user_booking.user.last_name.capitalize %> on <%= user_booking.start_date.strftime("%d of %B, %Y") %>.
               <% end %>
             </li>
             <% end %>
