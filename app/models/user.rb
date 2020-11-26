@@ -35,5 +35,9 @@ class User < ApplicationRecord
       availability.event_date
     end
   end
+
+  def no_pictures
+    self.photos.count
+  end
 end
 
