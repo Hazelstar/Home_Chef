@@ -5,13 +5,13 @@
     <div class="form-post col-sm-6 col-sm-offset-3 text-center">
       <% if @chatroom.booking.cooker == current_user %>
         <div class="chat-header">
-          <h3>  <%= @chatroom.booking.user.first_name %> </h3>
-          <h6> <%= @chatroom.booking.number_of_meals %> meals for the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
+          <h1>  <%= @chatroom.booking.user.first_name %> </h1>
+          <h6 class="pt-2"> <%= @chatroom.booking.number_of_meals %> meals on the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
         </div>
       <% else %>
         <div class="chat-header">
-          <h3> <%= @chatroom.booking.cooker.first_name %> </h3>
-           <h6> <%= @chatroom.booking.number_of_meals %> meals for the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
+          <h1> <%= @chatroom.booking.cooker.first_name %> </h1>
+           <h6 class="pt-2"> <%= @chatroom.booking.number_of_meals %> meals on the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
         </div>
       <% end %>
 

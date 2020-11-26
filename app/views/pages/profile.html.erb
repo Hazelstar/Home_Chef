@@ -50,23 +50,27 @@
         <!-- This is the display of the bookings section (DEFAULT)-->
         <div class="content-display bookings-display text-center" >
           <h3 class="mb-3 mt-2">My next bookings:</h3>
-          <h6>Click on a booking below to open the conversation</h6>
+          <% if current_user.bookings.any? %>
+            <h6>Click on a booking below to open the conversation</h6>
+            <!-- display for booker -->
           <ul class="list-group text-center pb-3">
-
             <% @user_bookings.each do |booking| %>
               <li class="list-group-item">
                 <%= link_to "#{booking.number_of_meals} meals with #{booking.cooker.first_name.capitalize} on #{booking.start_date.strftime("%d of %B, %Y")}", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
               </li>
             <% end %>
           </ul>
-
+          <!-- display for cooker -->
           <ul class="list-group text-center pb-3">
             <% @cooker_bookings.each do |booking| %>
               <li class="list-group-item">
                 <%= link_to "#{booking.number_of_meals} meals with #{booking.user.first_name.capitalize} on #{booking.start_date.strftime("%d of %B, %Y")}", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
-
             <% end %>
           </ul>
+          <% else %>
+            <h6>You don't have any bookings yet!</h6>
+            <h6>🍋🧅🥑🥦🐟🥖🍠🥩🧀🍗🥙🥟🍣🥧🥒🍑🧆</h6>
+          <% end %>
         </div>
 
         <!-- This is the display of the messages section (OLD, now messages are accessible directly in the  bookings"-->
@@ -97,13 +101,13 @@
                   </button>
                   <% end %>
               </div>
-            <!-- List of availabilities TO BE CHANGES INTO A CALENDAR DISPLAY -->
+            <!-- List of availabilities TO BE CHANGED INTO A CALENDAR DISPLAY -->
             <ul class="list-group text-center pb-3">
               <% @user.availabilities.order(:event_date).each do |availability| %>
                 <li class="list-group-item" style="list-style: none;">
                   <%= availability.event_date.strftime("%D") %> - <%= availability.start_hour.strftime("from %I:%M %p") %> <%= availability.end_hour.strftime("to %I:%M %p") %>
                   <%= link_to availability_path(availability), method: :delete,
-                    data: { confirm: "Really?!", toggle: "tooltip", placement: "top" } do %>
+                    data: { confirm: "Are you sure?", toggle: "tooltip", placement: "top" } do %>
                     <small><i class="fa fa-trash"></i></small>
                     <% end %>
                 </li>
