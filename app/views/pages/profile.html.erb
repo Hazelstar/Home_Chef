@@ -50,7 +50,7 @@
         <!-- This is the display of the bookings section (DEFAULT)-->
         <div class="content-display bookings-display text-center" >
           <h3 class="mb-3 mt-2">My next bookings:</h3>
-          <% if current_user.bookings.any? %>
+          <% if current_user.bookings.any? || @cooker_bookings.any? %>
             <h6>Click on a booking below to open the conversation</h6>
             <!-- display for booker -->
           <ul class="list-group text-center pb-3">
