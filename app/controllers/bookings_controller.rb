@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  # user_bookings POST   /users/:user_id/bookings(.:format)                                                       bookings#create
+  # user_bookings POST   /users/:user_id/bookings(.:format)
   # new_user_booking GET    /users/:user_id/bookings/new(.:format)
   before_action :set_cooker_and_availabilities, only: [:create]
 
@@ -9,7 +9,6 @@ class BookingsController < ApplicationController
     # @cooker = @booking.cooker_id
     # @user = @booking.booker_id
     @user_chatrooms = current_user.chatrooms
-
   end
 
   def new
