@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :cookers, only: [:index,:show ]
 
   resources :users, only: [:index] do
-    resources :bookings, only: [ :new, :create ] do
+    resources :bookings, only: [:new, :create] do
       resources :chatrooms, only: [:create, :new, :show, :index] do
         resources :messages, only: :create
       end
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :photos, only: [:index, :new, :create]
   end
   resources :availabilities, only: [:destroy]
-  resources :bookings, only:[ :destroy, :show ]
+  resources :bookings, only:[:show, :destroy]
   resources :photos, only: [:destroy]
 
 end
