@@ -29,11 +29,12 @@
             <div class="">
               <label class="control-label check_boxes optional">Please select if you are cook</label>
               <input type="hidden" name="is_a_cook" value="">
-                <%= f.input :is_a_cook, :label => "switch my profile to cook", :class => :hidden, as: :boolean, checked_value: 'true', unchecked_value: 'false',
+                <%= f.input :is_a_cook, :label => "Switch my profile to cook", :class => :hidden, as: :boolean, checked_value: 'true', unchecked_value: 'false',
                               required: true %>
             </div>
             <div id="price" style="display:none;">
-              <%= f.input :price, :label => "Define your hourly price in €", as: :integer,
+              <%= f.input :price, :label => "Define your hourly price in €",
+                          collection: 0..150, selected: 0,
                           required: true,
                           input_html: { autocomplete: "My hourly price"} %>
               <%= f.input :favorite_utensil,
@@ -83,7 +84,7 @@
             <%= f.button :submit, "Update", class: "btn-effect" %>
           </div>
         <% end %>
-
+  <!--       <%# raise %> -->
         <h3>Cancel my account</h3>
 
         <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>

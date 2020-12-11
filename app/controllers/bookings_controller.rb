@@ -19,36 +19,35 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @booking.user = current_user
     @booking.cooker = User.find(params[:booking]['cooker_id'].to_i)
-    @amount = @cooker.price
+    @booking.amount_cents = 0
 
     if @booking.save
+      @booking.amount_cents = @booking.cooker.price_cents * @booking.number_of_meals
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
           name: @booking.cooker.first_name,
           images: [@booking.cooker.photo],
-          amount: @amount,
+          amount: @booking.amount_cents,
           currency: 'eur',
           quantity: 1
         }],
         success_url: booking_url(@booking),
         cancel_url: booking_url(@booking)
       )
-      @booking.update(checkout_session_id: session.id)
-      redirect_to new_order_payment_path(@booking)
 
+      @booking.update(checkout_session_id: session.id)
       @chatroom = Chatroom.create(name: @booking.cooker.first_name, booking: @booking)
       redirect_to booking_path(@booking)
     else
       render :new
     end
-
   end
 
   private
 
   def bookings_params
-    params.require(:booking).permit(:start_date, :number_of_meals, :booker_id, :cooker_id)
+    params.require(:booking).permit(:start_date, :number_of_meals, :booker_id, :cooker_id, :amount_cents, :state, :checkout_session_id)
   end
 
   def set_cooker_and_availabilities
