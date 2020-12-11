@@ -23,6 +23,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       @booking.amount_cents = @booking.cooker.price_cents * @booking.number_of_meals
+
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
@@ -30,7 +31,7 @@ class BookingsController < ApplicationController
           images: [@booking.cooker.photo],
           amount: @booking.amount_cents,
           currency: 'eur',
-          quantity: 1
+          quantity: @booking.number_of_meals
         }],
         success_url: booking_url(@booking),
         cancel_url: new_user_booking_url(@booking)

@@ -45,10 +45,10 @@ post '/onboard-user' do
     type: 'standard',
     email: current_user.email,
     capabilities: {
-    card_payments: {requested: true},
-    transfers: {requested: true},
-  },
-})
+      card_payments: {requested: true},
+      transfers: {requested: true},
+    },
+  })
 
   session[:account_id] = account.id
 
