@@ -33,11 +33,11 @@ class BookingsController < ApplicationController
           quantity: 1
         }],
         success_url: booking_url(@booking),
-        cancel_url: booking_url(@booking)
+        cancel_url: new_user_booking_url(@booking)
       )
-
       @booking.update(checkout_session_id: session.id)
       @chatroom = Chatroom.create(name: @booking.cooker.first_name, booking: @booking)
+      raise
       redirect_to booking_path(@booking)
     else
       render :new
