@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   before_action :set_cooker_and_availabilities, only: [:create]
 
   def show
-    @booking = Booking.find(params[:id])
+    @booking = current_user.bookings.find(params[:id])
     # @booking = Booking.find(bookings_params)
     # @cooker = @booking.cooker_id
     # @user = @booking.booker_id
@@ -22,6 +22,7 @@ class BookingsController < ApplicationController
     @booking.amount_cents = 0
 
     if @booking.save
+      @chatroom = Chatroom.create(name: @booking.cooker.first_name, booking: @booking)
       @booking.amount_cents = @booking.cooker.price_cents * @booking.number_of_meals
 
       session = Stripe::Checkout::Session.create(
@@ -37,7 +38,6 @@ class BookingsController < ApplicationController
         cancel_url: new_user_booking_url(@booking)
       )
       @booking.update(checkout_session_id: session.id)
-      @chatroom = Chatroom.create(name: @booking.cooker.first_name, booking: @booking)
       redirect_to booking_path(@booking)
     else
       render :new

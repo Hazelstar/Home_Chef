@@ -8,9 +8,13 @@
           <div class="form-post">
             <h3 class="mb-3">Congratulations!</h3>
             <h6 class="mb-4">You've booked with <%= @booking.cooker.first_name.capitalize %> <%= @booking.cooker.last_name.capitalize %>!</h6>
+            <div class="pr-2">
+              <%= cl_image_tag @booking.cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill if @booking.cooker.photo.attached? %>
+            </div>
             <p>Booking date: <strong><%= @booking.start_date.strftime("%d of %B, %Y") %></strong></p>
             <p>Number of meals: <strong><%= @booking.number_of_meals %></strong></p>
-            <p>Cooking Time: <strong><%= @booking.time_to_cook %></strong></p>
+            <p>Cooking Time ≈ <strong><%= @booking.time_to_cook %></strong></p>
+            <p>Price: <strong><%= humanized_money_with_symbol @booking.amount %></strong></p>
             <br>
             <% if @booking.chatrooms.present?  %>
               <%= link_to "Talk to #{@booking.cooker.first_name.capitalize}", user_booking_chatroom_path(current_user, @booking, @booking.chatrooms.first), class: "btn-effect px-2 mt-2" %>
