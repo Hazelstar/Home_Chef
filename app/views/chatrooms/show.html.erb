@@ -52,7 +52,7 @@
     <div class="col-6 p-4" id="content-column">
       <div class="d-flex justify-content-center p-4">
         <!-- open right column with form -->
-        <div class="form-post text-center" style="background-color: #5B79A6;">
+        <div class="form-post text-center" style="background-color:#A4BAD4;">
         <% if @chatroom.booking.cooker == current_user %>
           <div class="chat-header">
             <h1>  <%= @chatroom.booking.user.first_name %> </h1>
@@ -79,6 +79,7 @@
             <% end %>
             <%= link_to "Back to my profile", :profile, class: " text-center px-2 mt-2"  %>
           </div>
+
         </div> <!-- closes right column with form -->
       </div> <!-- closes the display div that changes -->
     </div> <!-- closes right column -->
