@@ -41,7 +41,14 @@ end
 post '/onboard-user' do
   content_type 'application/json'
 
-  account = Stripe::Account.create(type: 'standard')
+  account = Stripe::Account.create({
+    type: 'standard',
+    email: current_user.email,
+    capabilities: {
+    card_payments: {requested: true},
+    transfers: {requested: true},
+  },
+})
 
   session[:account_id] = account.id
 

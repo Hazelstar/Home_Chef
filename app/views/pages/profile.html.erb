@@ -49,7 +49,7 @@
       <div>
         <!-- This is the display of the bookings section (DEFAULT)-->
         <div class="content-display bookings-display text-center" >
-          <h3 class="mb-3 mt-2">My next bookings:</h3>
+          <h3 class="mb-3 mt-4">My next bookings:</h3>
           <% if current_user.bookings.any? || @cooker_bookings.any? %>
             <h6>Click on a booking below to open the conversation</h6>
             <!-- display for booker -->
@@ -93,7 +93,7 @@
         <!-- This is the display of the availabilities index -->
         <div class="content-display availabilities-display text-center" style="display:none;">
           <% if @user.availabilities.any? %>
-            <h3 class="mb-3 mt-2 text-center">My schedule:</h3>
+            <h3 class="mb-3 mt-4 text-center">My schedule:</h3>
               <div class="d-flex justify-content-center">
                 <%= link_to new_user_availability_path(current_user.id) do %>
                   <button class="text-center btn-effect">
@@ -114,7 +114,7 @@
               <% end %>
             </ul>
           <% else %>
-            <h3 class="mb-3 mt-2 text-center"><%= @user.first_name %>, you are not available yet!</h3>
+            <h3 class="mb-3 mt-4 text-center"><%= @user.first_name %>, you are not available yet!</h3>
             <div class="d-flex justify-content-center">
               <%= link_to new_user_availability_path(current_user.id) do %>
                 <button class="text-center btn-effect">
@@ -127,7 +127,7 @@
 
         <!-- This is the display of the photo section -->
         <div class="content-display pictures-display text-center" style="display:none;">
-          <h3 class="mb-3 mt-2">My specialties:</h3>
+          <h3 class="mb-3 mt-4">My specialties:</h3>
             <div class="d-flex justify-content-center">
               <%= link_to new_user_photo_path(current_user.id) do %>
                 <button class="text-center btn-effect">
@@ -188,6 +188,11 @@
           <button class="button btn-effect btn-profile" id="pictures-display">
             <h3>My Pictures</h3>
           </button>
+          <%# link_to do %>
+          <button class="stripe-connect">
+            <span>Connect with Stripe</span>
+          </button>
+          <%# end %>
         <% end %>
 
         <!-- button to go to cookers list (booker) -->
