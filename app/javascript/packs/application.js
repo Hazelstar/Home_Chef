@@ -32,7 +32,8 @@ import "../pluggins/flatpickr"
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { UpdatePrice } from 'pluggins/checkbox';
-import { nb_meals, price } from 'pluggins/refresh';
+// import { nb_meals, price } from 'pluggins/refresh';
+import { dynamicBooking } from 'pluggins/refresh';
 import { showInfo } from 'pluggins/dashboard';
 import { initChatroomCable } from 'channels/chatroom_channel.js';
 import { toggleDateInputs } from 'pluggins/flatpickr.js';
@@ -40,8 +41,9 @@ import { toggleDateInputs } from 'pluggins/flatpickr.js';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  nb_meals();
-  price();
+  // nb_meals();
+  // price();
+  dynamicBooking();
   showInfo();
   UpdatePrice();
   initChatroomCable();

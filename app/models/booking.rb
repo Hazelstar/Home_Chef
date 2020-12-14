@@ -8,7 +8,7 @@ class Booking < ApplicationRecord
   validates :number_of_meals, :start_date, presence: true
 
   def time_to_cook
-    # 10 min preparation time + 30 min per meal
-    "#{((10 + 30 * self.number_of_meals) / 60).floor}h#{(10 + 30 * self.number_of_meals) % 60}"
+    # 10 min preparation time + 20 min per meal
+    "#{((10 + 20 * self.number_of_meals) / 60).floor}h#{(10 + 20 * self.number_of_meals) % 60}"
   end
 end
