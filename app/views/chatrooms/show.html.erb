@@ -6,11 +6,13 @@
     <div class="col-md-6 col-sm-12 p-0">
         <div id="info-column" class="d-flex pb-2 mx-3">
          <!--  profile img -->
-         <% if @chatroom.booking.cooker.photo.attached? %>
-           <%= cl_image_tag @chatroom.booking.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
-         <% else %>
-
+         <% if @chatroom.booking.cooker == current_user && @chatroom.booking.user.photo.attached? || @chatroom.booking.cooker.photo.attached? %>
+          <%= cl_image_tag @chatroom.booking.cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
+        <% else %>
+          <%= cl_image_tag @chatroom.booking.user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
          <% end %>
+
+
 
         <!-- welcome msg -->
           <div class="px-4 mt-4">
@@ -66,13 +68,13 @@
         <% end %>
 
 
-          <div class="messages" id="messages" data-chatroom-id="<%= @chatroom.id %>">
+          <div class="messages" id="messages" data-chatroom-id="<%= @chatroom.id %>" >
             <% @chatroom.messages.each do |message| %>
               <%= render "messages/message", message: message %>
             <% end %>
           </div>
 
-          <div id="create_message">
+          <div id="create_message" >
             <%= simple_form_for [current_user, @chatroom.booking, @chatroom, @message], remote: true do |f| %>
             <%= f.input :content, label: false, placeholder: "Write your message", input_html: { autocomplete: "off", autofocus: "autofocus" } %>
             <%= f.submit "Send", class: 'button btn-effect' %>
