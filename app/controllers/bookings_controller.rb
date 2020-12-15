@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       @chatroom = Chatroom.create(name: @booking.cooker.first_name, booking: @booking)
-      @booking.amount_cents = @booking.cooker.price_cents * @booking.number_of_meals
+      @booking.amount_cents = @booking.cooker.price / 60 * (10 + (20 * @booking.number_of_meals)) * 100
 
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
@@ -48,13 +48,6 @@ class BookingsController < ApplicationController
 
   def bookings_params
     params.require(:booking).permit(:start_date, :number_of_meals, :booker_id, :cooker_id, :amount_cents, :state, :checkout_session_id)
-  end
-
-  def cooking_price
-    if params[:amount_cents].exist?
-      c = Booking.where('amount = ?', params[:amount_cents]).first
-    end
-    return c.path
   end
 
   def set_cooker_and_availabilities
