@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       resources :chatrooms, only: [:create, :new, :show, :index] do
         resources :messages, only: :create
       end
-      resources :payments, only: :new
+      # resources :payments, only: :new
     end
     resources :availabilities, only: [:index, :new, :create]
     resources :photos, only: [:index, :new, :create]
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :availabilities, only: [:destroy]
 
   resources :bookings, only:[:show, :destroy] do
-    resources :payments, only: :show
+    # resources :payments, only: :show
   end
 
   resources :photos, only: [:destroy]

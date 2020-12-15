@@ -45,7 +45,7 @@ document.addEventListener('turbolinks:load', () => {
   // price();
   dynamicBooking();
   showInfo();
-  UpdatePrice();
+  updatePrice();
   initChatroomCable();
   toggleDateInputs();
 });
