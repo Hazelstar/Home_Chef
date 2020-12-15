@@ -1,35 +1,107 @@
-<div class="container my-3">
-  <div class="row justify-content-center">
+<!-- profil card -->
+<div class="profile" style="margin-top: 20vh; margin-bottom: 5vh; margin-left: 2vh; margin-right: 2vh;">
+  <div class="profile-layout row px-5 pt-5 pb-3 m-2">
+
+    <!-- Left column that statically displays users info -->
+    <div class="col-md-6 col-sm-12 p-0">
+        <div id="info-column" class="d-flex pb-2 mx-3">
+         <!--  profile img -->
+         <% if current_user.is_a_cook? %>
+          <%= cl_image_tag @chatroom.booking.user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
+        <% else %>
+          <%= cl_image_tag @chatroom.booking.cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
+         <% end %>
 
 
-    <div class="form-post col-sm-6 col-sm-offset-3 text-center">
-      <% if @chatroom.booking.cooker == current_user %>
-        <div class="chat-header">
-          <h1>  <%= @chatroom.booking.user.first_name %> </h1>
-          <h6 class="pt-2"> <%= @chatroom.booking.number_of_meals %> meals on the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
+
+        <!-- welcome msg -->
+        <% if current_user.is_a_cook? %>
+          <div class="px-4 mt-4">
+            <h3>Hello, I'm <%= @chatroom.booking.user.first_name.capitalize %>!</h3>
+            <p><i class="fas fa-home"></i> <%= @chatroom.booking.user.address %></p>
+          </div>
+        <% else %>
+          <div class="px-4 mt-4">
+            <h3>Hello, I'm <%= @chatroom.booking.cooker.first_name.capitalize %>!</h3>
+            <p><i class="fas fa-home"></i> <%= @chatroom.booking.cooker.address %></p>
+          </div>
+        <% end %>
+
         </div>
-      <% else %>
-        <div class="chat-header">
-          <h1> <%= @chatroom.booking.cooker.first_name %> </h1>
-           <h6 class="pt-2"> <%= @chatroom.booking.number_of_meals %> meals on the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
-        </div>
-      <% end %>
+      <!-- infos -->
+      <div class="p-3">
+        <div id="info-column" class="d-flex to-row justify content-around">
+          <% if current_user.is_a_cook =! current_user.is_a_cook? %>
+            <div class="mx-3 my-1 p-2" id="cook-display">
+              <h6 class="text-center mb-0">Favorite utensil: <%= @chatroom.booking.cooker.favorite_utensil %></h6>
+            </div>
+            <div class="mx-3 my-1 p-2" id="cook-display">
+              <h6 class="text-center mb-0"><%= @chatroom.booking.cooker.price %> € / hour</h6>
+            </div>
+          <% else %>
 
-
-        <div class="messages" id="messages" data-chatroom-id="<%= @chatroom.id %>">
-          <% @chatroom.messages.each do |message| %>
-            <%= render "messages/message", message: message %>
           <% end %>
         </div>
 
-        <div id="create_message">
-          <%= simple_form_for [current_user, @chatroom.booking, @chatroom, @message], remote: true do |f| %>
-          <%= f.input :content, label: false, placeholder: "Write your message", input_html: { autocomplete: "off", autofocus: "autofocus" } %>
-          <%= f.submit "Send", class: 'button btn-effect' %>
-          <% end %>
-          <%= link_to "Back to my profile", :profile, class: " text-center px-2 mt-2"  %>
+        <!-- User's bio -->
+        <% if @chatroom.booking.cooker == current_user %>
+          <blockquote class="quotebox quotebox--quotes mb-0">
+            <p class="text-justify"><%= @chatroom.booking.user.bio %></p>
+          </blockquote>
+        <% else %>
+         <blockquote class="quotebox quotebox--quotes mb-0">
+            <p class="text-justify"><%= @chatroom.booking.cooker.bio %></p>
+          </blockquote>
+        <% end %>
+      </div>
+
+      <div class="col-12">
+        <div id="dashboard-button" class="row d-flex justify-content-center">
+        <!-- Message chat button -->
+         <!--  <button class="btn-effect btn-profile" id="messages-display">
+            <h3>Message me!</h3>
+          </button> -->
         </div>
-    </div>
-  </div>
-</div>
+      </div>
+    </div> <!-- closes left column -->
+
+    <!-- Right column that dynamically displays sections -->
+    <div class="col-6 p-4" id="content-column">
+      <div class="d-flex justify-content-center p-4">
+        <!-- open right column with form -->
+        <div class="form-post text-center" style="background-color:#A4BAD4;">
+        <% if @chatroom.booking.cooker == current_user %>
+          <div class="chat-header">
+            <h1>  <%= @chatroom.booking.user.first_name %> </h1>
+            <h6 class="pt-2"> <%= @chatroom.booking.number_of_meals %> meals on the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
+          </div>
+        <% else %>
+          <div class="chat-header">
+            <h1> <%= @chatroom.booking.cooker.first_name %> </h1>
+             <h6 class="pt-2"> <%= @chatroom.booking.number_of_meals %> meals on the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
+          </div>
+        <% end %>
+
+
+          <div class="messages" id="messages" data-chatroom-id="<%= @chatroom.id %>" >
+            <% @chatroom.messages.each do |message| %>
+              <%= render "messages/message", message: message %>
+            <% end %>
+          </div>
+
+          <div id="create_message" >
+            <%= simple_form_for [current_user, @chatroom.booking, @chatroom, @message], remote: true do |f| %>
+            <%= f.input :content, label: false, placeholder: "Write your message", input_html: { autocomplete: "off", autofocus: "autofocus" } %>
+            <%= f.submit "Send", class: 'button btn-effect' %>
+            <% end %>
+            <%= link_to "Back to my profile", :profile, class: " text-center px-2 mt-2"  %>
+          </div>
+
+        </div> <!-- closes right column with form -->
+      </div> <!-- closes the display div that changes -->
+    </div> <!-- closes right column -->
+
+  </div> <!-- closes the profile layout -->
+</div> <!-- closes the "profile" -->
+
 
