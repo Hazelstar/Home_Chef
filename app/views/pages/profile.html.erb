@@ -54,24 +54,26 @@
             <h6>Click on a booking below to open the conversation</h6>
             <!-- display for booker -->
           <ul class="list-group text-center pb-3">
-            <% @user_bookings.each do |booking| %>
-              <li class="list-group-item">
-                <% if booking.start_date > Time.now %>
-                  <%= link_to "#{booking.cooker.first_name.capitalize} - #{booking.number_of_meals} meals on #{booking.start_date.strftime("%d of %B, %Y")} / #{booking.state}", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
+            <% @user_bookings.order(start_date: :desc).each do |booking| %>
+              <% if booking.start_date > Time.now %>
+                <li class="list-group-item">
+                  <%= link_to "#{booking.cooker.first_name.capitalize} - #{booking.number_of_meals} meals on #{booking.start_date.strftime("%d of %B, %Y")} - #{booking.state}", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
+                </li>
                 <% else %>
-                  <%= link_to "#{booking.cooker.first_name.capitalize} - #{booking.number_of_meals} meals on #{booking.start_date.strftime("%d of %B, %Y")} / closed", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
+                <li class="list-group-item" style="">
+                  <%= link_to "#{booking.cooker.first_name.capitalize} - #{booking.number_of_meals} meals on #{booking.start_date.strftime("%d of %B, %Y")} - closed", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first), :style=>'color: #5B79A6;' %>
+                 </li>
                 <% end %>
-              </li>
             <% end %>
           </ul>
           <!-- display for cooker -->
           <ul class="list-group text-center pb-3">
-            <% @cooker_bookings.each do |booking| %>
+            <% @cooker_bookings.order(start_date: :desc).each do |booking| %>
               <li class="list-group-item">
                 <% if booking.start_date > Time.now %>
-                  <%= link_to "#{booking.user.first_name.capitalize} - #{booking.number_of_meals} meals on #{booking.start_date.strftime("%d of %B, %Y")} / #{booking.state}", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
+                  <%= link_to "#{booking.user.first_name.capitalize} - #{booking.number_of_meals} meals on #{booking.start_date.strftime("%d of %B, %Y")} - #{booking.state}", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
                 <% else %>
-                  <%= link_to "#{booking.user.first_name.capitalize} - #{booking.number_of_meals} meals on #{booking.start_date.strftime("%d of %B, %Y")} / closed", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first) %>
+                  <%= link_to "#{booking.user.first_name.capitalize} - #{booking.number_of_meals} meals on #{booking.start_date.strftime("%d of %B, %Y")} - closed", user_booking_chatroom_path(current_user, booking, booking.chatrooms.first), :style=>'color: #5B79A6;' %>
                 <% end %>
             <% end %>
           </ul>
