@@ -44,16 +44,14 @@
         </div>
 
         <!-- User's bio -->
-        <% if current_user.is_a_cook? %>
+        <% if @chatroom.booking.cooker == current_user %>
           <blockquote class="quotebox quotebox--quotes mb-0">
             <p class="text-justify"><%= @chatroom.booking.user.bio %></p>
           </blockquote>
-        <% elsif %>
-          <blockquote class="quotebox quotebox--quotes mb-0">
+        <% else %>
+         <blockquote class="quotebox quotebox--quotes mb-0">
             <p class="text-justify"><%= @chatroom.booking.cooker.bio %></p>
           </blockquote>
-          <% else %>
-            <h3 class="ml-3">Oh no, the user hasn't filled in their info yet!</h3>
         <% end %>
       </div>
 
