@@ -6,40 +6,57 @@
     <div class="col-md-6 col-sm-12 p-0">
         <div id="info-column" class="d-flex pb-2 mx-3">
          <!--  profile img -->
-         <% if @chatroom.booking.cooker == current_user && @chatroom.booking.user.photo.attached? || @chatroom.booking.cooker.photo.attached? %>
-          <%= cl_image_tag @chatroom.booking.cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
-        <% else %>
+         <% if current_user.is_a_cook? %>
           <%= cl_image_tag @chatroom.booking.user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
+        <% else %>
+          <%= cl_image_tag @chatroom.booking.cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
          <% end %>
 
 
 
         <!-- welcome msg -->
+        <% if current_user.is_a_cook? %>
+          <div class="px-4 mt-4">
+            <h3>Hello, I'm <%= @chatroom.booking.user.first_name.capitalize %>!</h3>
+            <p><i class="fas fa-home"></i> <%= @chatroom.booking.user.address %></p>
+          </div>
+        <% else %>
           <div class="px-4 mt-4">
             <h3>Hello, I'm <%= @chatroom.booking.cooker.first_name.capitalize %>!</h3>
             <p><i class="fas fa-home"></i> <%= @chatroom.booking.cooker.address %></p>
           </div>
+        <% end %>
+
         </div>
       <!-- infos -->
       <div class="p-3">
         <div id="info-column" class="d-flex to-row justify content-around">
-          <div class="mx-3 my-1 p-2" id="cook-display">
-            <h6 class="text-center mb-0">Favorite utensil: <%= @chatroom.booking.cooker.favorite_utensil %></h6>
-          </div>
-          <div class="mx-3 my-1 p-2" id="cook-display">
-            <h6 class="text-center mb-0"><%= @chatroom.booking.cooker.price %> € / hour</h6>
-          </div>
+          <% if current_user.is_a_cook =! current_user.is_a_cook? %>
+            <div class="mx-3 my-1 p-2" id="cook-display">
+              <h6 class="text-center mb-0">Favorite utensil: <%= @chatroom.booking.cooker.favorite_utensil %></h6>
+            </div>
+            <div class="mx-3 my-1 p-2" id="cook-display">
+              <h6 class="text-center mb-0"><%= @chatroom.booking.cooker.price %> € / hour</h6>
+            </div>
+          <% else %>
+
+          <% end %>
         </div>
 
         <!-- User's bio -->
-        <% if @chatroom.booking.cooker.bio == nil %>
-          <h3 class="ml-3">Oh no, <%= @chatroom.booking.cooker.first_name %> hasn't filled in their info yet!</h3>
-        <% else %>
+        <% if current_user.is_a_cook? %>
+          <blockquote class="quotebox quotebox--quotes mb-0">
+            <p class="text-justify"><%= @chatroom.booking.user.bio %></p>
+          </blockquote>
+        <% elsif %>
           <blockquote class="quotebox quotebox--quotes mb-0">
             <p class="text-justify"><%= @chatroom.booking.cooker.bio %></p>
           </blockquote>
+          <% else %>
+            <h3 class="ml-3">Oh no, the user hasn't filled in their info yet!</h3>
         <% end %>
       </div>
+
       <div class="col-12">
         <div id="dashboard-button" class="row d-flex justify-content-center">
         <!-- Message chat button -->
