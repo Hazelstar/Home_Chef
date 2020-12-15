@@ -50,6 +50,13 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_date, :number_of_meals, :booker_id, :cooker_id, :amount_cents, :state, :checkout_session_id)
   end
 
+  def cooking_price
+    if params[:amount_cents].exist?
+      c = Booking.where('amount = ?', params[:amount_cents]).first
+    end
+    return c.path
+  end
+
   def set_cooker_and_availabilities
     @cooker = User.find(params[:user_id])
     @availabilities = Availability.where(user: @cooker)

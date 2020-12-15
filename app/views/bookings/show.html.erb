@@ -14,7 +14,7 @@
             <p>Booking date: <strong><%= @booking.start_date.strftime("%d of %B, %Y") %></strong></p>
             <p>Number of meals: <strong><%= @booking.number_of_meals %></strong></p>
             <p>Cooking Time ≈ <strong><%= @booking.time_to_cook %></strong></p>
-            <p>Price: <strong><%= humanized_money_with_symbol @booking.amount %></strong></p>
+            <p>Price: <strong><%= humanized_money_with_symbol @booking.cookingPrice %></strong></p>
             <br>
             <% if @booking.chatrooms.present?  %>
               <%= link_to "Talk to #{@booking.cooker.first_name.capitalize}", user_booking_chatroom_path(current_user, @booking, @booking.chatrooms.first), class: "btn-effect px-2 mt-2" %>
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div> <!-- closes left column with form -->
-
+    <% raise %>
     <div class="col-sm-12 col-md-6">
       <%= render "components/image" %>
     </div>
