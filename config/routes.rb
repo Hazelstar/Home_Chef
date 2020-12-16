@@ -13,16 +13,21 @@ Rails.application.routes.draw do
   resources :cookers, only: [:index,:show ]
 
   resources :users, only: [:index] do
-    resources :bookings, only: [ :new, :create ] do
+    resources :bookings, only: [:new, :create] do
       resources :chatrooms, only: [:create, :new, :show, :index] do
         resources :messages, only: :create
       end
+      # resources :payments, only: :new
     end
     resources :availabilities, only: [:index, :new, :create]
     resources :photos, only: [:index, :new, :create]
   end
-  resources :availabilities, only: [:destroy]
-  resources :bookings, only:[ :destroy, :show ]
-  resources :photos, only: [:destroy]
 
+  resources :availabilities, only: [:destroy]
+
+  resources :bookings, only:[:show, :destroy] #do
+    # resources :payments, only: :show
+  #end
+
+  resources :photos, only: [:destroy]
 end

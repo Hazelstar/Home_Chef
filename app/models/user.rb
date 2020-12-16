@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :chatrooms, -> { distinct }, through: :messages
   has_many :photos, dependent: :destroy
 
+  monetize :price_cents
+
   include PgSearch::Model
   pg_search_scope :search, # <- you can name your method
     against: [:first_name, :last_name, :address, :bio, :favorite_utensil],
