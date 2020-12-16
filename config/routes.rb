@@ -25,9 +25,9 @@ Rails.application.routes.draw do
 
   resources :availabilities, only: [:destroy]
 
-  resources :bookings, only:[:show, :destroy] do
+  resources :bookings, only:[:show, :destroy] #do
     # resources :payments, only: :show
-  end
+  #end
 
   resources :photos, only: [:destroy]
 end
