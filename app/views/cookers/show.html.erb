@@ -167,9 +167,9 @@
                     <div class="mb-2" id="time">
                       Cooking Time: 1h10
                     </div>
-                    <script type="text/javascript"> window.cooker_price = <%= @cooker.price.nil? ? 0 : @cooker.price / 60 * (10 + (20 * 3)) %>; </script>
+                    <script type="text/javascript"> window.cooker_price = <%= @cooker.price.nil? ? 0 : @cooker.price / 60 * (10 + 20 * 3) %>; </script>
                     <div class="mb-2" id="price-meals">
-                      Total Price: <%= @cooker.price.nil? ? 0 : @cooker.price / 60 * (10 + (20 * 3)) %> €
+                      Total Price: <%= @cooker.price.nil? ? 0 : @cooker.price / 60 * (10 + 20 * 3) %> €
                     </div>
                   </div>
 

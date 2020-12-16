@@ -30,7 +30,7 @@ let dynamicBooking = () => {
     selectbox.addEventListener("change", (event) => {
       const cookingTime = event.target.value === "" ? 0 : 10 + 20 * event.target.value;
       mealsTime.innerText = `Cooking Time: ${Math.floor(cookingTime / 60)}h${cookingTime % 60}`;
-      const cookingPrice = Math.round((window.cooker_price / 60 * cookingTime) * 100) / 100;
+      const cookingPrice = Number(Math.round((window.cooker_price / 60 * cookingTime)+'e2')+'e-2'); // Math.round((window.cooker_price / 60 * cookingTime) * 100) / 100;
       mealsPrice.innerText = `Total Price: ${cookingPrice}€`;
     });
   };
