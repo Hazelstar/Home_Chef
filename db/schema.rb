@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_152454) do
+ActiveRecord::Schema.define(version: 2020_12_10_201536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,12 +47,15 @@ ActiveRecord::Schema.define(version: 2020_11_26_152454) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "start_date", default: "2020-11-26 12:00:00"
+    t.datetime "start_date", default: "2020-12-11 12:00:00"
     t.integer "number_of_meals", default: 3
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "cooker_id"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "state", default: "pending", null: false
+    t.string "checkout_session_id"
     t.index ["cooker_id"], name: "index_bookings_on_cooker_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -97,9 +100,8 @@ ActiveRecord::Schema.define(version: 2020_11_26_152454) do
     t.string "phone_number"
     t.string "is_a_cook", default: "false", null: false
     t.text "bio"
-    t.integer "price"
-    t.string "booked", default: "false", null: false
     t.string "favorite_utensil"
+    t.integer "price_cents", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -158,17 +158,18 @@
               <div class="modal-body" style="background-color: #F2F4F8;">
                 <div class="form-group mb-0 mx-3 mt-3">
                   <%= f.input :number_of_meals,
+                              id: "booking_number_of_meals",
                               :label => "How many meals would you like to have prepared?",
                               :collection => 3..50 %>
                   <%= f.input :cooker_id, as: :hidden, input_html: { value: @cooker.id } %>
 
                   <div  class="d-flex justify-content-around">
                     <div class="mb-2" id="time">
-                      Cooking Time: 100 min
+                      Cooking Time: 1h10
                     </div>
-                    <script type="text/javascript"> var cooker_price = <%= @cooker.price.nil? ? 0 : @cooker.price %>; </script>
+                    <script type="text/javascript"> window.cooker_price = <%= @cooker.price.nil? ? 0 : @cooker.price / 60 * (10 + (20 * 3)) %>; </script>
                     <div class="mb-2" id="price-meals">
-                      Total Price: <%= @cooker.price.nil? ? 0 : @cooker.price * 3 %> €
+                      Total Price: <%= @cooker.price.nil? ? 0 : @cooker.price / 60 * (10 + (20 * 3)) %> €
                     </div>
                   </div>
 
@@ -188,10 +189,21 @@
                 </div>
               </div>
               <div class="modal-footer p-0">
-                <%= f.submit :book, class: 'btn btn-effect btn-profile' %>
+                <%= f.submit :book, id: 'pay', class: 'btn btn-effect btn-profile' %>
                 <a class="btn" data-dismiss="modal">Close</a>
               </div>
             <% end %>
+
+            <script src="https://js.stripe.com/v3/"></script>
+            <script>
+              const paymentButton = document.getElementById('pay');
+              paymentButton.addEventListener('click', () => {
+                const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+                stripe.redirectToCheckout({
+                  sessionId: '<%= @booking.checkout_session_id %>'
+                });
+              });
+            </script>
 
           </div> <!-- closes the modal-content -->
         </div>

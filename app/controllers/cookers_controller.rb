@@ -33,8 +33,8 @@ class CookersController < ApplicationController
     @cooker = User.find(params[:id])
     @availabilities = Availability.where(user: @cooker)
 
-    @booking = Booking.new
-
+    # create new booking and set price to be the actual cooker's feee * number of meals requested.
+    @booking = Booking.new(amount_cents: @cooker.price)
   end
 
   private
