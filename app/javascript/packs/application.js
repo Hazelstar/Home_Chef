@@ -31,7 +31,7 @@ import "../pluggins/flatpickr"
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import { UpdatePrice } from 'pluggins/checkbox';
+import { updatePrice } from 'pluggins/checkbox';
 // import { nb_meals, price } from 'pluggins/refresh';
 import { dynamicBooking } from 'pluggins/refresh';
 import { showInfo } from 'pluggins/dashboard';

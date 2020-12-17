@@ -7,10 +7,14 @@
         <div id="info-column" class="d-flex pb-2 mx-3">
          <!--  profile img -->
          <% if current_user.is_a_cook? %>
-          <%= cl_image_tag @chatroom.booking.user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
+          <% if @chatroom.booking.user.photo.attached? %>
+            <%= cl_image_tag @chatroom.booking.user.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
+          <% end %>
         <% else %>
-          <%= cl_image_tag @chatroom.booking.cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
-         <% end %>
+          <% if @chatroom.booking.cooker.photo.attached? %>
+            <%= cl_image_tag @chatroom.booking.cooker.photo.key, :gravity=>"face", :class => "rounded-circle", height: 150, width: 150, crop: :fill %>
+          <% end %>
+        <% end %>
 
 
 
@@ -72,13 +76,13 @@
         <div class="form-post text-center" style="background-color:#A4BAD4;">
         <% if @chatroom.booking.cooker == current_user %>
           <div class="chat-header">
-            <h1>  <%= @chatroom.booking.user.first_name %> </h1>
-            <h6 class="pt-2"> <%= @chatroom.booking.number_of_meals %> meals on the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
+            <h3 class="pt-2 m-0"> <%= @chatroom.booking.number_of_meals %> meals</h3>
+            <h6 class="pt-2">on the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
           </div>
         <% else %>
           <div class="chat-header">
-            <h1> <%= @chatroom.booking.cooker.first_name %> </h1>
-             <h6 class="pt-2"> <%= @chatroom.booking.number_of_meals %> meals on the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
+            <h3 class="pt-2 m-0"> <%= @chatroom.booking.number_of_meals %> meals</h3>
+            <h6 class="pt-2">on the <%= @chatroom.booking.start_date.strftime("%d of %B, %Y") %></h6>
           </div>
         <% end %>
 

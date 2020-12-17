@@ -1,4 +1,4 @@
-const UpdatePrice = () => {
+const updatePrice = () => {
   let editUser = document.querySelector('#edit_user')
   if(editUser) {
     var checkbox = document.querySelector('input[type="checkbox"]');
@@ -21,4 +21,4 @@ const UpdatePrice = () => {
   }
 }
 
-export { UpdatePrice };
+export { updatePrice };

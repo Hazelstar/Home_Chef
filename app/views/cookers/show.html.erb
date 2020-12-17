@@ -167,15 +167,15 @@
                     <div class="mb-2" id="time">
                       Cooking Time: 1h10
                     </div>
-                    <script type="text/javascript"> window.cooker_price = <%= @cooker.price.nil? ? 0 : @cooker.price / 60 * (10 + (20 * 3)) %>; </script>
+
+                    <script type="text/javascript"> window.cooker_price = <%= @cooker.price.nil? ? 0 : (@cooker.price / 60.to_f * (10 + (20 * 3))).round(2) %>; </script>
                     <div class="mb-2" id="price-meals">
-                      Total Price: <%= @cooker.price.nil? ? 0 : @cooker.price / 60 * (10 + (20 * 3)) %> €
+                      Total Price: <%= @cooker.price.nil? ? 0 : (@cooker.price / 60.0 * (10 + (20 * 3))).round(2) %> €
                     </div>
                   </div>
 
                   <div class="date-availability" data-available="<%= @cooker.available_dates.to_json %>">
-
-                    <label class="mt-3">When would you like <%= "#{@cooker.first_name.capitalize}"%> to come?</label>
+                    <label class="mt-3">When would you like <%= "#{@cooker.first_name.capitalize} (#{(@cooker.price / (60.to_f) * (10 + (20 * 3))).round(2)}€)" %> to come?</label>
                     <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
                     <%#= f.collection_radio_buttons :start_date, @availabilities, :good_availability_format, :good_availability_format, item_wrapper_class: :block_radio_button_collection %>
                   </div>
@@ -194,7 +194,7 @@
               </div>
             <% end %>
 
-            <script src="https://js.stripe.com/v3/"></script>
+            <!-- <script src="https://js.stripe.com/v3/"></script>
             <script>
               const paymentButton = document.getElementById('pay');
               paymentButton.addEventListener('click', () => {
@@ -203,7 +203,7 @@
                   sessionId: '<%= @booking.checkout_session_id %>'
                 });
               });
-            </script>
+            </script> -->
 
           </div> <!-- closes the modal-content -->
         </div>

@@ -19,25 +19,25 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @booking.user = current_user
     @booking.cooker = User.find(params[:booking]['cooker_id'].to_i)
-    @booking.amount_cents = 0
+    @booking.amount_cents = (@booking.cooker.price_cents / 60.0 * (10 + (20 * @booking.number_of_meals))).round(2)
 
     if @booking.save
       @chatroom = Chatroom.create(name: @booking.cooker.first_name, booking: @booking)
-      @booking.amount_cents = @booking.cooker.price / 60 * (10 + (20 * @booking.number_of_meals)) * 100
 
-      session = Stripe::Checkout::Session.create(
-        payment_method_types: ['card'],
-        line_items: [{
-          name: @booking.cooker.first_name,
-          images: [@booking.cooker.photo],
-          amount: @booking.amount_cents,
-          currency: 'eur',
-          quantity: @booking.number_of_meals
-        }],
-        success_url: booking_url(@booking),
-        cancel_url: new_user_booking_url(@booking)
-      )
-      @booking.update(checkout_session_id: session.id)
+      # session = Stripe::Checkout::Session.create(
+      #   payment_method_types: ['card'],
+      #   line_items: [{
+      #     name: @booking.cooker.first_name,
+      #     images: [@booking.cooker.photo],
+      #     amount: @booking.amount_cents,
+      #     currency: 'eur',
+      #     quantity: @booking.number_of_meals
+      #   }],
+      #   success_url: booking_url(@booking),
+      #   cancel_url: new_user_booking_url(@booking)
+      # )
+      # @booking.update(checkout_session_id: session.id)
+
       redirect_to booking_path(@booking)
     else
       render :new
