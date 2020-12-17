@@ -1,31 +1,5 @@
-<!-- Search bar responsive on desktop screen -->
-<div class="d-flex justify-content-center">
- <div class="search-bar row m-3">
-    <div class="form d-flex justify-content-center pt-2 w-100">
-      <%= form_tag cookers_path, method: :get, class: "search-responsive" do %>
-
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control query-search",
-            placeholder: "Search by city, cook, dish specialty",
-            autofocus: true %>
-          <%= text_field_tag :min_price,
-            params[:min_price],
-            class: "form-control d-none d-sm-block",
-            placeholder: "Min price" %>
-          <%= text_field_tag :max_price,
-            params[:max_price],
-            class: "form-control d-none d-sm-block",
-            placeholder: "Max price" %>
-
-          <%= submit_tag "Search", class: "btn-search d-none d-sm-block"%>
-      <% end %>
-    </div>
-  </div>
-</div>
-
 <!-- this is to display RESPONSIVE bar on xs to small screens -->
-<div class="d-flex justify-content-center d-block d-sm-none">
+<div class="d-flex justify-content-center d-sm-none">
  <div class="search-bar row m-3">
     <div class="form d-flex justify-content-center pt-2 w-100">
       <%= form_tag cookers_path, method: :get, class: "search-responsive" do %>
@@ -35,7 +9,7 @@
           class: "form-control query-search",
           placeholder: "Search by city, cook, dish specialty",
           autofocus: true %>
-        <div class="d-flex d-sm-none">
+        <div class="d-flex justify-content-center d-sm-none">
           <%= text_field_tag :min_price,
             params[:min_price],
             class: "form-control",
@@ -53,9 +27,35 @@
   </div>
 </div>
 
+<!-- Search bar responsive on desktop screen -->
+<div class="d-flex justify-content-center">
+ <div class="search-bar row m-3  d-none d-sm-block">
+    <div class="form d-flex justify-content-center pt-2 w-100">
+      <%= form_tag cookers_path, method: :get, class: "search-responsive" do %>
 
-<!-- Display of the cooks -->
-<div class="mt-5 ml-3">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control query-search",
+            placeholder: "Search by city, cook, dish specialty",
+            autofocus: true %>
+          <%= text_field_tag :min_price,
+            params[:min_price],
+            class: "form-control",
+            placeholder: "Min price" %>
+          <%= text_field_tag :max_price,
+            params[:max_price],
+            class: "form-control",
+            placeholder: "Max price" %>
+
+          <%= submit_tag "Search", class: "btn-search"%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<!-- Index of cookers -->
+<div class="mt-1 ml-3">
   <% if @cookers.any? %>
     <div class="container">
       <div class="row row-cook my-5">
