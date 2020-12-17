@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @booking.user = current_user
     @booking.cooker = User.find(params[:booking]['cooker_id'].to_i)
-    @booking.amount_cents = @booking.cooker.price_cents / 60 * (10 + (20 * @booking.number_of_meals))
+    @booking.amount_cents = (@booking.cooker.price_cents / 60.0 * (10 + (20 * @booking.number_of_meals))).round(2)
 
     if @booking.save
       @chatroom = Chatroom.create(name: @booking.cooker.first_name, booking: @booking)

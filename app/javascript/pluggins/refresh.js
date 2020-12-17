@@ -28,9 +28,10 @@ let dynamicBooking = () => {
     const mealsPrice = document.querySelector('#price-meals');
 
     selectbox.addEventListener("change", (event) => {
-      const cookingTime = event.target.value === "" ? 0 : 10 + 20 * event.target.value;
+      const cookingTime = event.target.value === "" ? 0 : 10 + (20 * event.target.value);
       mealsTime.innerText = `Cooking Time: ${Math.floor(cookingTime / 60)}h${cookingTime % 60}`;
-      const cookingPrice = Number(Math.round((window.cooker_price / 60 * cookingTime)+'e2')+'e-2'); // Math.round((window.cooker_price / 60 * cookingTime) * 100) / 100;
+      const cookingPrice = ((window.cooker_price / 60) * cookingTime).toFixed(2);
+      console.log(cookingPrice);
       mealsPrice.innerText = `Total Price: ${cookingPrice}€`;
     });
   };
