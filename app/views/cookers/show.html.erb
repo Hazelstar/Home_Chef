@@ -31,7 +31,7 @@
           </div>
         </div>
 
-      <!-- User's bio -->
+      <!-- Cooker's bio -->
       <% if @cooker.bio == nil %>
         <h3 class="ml-3">Oh no, <%= @cooker.first_name %> hasn't filled in their info yet!</h3>
       <% else %>
@@ -70,7 +70,7 @@
   </div> <!-- closes left column -->
 
   <!-- Right column that dynamically displays sections -->
-  <div class="col-6 p-4" id="content-column">
+  <div class="col-md-6 col-sm-12 p-0" id="content-column">
     <div class="d-flex justify-content-center p-4">
 
       <!-- This is the display of the messages box (NOT USED BECAUSE CONVERSATION STARTS WITH BOOKING)-->
