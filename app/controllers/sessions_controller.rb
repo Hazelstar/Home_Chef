@@ -1,5 +1,4 @@
 class SessionsController < Devise::SessionsController
-
   # DELETE /resource
   # def destroy
   #   super
@@ -7,8 +6,7 @@ class SessionsController < Devise::SessionsController
 
   private
 
-   def after_sign_in_path_for(resource)
-     profile_path
-   end
-
+  def after_sign_in_path_for(resource)
+    session[:previous_url] || profile_path
+  end
 end
